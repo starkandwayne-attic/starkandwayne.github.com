@@ -116,14 +116,14 @@ jQuery(document).ready(function($){
 });
 
 /* ------------------- Parallax --------------------- */
-
+// http://tympanus.net/codrops/2012/03/15/parallax-content-slider-with-css3-and-jquery/
 jQuery(document).ready(function($){
-	
-	$('#da-slider').cslider({
-		autoplay	: true,
-		bgincrement	: 500
-	});
-
+  $('#da-slider').cslider({
+    current: 0,
+    autoplay: true,
+    bgincrement: 50,
+    interval: 6000
+  });
 });
 
 /* ------------------ Image Overlay ----------------- */
