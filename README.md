@@ -6,13 +6,15 @@
 
 ```
 $ rake post title="Hello World"
+$ rake post title="Hello World" date="2012-12-31"
+$ rake post title="Hello World" category="articles"
 ```
 
 ### Create new pages
 
 ```
-$ rake page name="newpage.html"
-$ rake page name="section/newpage.html"
+$ rake page name="newpage"
+$ rake page name="section/new-page"
 ```
 
 ## Theme

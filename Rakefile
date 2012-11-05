@@ -57,13 +57,15 @@ task :post do
     abort("rake aborted!") if ask("#{filename} already exists. Do you want to overwrite?", ['y', 'n']) == 'n'
   end
   
+  category = ENV['category'] || 'articles'
+  
   puts "Creating new post: #{filename}"
   open(filename, 'w') do |post|
     post.puts "---"
     post.puts "layout: post"
     post.puts "title: \"#{title.gsub(/-/,' ')}\""
     post.puts 'description: ""'
-    post.puts "category: "
+    post.puts "category: #{category}"
     post.puts "tags: []"
     post.puts "---"
     post.puts "{% include JB/setup %}"
@@ -75,7 +77,8 @@ end # task :post
 # If you don't specify a file extention we create an index.html at the path specified
 desc "Create a new page."
 task :page do
-  name = ENV["name"] || "new-page.md"
+  id = ENV["name"] || "new-page"
+  name = "#{id}.html"
   filename = File.join(SOURCE, "#{name}")
   filename = File.join(filename, "index.html") if File.extname(filename) == ""
   title = File.basename(filename, File.extname(filename)).gsub(/[\W\_]/, " ").gsub(/\b\w/){$&.upcase}
@@ -86,12 +89,39 @@ task :page do
   mkdir_p File.dirname(filename)
   puts "Creating new page: #{filename}"
   open(filename, 'w') do |post|
-    post.puts "---"
-    post.puts "layout: page"
-    post.puts "title: \"#{title}\""
-    post.puts 'description: ""'
-    post.puts "---"
-    post.puts "{% include JB/setup %}"
+    post.puts <<-HTML.gsub(/^\s{4}/, '')
+    ---
+    layout: page
+    title: \"#{title}\"
+    description: ""
+    theme:
+      name: smart-business-template
+    ---
+    {% include JB/setup %}
+    
+    <!--start: Wrapper-->
+    <div id="wrapper">
+    
+      <!--start: Container -->
+      <div class="container">
+    
+        <hr>
+        <div id="#{id}">
+    
+          <div class="title"><h3>#{title}</h3></div>
+    
+          <!-- start: Row -->
+          <div class="row">
+            <div class="span12">
+              <p>YOUR CONTENT HERE</p>
+            </div>
+          </div>
+          <!-- end: Row -->
+        </div>
+      </div>
+      <!-- end: Container -->
+    </div>
+    HTML
   end
 end # task :page
 
