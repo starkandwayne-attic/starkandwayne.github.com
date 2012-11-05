@@ -4,7 +4,11 @@
 
   <!-- start: Meta -->
   <meta charset="utf-8">
-  <title>{{ site.title }}'s {{ page.title }}</title>
+  {% if page.title %}
+    <title>{{ site.title }}'s {{ page.title }}</title>
+  {% else %}
+    <title>{{ site.title }}</title>
+  {% endif %}
   {% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
   <meta name="author" content="{{ site.author.name }}">
   <!-- end: Meta -->
