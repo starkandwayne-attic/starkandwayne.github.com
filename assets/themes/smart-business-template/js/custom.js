@@ -97,7 +97,7 @@ jQuery(document).ready(function() {
 
     $('.tooltips').tooltip({
       selector: "a[rel=tooltip]"
-    })
+    });
 
 });
 
@@ -121,7 +121,7 @@ jQuery(document).ready(function($){
 	
 	$('#da-slider').cslider({
 		autoplay	: true,
-		bgincrement	: 50
+		bgincrement	: 500
 	});
 
 });
@@ -202,7 +202,7 @@ jQuery(document).ready(function (){
 			options[ key ] = value;
 			if ( key === 'layoutMode' && typeof changeLayoutMode === 'function' ) {
 			  // changes in layout modes need extra logic
-			  changeLayoutMode( $this, options )
+			  changeLayoutMode( $this, options );
 			} else {
 			  // otherwise, apply new options
 			  $container.isotope( options );
