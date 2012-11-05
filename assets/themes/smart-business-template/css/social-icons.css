@@ -616,6 +616,14 @@
 	background: #f1628b url(../img/icons/social_big/flickr_white.png) no-repeat;
 }
 
+.social-github { 
+	background: #f6f6f6 url(../img/icons/social_big/github_grey.png) no-repeat;
+}
+
+.social-github-hover { 
+	background: #7292a2 url(../img/icons/social_big/github_white.png) no-repeat;
+}
+
 .social-html5 { 
 	background: #f6f6f6 url(../img/icons/social_big/html5_grey.png) no-repeat;
 }
