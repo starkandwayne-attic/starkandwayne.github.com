@@ -1,5 +1,27 @@
 # Stark & Wayne main site
 
+## Context
+
+### Create new articles/posts
+
+```
+$ rake post title="Hello World"
+```
+
+### Create new pages
+
+```
+$ rake page name="newpage.html"
+$ rake page name="section/newpage.html"
+```
+
+## Theme
+
+* [social icons](http://wbpreview.com/previews/WB07233L7/social-icons.html)
+* [icons](http://wbpreview.com/previews/WB07233L7/icons.html)
+* [shortcodes](http://wbpreview.com/previews/WB07233L7/shortcodes.html)
+* [list styles](http://wbpreview.com/previews/WB07233L7/list-styles.html)
+
 ## Thanks / Credit
 
 This is a Jekyll site, using (Twitter) Bootstrap via [Jekyll Bootstrap](http://jekyllbootstrap.com "Blogging with Jekyll Tutorial | Jekyll-Bootstrap"). This repository can be rebased in future against https://github.com/plusjade/jekyll-bootstrap.
