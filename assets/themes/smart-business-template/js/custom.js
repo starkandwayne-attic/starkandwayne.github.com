@@ -131,9 +131,9 @@ jQuery(document).ready(function($){
 jQuery(document).ready(function () {
 	
 	$('.picture a').hover(function () {
-		$(this).find('.image-overlay-zoom, .image-overlay-link').stop().fadeTo('fast', 1);
+		$(this).find('.image-overlay-zoom, .image-overlay-link, .image-overlay-play').stop().fadeTo('fast', 1);
 	},function () {
-		$(this).find('.image-overlay-zoom, .image-overlay-link').stop().fadeTo('fast', 0);
+		$(this).find('.image-overlay-zoom, .image-overlay-link, .image-overlay-play').stop().fadeTo('fast', 0);
 	});
 	
 });

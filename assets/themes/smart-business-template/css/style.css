@@ -333,7 +333,8 @@ header {
 .picture img {width: 100%; height: auto; }
 
 .image-overlay-link,
-.image-overlay-zoom {
+.image-overlay-zoom,
+.image-overlay-play {
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
@@ -354,11 +355,15 @@ header {
 }
 
 .image-overlay-link {
-  background-image: url(../img/overlay-icon-01.png);
+  background-image: url("../img/overlay-icon-link.png");
 }
 
 .image-overlay-zoom {
-  background-image: url(../img/overlay-icon-02.png);
+  background-image: url("../img/overlay-icon-zoom.png");
+}
+
+.image-overlay-play {
+  background-image: url("../img/overlay-icon-play.png");
 }
 
 
