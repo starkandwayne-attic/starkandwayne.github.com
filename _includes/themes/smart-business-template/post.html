@@ -1,40 +1,92 @@
-<div class="page-header">
-  <h1>{{ page.title }} <small>Supporting tagline</small></h1>
-</div>
-
-<div class="row">
-  <div class="span8">
-    {{ content }}
-    <hr>
-    <div class="pagination">
-      <ul>
-      {% if page.previous %}
-        <li class="prev"><a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&larr; Previous</a></li>
-      {% else %}
-        <li class="prev disabled"><a>&larr; Previous</a></li>
-      {% endif %}
-        <li><a href="{{ BASE_PATH }}{{ site.JB.archive_path }}">Archive</a></li>
-      {% if page.next %}
-        <li class="next"><a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">Next &rarr;</a></li>
-      {% else %}
-        <li class="next disabled"><a>Next &rarr;</a>
-      {% endif %}
-      </ul>
+<!-- start: Page Title -->
+<div id="page-title">
+  <div id="page-title-inner">
+    <!-- start: Container -->
+    <div class="container">
+      <h2><i class="ico-pencil ico-white"></i>{{ page.title }}</h2>
     </div>
-    <hr>
-    {% include JB/comments %}
-  </div>
-  
-  <div class="span4">
-    <h4>Published</h4>
-    <div class="date"><span>{{ page.date | date_to_long_string }}</span></div>
-
-  {% unless page.tags == empty %}
-    <h4>Tags</h4>
-    <ul class="tag_box">
-    {% assign tags_list = page.tags %}
-    {% include JB/tags_list %}
-    </ul>
-  {% endunless %}  
-  </div>
+    <!-- end: Container  -->
+  </div>  
 </div>
+<!-- end: Page Title -->
+      
+<!--start: Wrapper-->
+<div id="wrapper">
+      
+  <!--start: Container -->
+  <div class="container">
+    <!--start: Row -->
+    <div class="row">
+      <div class="span9">
+        {{ content }}
+
+        <hr>
+        <div class="pagination">
+          <ul>
+          {% if page.previous %}
+            <li class="prev"><a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&larr; Previous</a></li>
+          {% else %}
+            <li class="prev disabled"><a>&larr; Previous</a></li>
+          {% endif %}
+            <li><a href="{{ BASE_PATH }}{{ site.JB.archive_path }}">Archive</a></li>
+          {% if page.next %}
+            <li class="next"><a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">Next &rarr;</a></li>
+          {% else %}
+            <li class="next disabled"><a>Next &rarr;</a>
+          {% endif %}
+          </ul>
+        </div>
+        <hr>
+        {% include JB/comments %}
+      </div>
+    
+      <div class="span3 hidden-phone">
+        <h4>Published</h4>
+        <div class="date"><span>{{ page.date | date_to_long_string }}</span></div>
+
+
+        <!-- start: Popular Photos -->
+        <div class="widget-first">
+          <div class="title"><h3>Popular Photos</h3></div>
+
+          <div class="flickr-widget">
+            <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=9&display=latest&size=s&layout=x&source=user&user=29609591@N08"></script>
+            <div class="clear"></div>
+          </div>
+
+        </div>
+        <!-- end: Popular Photos -->
+
+        <!-- start: Sidebar Menu -->
+        <div class="widget">
+          <div class="title"><h3>Menu</h3></div>
+          <ul class="links-list-alt">
+            <li><a href="full_width.html">Full Width</a></li>
+            <li><a href="sidebar.html">Sidebar</a></li>
+            <li><a href="post.html">Single Post</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="pricing_tables.html">Pricing Tables</a></li>
+          </ul>
+        </div>
+        <!-- end: Sidebar Menu -->
+
+        {% unless page.tags == empty %}
+        <!-- start: Tags -->
+        <div class="widget">
+          <div class="title"><h3>Tags</h3></div>
+          <div class="tags">
+            <!-- <a href="#">Tag1</a> -->
+            {% assign tags_list = page.tags %}
+            {% include JB/tags_list_just_link %}
+          </div>
+        </div>
+        <!-- end: Tags -->
+        {% endunless %}
+      </div>
+    </div>
+    <!--end: Row-->
+  </div>
+  <!--end: Container-->
+
+</div>
+<!-- end: Wrapper  -->      

@@ -9,7 +9,7 @@ CONFIG = {
   'themes' => File.join(SOURCE, "_includes", "themes"),
   'layouts' => File.join(SOURCE, "_layouts"),
   'posts' => File.join(SOURCE, "_posts"),
-  'post_ext' => "md",
+  'post_ext' => "html",
   'theme_package_version' => "0.1.0"
 }
 
@@ -58,18 +58,45 @@ task :post do
   end
   
   category = ENV['category'] || 'articles'
+  post_path = File.join(category, date.gsub("-", "/"), slug)
   
   puts "Creating new post: #{filename}"
   open(filename, 'w') do |post|
-    post.puts "---"
-    post.puts "layout: post"
-    post.puts "title: \"#{title.gsub(/-/,' ')}\""
-    post.puts 'description: ""'
-    post.puts "category: #{category}"
-    post.puts "tags: []"
-    post.puts "---"
-    post.puts "{% include JB/setup %}"
+    post.puts <<-HTML.gsub(/^\s{4}/, '')
+    ---
+    layout: post
+    title: "#{title.gsub(/-/,' ')}"
+    description: ""
+    category: #{category}
+    tags: []
+    theme:
+      name: smart-business-template
+    ---
+    {% include JB/setup %}
+    
+    <!-- start: Post -->
+    <div class="post">
+      <div class="post-img picture">
+        <a href="{{ BASE_PATH }}/#{post_path}"><img src="{{ ASSET_PATH }}/img/car.jpg" alt="" /><div class="image-overlay-link"></div></a>
+      </div>
+      <span class="post-icon standard"><i class="ico-pen circle"></i></span>
+      <div class="post-content">
+        <div class="post-title"><h2><a href="{{ BASE_PATH }}/#{post_path}">#{title.gsub(/-/,' ')}</a></h2></div>
+        <div class="post-description">
+          <p>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+          </p>
+        </div>
+        <div class="post-meta">
+          <span><i class="mini-ico-calendar"></i>#{date.to_s}</span> 
+          <span><i class="mini-ico-user"></i>By Dr Nic</span> 
+        </div>
+      </div>
+    </div>
+    <!-- end: Post -->
+    HTML
   end
+  puts "View at #{post_path}"
 end # task :post
 
 # Usage: rake page name="about.html"
@@ -92,7 +119,7 @@ task :page do
     post.puts <<-HTML.gsub(/^\s{4}/, '')
     ---
     layout: page
-    title: \"#{title}\"
+    title: "#{title}"
     description: ""
     theme:
       name: smart-business-template
@@ -112,7 +139,7 @@ task :page do
     
           <!-- start: Row -->
           <div class="row">
-            <div class="span12">
+            <div class="span9">
               <p>YOUR CONTENT HERE</p>
             </div>
           </div>
