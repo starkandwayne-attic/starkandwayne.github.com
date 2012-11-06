@@ -1,6 +1,118 @@
 ---
-layout: page
+layout: default
 title: "Contact Us"
 description: ""
+theme:
+  name: smart-business-template
 ---
 {% include JB/setup %}
+
+<!-- start: Map -->
+<div class="hidden-tablet hidden-phone">
+  <!-- starts: Google Maps -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <div id="googlemaps-container-top"></div>
+  <div id="googlemaps" class="google-map google-map-full"></div>
+  <div id="googlemaps-container-bottom"></div>
+  <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+  <script src="{{ ASSET_PATH }}/js/jquery.gmap.min.js"></script>
+  <script type="text/javascript">
+    $('#googlemaps').gMap({
+      maptype: 'ROADMAP',
+      scrollwheel: false,
+      zoom: 9,
+      markers: [
+        {
+          address: 'Palo Alto, California, United States', // Your Adress Here
+          html: '',
+          popup: false
+        }
+      ]
+    });
+  </script>
+  <!-- end: Google Maps -->
+</div>
+<!-- end: Map -->  
+
+<!-- start: Wrapper -->  
+<div id="wrapper">    
+
+  <!-- start: Container -->  
+  <div class="container">
+    
+    <!-- start: Row -->
+    <div class="row">
+    
+      <!-- start: Contact Info -->
+      <div class="span6">
+        <div class="title"><h3>Contact Info</h3></div>
+        <p>
+          <b>Stark & Wayne LLC</b>
+        </p>
+        <p>  
+          Palo Alto, CA 94303, USA
+        </p>  
+        <p>  
+          Phone: +1 (415) 860 2185
+        </p>
+        <p>
+          Email: drnic@starkandwayne.com
+        </p>
+        <p>
+          Web: <a href="http://starkandwayne.com" title="Stark & Wayne">starkandwayne.com</a>
+        </p>
+      </div>
+      <!-- end: Contact Info -->    
+
+      <!-- start: Contact Form -->
+      <div class="span6">
+        <div class="title"><h3>Contact Form</h3></div>
+
+        <!-- start: Contact Form -->
+        <div id="contact-form">
+
+          <form method="post" action="">
+
+            <fieldset>
+              <div class="clearfix">
+                <label for="name"><span>Name:</span></label>
+                <div class="input">
+                  <input tabindex="1" size="18" id="name" name="name" type="text" value="">
+                </div>
+              </div>
+
+              <div class="clearfix">
+                <label for="email"><span>Email:</span></label>
+                <div class="input">
+                  <input tabindex="2" size="25" id="email" name="email" type="text" value="" class="input-xlarge">
+                </div>
+              </div>
+
+              <div class="clearfix">
+                <label for="message"><span>Message:</span></label>
+                <div class="input">
+                  <textarea tabindex="3" class="input-xlarge" id="message" name="body" rows="7"></textarea>
+                </div>
+              </div>
+
+              <div class="actions">
+                <button tabindex="3" type="submit" class="btn btn-succes btn-large">Send message</button>
+              </div>
+            </fieldset>
+
+          </form>
+
+        </div>
+        <!-- end: Contact Form -->
+
+      </div>
+      <!-- end: Contact Form -->
+    
+    </div>
+    <!-- end: Row -->
+
+  </div>
+  <!-- end: Container -->
+      
+</div>
+<!-- end: Wrapper  -->      
