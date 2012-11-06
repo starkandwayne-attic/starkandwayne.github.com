@@ -2324,7 +2324,8 @@ form#newsletter input[type=submit] {
   
   
   .post-meta {
-    display: none;
+    /* REMOVED - This will hide date/author from posts */
+    /*    display: none;*/
   }
   
   .post-title h2 {

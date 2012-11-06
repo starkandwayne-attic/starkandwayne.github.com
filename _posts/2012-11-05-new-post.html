@@ -2,6 +2,8 @@
 layout: post
 title: "New post"
 description: ""
+author: "Dr Nic Williams"
+author_code: drnic
 category: articles
 tags: ['hi', 'there']
 theme:
@@ -17,14 +19,14 @@ theme:
   <span class="post-icon standard"><i class="ico-pen circle"></i></span>
   <div class="post-content">
     <div class="post-title"><h2><a href="{{ BASE_PATH }}/articles/2012/11/05/new-post">New post</a></h2></div>
+    <div class="post-meta">
+      <span><i class="mini-ico-calendar"></i>{{ page.date | date_to_long_string }}</span> 
+      <span><i class="mini-ico-user"></i>By {{ page.author }}</span> 
+    </div>
     <div class="post-description">
       <p>
         Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
       </p>
-    </div>
-    <div class="post-meta">
-      <span><i class="mini-ico-calendar"></i>{{ page.date | date_to_long_string }}</span> 
-      <span><i class="mini-ico-user"></i>By Dr Nic</span> 
     </div>
   </div>
 </div>

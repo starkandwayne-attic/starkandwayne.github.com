@@ -58,6 +58,8 @@ task :post do
   end
   
   category = ENV['category'] || 'articles'
+  author = ENV['author'] || `git config user.name`.strip
+  author_code = ENV['author_code'] || `whoami`.strip
   post_path = File.join(category, date.gsub("-", "/"), slug)
   
   puts "Creating new post: #{filename}"
@@ -67,6 +69,8 @@ task :post do
     layout: post
     title: "#{title.gsub(/-/,' ')}"
     description: ""
+    author: "#{author}"
+    author_code: #{author_code}
     category: #{category}
     tags: []
     theme:

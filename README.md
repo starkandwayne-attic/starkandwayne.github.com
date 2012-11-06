@@ -35,7 +35,7 @@ If you fork/use this repository, please pay for your own license of the [smart-b
 ## Current dependencies
 
 * https://github.com/plusjade/jekyll-bootstrap - version 0.2.13 (add as a remote and rebase)
-* https://wrapbootstrap.com/theme/smart-business-template-WB07233L7 - version 1.0.2 (copied into assets/themes, with style.css in root)
+* https://wrapbootstrap.com/theme/smart-business-template-WB07233L7 - version 1.0.2 (copied into assets/themes)
 
 
 ## License

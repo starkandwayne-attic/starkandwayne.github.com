@@ -41,34 +41,17 @@
       </div>
     
       <div class="span3 hidden-phone">
-        <h4>Published</h4>
-        <div class="date"><span>{{ page.date | date_to_long_string }}</span></div>
 
-
-        <!-- start: Popular Photos -->
-        <div class="widget-first">
-          <div class="title"><h3>Popular Photos</h3></div>
-
-          <div class="flickr-widget">
-            <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=9&display=latest&size=s&layout=x&source=user&user=29609591@N08"></script>
-            <div class="clear"></div>
+        <!-- start: Author -->
+        <div class="widget">
+          <div class="title"><h3>{{ page.author }}</h3></div>
+          <div class="da-img">
+            <img src="{{ ASSET_PATH }}/img/about-us/{{ page.author_code }}-alpha-300w.png" 
+              alt="{{ page.author_code }}" />
           </div>
-
+          <div class="clear"></div>
         </div>
         <!-- end: Popular Photos -->
-
-        <!-- start: Sidebar Menu -->
-        <div class="widget">
-          <div class="title"><h3>Menu</h3></div>
-          <ul class="links-list-alt">
-            <li><a href="full_width.html">Full Width</a></li>
-            <li><a href="sidebar.html">Sidebar</a></li>
-            <li><a href="post.html">Single Post</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="pricing_tables.html">Pricing Tables</a></li>
-          </ul>
-        </div>
-        <!-- end: Sidebar Menu -->
 
         {% unless page.tags == empty %}
         <!-- start: Tags -->
