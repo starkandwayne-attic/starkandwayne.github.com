@@ -1,6 +1,6 @@
 # Stark & Wayne main site
 
-## Context
+## Adding content
 
 ### Create new articles/posts
 
