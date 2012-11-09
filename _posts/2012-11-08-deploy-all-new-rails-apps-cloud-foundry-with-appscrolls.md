@@ -12,6 +12,7 @@ banner:
   background: parchment
 published: false
 publish_date: 2012-11-08
+category: "articles"
 tags: []
 theme:
   name: smart-business-template
