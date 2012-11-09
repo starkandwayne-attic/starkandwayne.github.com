@@ -6,9 +6,9 @@ author: "Dr Nic Williams"
 author_code: drnic
 category: articles
 banner:
-  image: /assets/banners/parchment.png
   title: AppScrolls &amp; CloudFoundry
   text: AppScrolls can now create applications that are automatically deployed to any Cloud Foundry target.
+  image: /assets/images/cloudfoundry-235w.png
   background: parchment
 published: true
 publish_date: 2012-11-08

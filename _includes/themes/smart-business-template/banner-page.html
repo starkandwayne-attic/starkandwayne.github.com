@@ -5,8 +5,12 @@
     <div class="da-slide">
       <h2>{{ page.banner.title }}</h2>
       <p>{{ page.banner.text }}</p>
+      {% if page.banner.button %}
       <a href="{{ BASE_PATH }}/{{ page.banner.button.path }}" class="da-link">{{ page.banner.button.title }}</a>
-      <div class="da-img"><img src="{{ ASSET_PATH }}/img/about-us/drnic-alpha-300w.png" alt="drnic" /></div>
+      {% endif %}
+      {% if page.banner.image %}
+      <div class="da-img"><img src="{{ page.banner.image }}" alt="" /></div>
+      {% endif %}
     </div>
   </div>
   
