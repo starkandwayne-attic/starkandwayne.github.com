@@ -75,34 +75,18 @@ task :post do
     layout: post
     title: "#{title}"
     description: ""
+    main_picture: /assets/articles/images/car.jpg
     author: "#{author}"
     author_code: #{author_code}
-    published: false
-    category: #{category}
+    publish_date: "#{date.to_s}"
+    category: "#{category}"
     tags: []
     theme:
       name: smart-business-template
     ---
     {% include JB/setup %}
     
-    <!-- start: Post -->
-    <div class="post">
-      <div class="post-img picture">
-        <a href="{{ BASE_PATH }}/#{post_path}"><img src="{{ ASSET_PATH }}/img/car.jpg" alt="" /><div class="image-overlay-link"></div></a>
-      </div>
-      <span class="post-icon standard"><i class="ico-pen circle"></i></span>
-      <div class="post-content">
-        <div class="post-title"><h2><a href="{{ BASE_PATH }}/#{post_path}">{{ page.title }}</a></h2></div>
-        <div class="post-description">
-          <p>CONTENT GOES HERE</p>
-        </div>
-        <div class="post-meta">
-          <span><i class="mini-ico-calendar"></i>#{date.to_s}</span> 
-          <span><i class="mini-ico-user"></i>By Dr Nic</span> 
-        </div>
-      </div>
-    </div>
-    <!-- end: Post -->
+    <p>CONTENT GOES HERE</p>
     HTML
   end
   puts "View at #{post_path}"

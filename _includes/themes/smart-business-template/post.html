@@ -18,7 +18,27 @@
     <!--start: Row -->
     <div class="row">
       <div class="span9">
-        {{ content }}
+        
+        <!-- start: Post -->
+        <div class="post">
+          {% if page.main_picture %}
+          <div class="post-img picture">
+            <a href="{{ page.uri }}"><img src="{{ page.main_picture }}" alt="" /><div class="image-overlay-link"></div></a>
+          </div>
+          {% endif %}
+          <span class="post-icon standard"><i class="ico-pen circle"></i></span>
+          <div class="post-content">
+            <div class="post-title"><h2><a href="{{ page.uri }}">{{ page.title }}</a></h2></div>
+            <div class="post-description">
+              {{ content }}
+            </div>
+            <div class="post-meta">
+              <span><i class="mini-ico-calendar"></i>{{ page.publish_date }}</span> 
+              <span><i class="mini-ico-user"></i>By {{ page.author }}</span> 
+            </div>
+          </div>
+        </div>
+        <!-- end: Post -->
 
         <hr>
         <div class="pagination">
