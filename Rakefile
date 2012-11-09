@@ -3,6 +3,7 @@ require 'rake'
 require 'yaml'
 require 'time'
 
+MAX_TITLE_SIZE = 80 # to easily fit within a tweet
 SOURCE = "."
 CONFIG = {
   'version' => "0.2.13",
@@ -44,7 +45,12 @@ end #JB
 desc "Begin a new post in #{CONFIG['posts']}"
 task :post do
   abort("rake aborted: '#{CONFIG['posts']}' directory not found.") unless FileTest.directory?(CONFIG['posts'])
-  title = ENV["title"] || "new-post"
+  unless title = ENV["title"] || ENV["name"]
+    abort("USAGE: rake post title='Post title'")
+  end
+  if title.size > MAX_TITLE_SIZE
+    abort("Title size (#{title.size}) is too long (max is #{MAX_TITLE_SIZE})")
+  end
   slug = title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
   begin
     date = (ENV['date'] ? Time.parse(ENV['date']) : Time.now).strftime('%Y-%m-%d')
@@ -71,6 +77,7 @@ task :post do
     description: ""
     author: "#{author}"
     author_code: #{author_code}
+    published: false
     category: #{category}
     tags: []
     theme:
