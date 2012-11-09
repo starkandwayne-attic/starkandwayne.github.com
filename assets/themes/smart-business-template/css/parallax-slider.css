@@ -27,11 +27,15 @@
 }
 
 .da-slider-ny{
-  background: transparent url(../img/slider-ny.jpg) repeat 0% 0%;
+  background: transparent url(/assets/banners/slider-ny.jpg) repeat 0% 0%;
 }
 
 .da-slider-abyss{
-	background: transparent url(../img/abyss.png) repeat 0% 0% !important;
+	background: transparent url(/assets/banners/abyss.png) repeat 0% 0% !important;
+}
+
+.da-slider-parchment{
+	background: transparent url(/assets/banners/parchment.png) repeat 0% 0% !important;
 }
 
 .da-slide{

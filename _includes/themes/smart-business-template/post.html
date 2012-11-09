@@ -1,3 +1,24 @@
+{% if page.banner %}
+<!-- start: Slider -->
+<div class="slider-wrapper">
+
+  <div id="da-slider" class="da-slider da-slider-{{ page.banner.background }}">
+    <div class="da-slide">
+      <h2>{{ page.banner.title || page.title }}</h2>
+      <p>{{ page.banner.text }}</p>
+      {% if page.banner.button %}
+      <a href="{{ BASE_PATH }}/{{ page.banner.button.path }}" class="da-link">{{ page.banner.button.title }}</a>
+      {% endif %}
+      {% if page.banner.icon %}
+      <div class="da-img"><img src="{{ page.banner.icon }}" alt="" /></div>
+      {% endif %}
+    </div>
+  </div>
+  
+</div>
+<!-- end: Slider -->
+
+{% else %}
 <!-- start: Page Title -->
 <div id="page-title">
   <div id="page-title-inner">
@@ -9,6 +30,9 @@
   </div>  
 </div>
 <!-- end: Page Title -->
+{% endif %}
+
+
       
 <!--start: Wrapper-->
 <div id="wrapper">
@@ -17,13 +41,17 @@
   <div class="container">
     <!--start: Row -->
     <div class="row">
-      <div class="span9">
+      <div class="span1 hidden-phone">
+      </div>
+      <div class="span1 hidden-tablet hidden-phone">
+      </div>
+      <div class="span7">
         
         <!-- start: Post -->
         <div class="post">
           {% if page.main_picture %}
           <div class="post-img picture">
-            <a href="{{ page.uri }}"><img src="{{ page.main_picture }}" alt="" /><div class="image-overlay-link"></div></a>
+            <img src="{{ page.main_picture }}" alt="" />
           </div>
           {% endif %}
           <span class="post-icon standard"><i class="ico-pen circle"></i></span>

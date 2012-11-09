@@ -1561,6 +1561,9 @@ a.buy:hover {
 
 .post-content {margin: 22px 0 0 0px;}
 
+.post .post-description {
+  font-size: 14px;
+}
 
 /* Icons
 =================================================================== */
