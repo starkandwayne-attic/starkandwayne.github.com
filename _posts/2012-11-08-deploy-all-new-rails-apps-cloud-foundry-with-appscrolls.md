@@ -36,3 +36,5 @@ The `cfoundry` scroll does the following:
 * runs an initial deploy (`vmc push`) to your current target Cloud Foundry
 
 There are still a couple of manual, repetitive steps during the CF deployment. I might get annoyed by those one day and patch VMC so the whole thing is automated. Or perhaps you fix it first!
+
+Let me know in the comments if it works great or in the <a href="https://github.com/drnic/appscrolls/issues?labels=&amp;milestone=&amp;state=open">AppScrolls Issues Tracker</a> if it doesn't work so great.

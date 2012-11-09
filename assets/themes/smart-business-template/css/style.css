@@ -1565,6 +1565,11 @@ a.buy:hover {
   font-size: 14px;
 }
 
+.post .post-description ul {
+  list-style: circle outside;
+  margin: 1em 0;
+}
+
 /* Icons
 =================================================================== */
 .post-icon {
