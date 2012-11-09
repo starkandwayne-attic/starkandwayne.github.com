@@ -73,7 +73,7 @@ task :post do
     post.puts <<-HTML.gsub(/^\s{4}/, '')
     ---
     layout: post
-    title: "#{title.gsub(/-/,' ')}"
+    title: "#{title}"
     description: ""
     author: "#{author}"
     author_code: #{author_code}
@@ -92,7 +92,7 @@ task :post do
       </div>
       <span class="post-icon standard"><i class="ico-pen circle"></i></span>
       <div class="post-content">
-        <div class="post-title"><h2><a href="{{ BASE_PATH }}/#{post_path}">#{title.gsub(/-/,' ')}</a></h2></div>
+        <div class="post-title"><h2><a href="{{ BASE_PATH }}/#{post_path}">{{ page.title }}</a></h2></div>
         <div class="post-description">
           <p>
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
