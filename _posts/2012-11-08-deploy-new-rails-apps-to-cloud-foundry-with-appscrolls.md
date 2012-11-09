@@ -15,7 +15,7 @@ banner:
   background: parchment
 published: true
 publish_date: 2012-11-08
-tags: []
+tags: [cloudfoundry, appscrolls]
 theme:
   name: smart-business-template
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Using the secret v2 CLI for Cloud Foundry"
-description: "TWO. SENTENCES." # Used in /articles.html listing
+description: All Cloud Foundry development on its CLI is on a new v2 gem. It's time to play with it!
 icon: cloud # see http://wbpreview.com/previews/WB07233L7/icons.html
 author: "Dr Nic Williams"
 author_code: drnic
@@ -12,7 +12,7 @@ banner:
   background: ny # or parchment,abyss from /assets/banners
 publish_date: "2012-11-09"
 category: "articles"
-tags: []
+tags: [cloudfoundry]
 theme:
   name: smart-business-template
 ---
