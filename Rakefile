@@ -3,7 +3,8 @@ require 'rake'
 require 'yaml'
 require 'time'
 
-MAX_TITLE_SIZE = 80 # to easily fit within a tweet
+MAX_TITLE_SIZE = 80
+MAX_BANNER_TITLE_SIZE = 31 # to easily fit within banner
 SOURCE = "."
 CONFIG = {
   'version' => "0.2.13",
@@ -47,10 +48,15 @@ task :post do
   post_ext = "md"
   abort("rake aborted: '#{CONFIG['posts']}' directory not found.") unless FileTest.directory?(CONFIG['posts'])
   unless title = ENV["title"] || ENV["name"]
-    abort("USAGE: rake post title='Post title'")
+    abort("USAGE: rake post title='Post title' banner='Shorter post title'")
   end
   if title.size > MAX_TITLE_SIZE
     abort("Title size (#{title.size}) is too long (max is #{MAX_TITLE_SIZE})")
+  end
+  banner_title = ENV['banner'] || title
+  if banner_title.size > MAX_BANNER_TITLE_SIZE
+    puts("USAGE: rake post title='Post title' banner='Shorter post title'")
+    abort("Banner title size (#{banner_title.size}) is too long (max is #{MAX_BANNER_TITLE_SIZE})")
   end
   slug = title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
   begin
@@ -81,10 +87,10 @@ task :post do
     author_code: #{author_code}
     main_picture: /assets/articles/images/car.jpg
     banner:
-      title: "#{title}"
+      title: "#{banner_title}"
       text: PUT A COOL SUMMARY HERE
-      image: /assets/images/jruby-300w.png
-      background: parchment
+      image: /assets/images/cloudfoundry-235w.png
+      background: ny # or parchment,abyss from /assets/banners
     publish_date: "#{date.to_s}"
     category: "#{category}"
     tags: []
