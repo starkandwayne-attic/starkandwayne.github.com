@@ -76,9 +76,14 @@ task :post do
     layout: post
     title: "#{title}"
     description: ""
-    main_picture: /assets/articles/images/car.jpg
     author: "#{author}"
     author_code: #{author_code}
+    main_picture: /assets/articles/images/car.jpg
+    banner:
+      title: "#{title}"
+      text: PUT A COOL SUMMARY HERE
+      image: /assets/images/jruby-300w.png
+      background: parchment
     publish_date: "#{date.to_s}"
     category: "#{category}"
     tags: []
@@ -91,7 +96,7 @@ task :post do
     TEXT
   end
   puts "View at:"
-  puts "open #{post_path}"
+  puts "open http://localhost:4000/#{post_path}"
   puts "Liquid extensions:"
   puts "open https://github.com/mojombo/jekyll/wiki/Liquid-Extensions"
 end # task :post
