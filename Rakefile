@@ -86,6 +86,7 @@ task :post do
       name: smart-business-template
     ---
     {% include JB/setup %}
+    {% # https://github.com/mojombo/jekyll/wiki/Liquid-Extensions %}
     
     MARKDOWN CONTENT GOES HERE
     TEXT
