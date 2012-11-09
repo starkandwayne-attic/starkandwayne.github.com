@@ -44,6 +44,7 @@ end #JB
 # Usage: rake post title="A Title" [date="2012-02-09"]
 desc "Begin a new post in #{CONFIG['posts']}"
 task :post do
+  post_ext = "md"
   abort("rake aborted: '#{CONFIG['posts']}' directory not found.") unless FileTest.directory?(CONFIG['posts'])
   unless title = ENV["title"] || ENV["name"]
     abort("USAGE: rake post title='Post title'")
@@ -58,7 +59,7 @@ task :post do
     puts "Error - date format must be YYYY-MM-DD, please check you typed it correctly!"
     exit -1
   end
-  filename = File.join(CONFIG['posts'], "#{date}-#{slug}.#{CONFIG['post_ext']}")
+  filename = File.join(CONFIG['posts'], "#{date}-#{slug}.#{post_ext}")
   if File.exist?(filename)
     abort("rake aborted!") if ask("#{filename} already exists. Do you want to overwrite?", ['y', 'n']) == 'n'
   end
@@ -70,7 +71,7 @@ task :post do
   
   puts "Creating new post: #{filename}"
   open(filename, 'w') do |post|
-    post.puts <<-HTML.gsub(/^\s{4}/, '')
+    post.puts <<-TEXT.gsub(/^\s{4}/, '')
     ---
     layout: post
     title: "#{title}"
@@ -86,8 +87,8 @@ task :post do
     ---
     {% include JB/setup %}
     
-    <p>CONTENT GOES HERE</p>
-    HTML
+    MARKDOWN CONTENT GOES HERE
+    TEXT
   end
   puts "View at #{post_path}"
 end # task :post
