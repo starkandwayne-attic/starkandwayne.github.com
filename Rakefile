@@ -86,12 +86,14 @@ task :post do
       name: smart-business-template
     ---
     {% include JB/setup %}
-    {% # https://github.com/mojombo/jekyll/wiki/Liquid-Extensions %}
     
     MARKDOWN CONTENT GOES HERE
     TEXT
   end
-  puts "View at #{post_path}"
+  puts "View at:"
+  puts "open #{post_path}"
+  puts "Liquid extensions:"
+  puts "open https://github.com/mojombo/jekyll/wiki/Liquid-Extensions"
 end # task :post
 
 # Usage: rake page name="about.html"
