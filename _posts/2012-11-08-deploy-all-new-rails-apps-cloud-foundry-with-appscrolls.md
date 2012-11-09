@@ -10,7 +10,7 @@ banner:
   text: AppScrolls can now create applications that are automatically deployed to any Cloud Foundry target.
   image: /assets/images/cloudfoundry-235w.png
   background: parchment
-published: true
+published: false
 publish_date: 2012-11-08
 tags: []
 theme:
