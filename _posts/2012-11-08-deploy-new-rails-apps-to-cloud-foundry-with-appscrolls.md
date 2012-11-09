@@ -1,7 +1,10 @@
 ---
 layout: post
-title: "Deploy all new Rails apps Cloud Foundry with AppScrolls"
-description: ""
+title: "Deploy new Rails apps to Cloud Foundry with AppScrolls"
+description: |
+  AppScrolls can now rapidly create Ruby on Rails applications that are automatically
+  deployed to any Cloud Foundry target.
+icon: cloud
 author: "Dr Nic Williams"
 author_code: drnic
 category: articles

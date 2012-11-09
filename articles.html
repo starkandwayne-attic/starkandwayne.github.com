@@ -1,0 +1,43 @@
+---
+layout: banner-page
+title : Articles
+theme:
+  name: smart-business-template
+banner:
+  title: Articles
+  text: Modern developers writing about development and production systems
+  background: parchment
+---
+{% include JB/setup %}
+
+<!--start: Wrapper-->
+<div id="wrapper">
+      
+  <!--start: Container -->
+    <div class="container">
+    
+    <hr>
+    
+    {% assign articles = site.posts %}
+    {% include display_articles %}
+
+    <hr>
+  
+    <!-- start Clients List -->  
+    <!-- <div class="clients-carousel">
+  
+      <ul class="slides clients">
+        <li><img src="{{ ASSET_PATH }}/img/logos/1.png" alt=""/></li>
+      </ul>
+  
+    </div> -->
+    <!-- end Clients List -->
+  
+    <hr>
+    
+  </div>
+  <!--end: Container-->
+
+</div>
+<!-- end: Wrapper  -->      
+

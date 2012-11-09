@@ -75,7 +75,8 @@ task :post do
     ---
     layout: post
     title: "#{title}"
-    description: ""
+    description: "TWO. SENTENCES." # Used in /articles.html listing
+    icon: cloud # see http://wbpreview.com/previews/WB07233L7/icons.html
     author: "#{author}"
     author_code: #{author_code}
     main_picture: /assets/articles/images/car.jpg

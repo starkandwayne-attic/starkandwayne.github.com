@@ -1,0 +1,24 @@
+<div class="title"><h3>Articles</h3></div>
+<!-- start: Row -->
+<div class="row">
+
+  {% for post in articles  %}
+  <!-- start: Icon Boxes -->
+  <div class="icons-box-vert-container">
+
+    <!-- start: Icon Box Start -->
+    <div class="span6">
+      <div class="icons-box-vert">
+        <i class="ico-{{ post.icon }} ico-white circle-color-full"></i>
+        <div class="icons-box-vert-info">
+          <a href="{{ post.url }}"><h3>{{ post.title }}</h3></a>
+          {{ post.description  | markdownify }}
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+    <!-- end: Icon Box-->
+  
+  {% endfor %}
+</div>
+<!-- end: Row -->
