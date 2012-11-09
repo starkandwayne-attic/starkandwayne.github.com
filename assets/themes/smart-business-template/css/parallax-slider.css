@@ -760,7 +760,7 @@
 	
 	.da-slide h2{
 		font-size: 56px;
-		width: 50%;
+		width: 80%;
 	}	
 }
 
@@ -778,7 +778,7 @@
 	
 	.da-slide h2{
 		font-size: 36px;
-		width: 50%;
+		width: 80%;
 	}
 
 }
@@ -801,7 +801,7 @@
 	
 	.da-slide h2{
 		font-size: 36px;
-		width: 80%;
+		width: 95%;
 		top: 50px;
 		padding: 18px 20px 18px 20px;
 	}
@@ -852,16 +852,16 @@
 	
 	.da-slide h2{
 		font-size: 36px;
-		width: 80%;
+		width: 95%;
 		top: 44px;
-		padding: 8px 20px;
+		padding: 8px 10px;
 	}
 	
 	.da-slide p{
-		width: 80%;
+		width: 95%;
 		top: 100px;
 		font-size: 16px;
-		padding: 18px 20px 38px 20px;
+		padding: 18px 10px 38px 10px;
 	}
 	.da-slide .da-img{
 		display: none;

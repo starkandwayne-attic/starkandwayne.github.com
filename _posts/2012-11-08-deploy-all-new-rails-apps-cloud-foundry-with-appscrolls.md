@@ -22,7 +22,8 @@ theme:
 
 {% highlight bash %}
 gem install appscrolls
-appscrolls new mynewapp -s cfoundry
+appscrolls new mynewapp -s cfoundry postgresql
+appscrolls new mynewapp -s cfoundry postgresql twitter-bootstrap
 {% endhighlight %}
 
 After three years of using public PaaS - Engine Yard Cloud and Heroku - I'm now consulting inside "Big Enterprise", but with a twist. We are running [Cloud Foundry](http://cloudfoundry.org/) inside our own data centers. So it is time to port many of my beloved dev tools to Cloud Foundry.
@@ -31,10 +32,12 @@ After three years of using public PaaS - Engine Yard Cloud and Heroku - I'm now 
 
 The `cfoundry` scroll does the following:
 
-* vendors all gems, via `bundle package`
-* includes a `production:` section to `database.yml` and an initializer (as per [CF blog post](http://blog.cloudfoundry.com/2012/04/19/deploying-jruby-on-rails-applications-on-cloud-foundry/ "Using JRuby for Rails Applications on Cloud Foundry | CloudFoundry.com Blog"))
-* runs an initial deploy (`vmc push`) to your current target Cloud Foundry
+* vendors all gems
+* includes a production section to `database.yml` and an initializer (as per [CF blog post](http://blog.cloudfoundry.com/2012/04/19/deploying-jruby-on-rails-applications-on-cloud-foundry/ "Using JRuby for Rails Applications on Cloud Foundry | CloudFoundry.com Blog")) so it also works with JRuby
+* deploys the new application to your current target Cloud Foundry
 
-There are still a couple of manual, repetitive steps during the CF deployment. I might get annoyed by those one day and patch VMC so the whole thing is automated. Or perhaps you fix it first!
+Cloud Foundry doesn't require Git like Heroku, nor require your source code be hosted somewhere like Engine Yard Cloud. So you will need to add the `github` scroll to go through the creation of a new GitHub repository.
 
-Let me know in the comments if it works great or in the <a href="https://github.com/drnic/appscrolls/issues?labels=&amp;milestone=&amp;state=open">AppScrolls Issues Tracker</a> if it doesn't work so great.
+There are still a couple of manual steps during the Cloud Foundry app deployment. I might get annoyed enough by those one day and patch VMC so the whole cfoundry scroll does not require any manual intervention. Or thanks in advance if you  you fix it first!
+
+Let me know in the comments if the scroll works great or in the <a href="https://github.com/drnic/appscrolls/issues?labels=&amp;milestone=&amp;state=open">AppScrolls Issues Tracker</a> if it doesn't work so great.
