@@ -38,6 +38,10 @@
 	background: transparent url(/assets/banners/parchment.png) repeat 0% 0% !important;
 }
 
+.da-slider-sky-horizon-mostly-sky{
+	background: transparent url(/assets/banners/sky-horizon-mostly-sky.png) repeat 0% 0% !important;
+}
+
 .da-slide{
 	position: absolute;
 	width: 100%;
