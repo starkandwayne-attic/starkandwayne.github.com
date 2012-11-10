@@ -7,7 +7,7 @@ description: |
 icon: cloud # see http://wbpreview.com/previews/WB07233L7/icons.html
 author: "Dr Nic Williams"
 author_code: drnic
-banner:
+slider:
   title: "Learn the Cloud Controller"
   text: |
     Users interact with Cloud Foundry via the Cloud Controller. This article

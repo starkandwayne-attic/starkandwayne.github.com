@@ -10,7 +10,7 @@ Slider images run across the top of many pages of the site. They are 450px high 
 
 ``` css
 .da-slider-NAME{
-  background: transparent url(/assets/banners/NAME.png) repeat 0% 0% !important;
+  background: transparent url(/assets/sliders/NAME.png) repeat 0% 0% !important;
 }
 ```
 
@@ -19,7 +19,7 @@ The slider can now be used in posts and pages with a YAML header such as:
 ``` yaml
 ---
 layout: post
-banner:
+slider:
   background: NAME
   title: "The slide title"
   text: The slide text

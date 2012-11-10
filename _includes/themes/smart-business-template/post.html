@@ -1,16 +1,16 @@
-{% if page.banner %}
+{% if page.slider %}
 <!-- start: Slider -->
 <div class="slider-wrapper">
 
-  <div id="da-slider" class="da-slider da-slider-{{ page.banner.background }}">
+  <div id="da-slider" class="da-slider da-slider-{{ page.slider.background }}">
     <div class="da-slide">
-      <h2>{{ page.banner.title || page.title }}</h2>
-      <p>{{ page.banner.text }}</p>
-      {% if page.banner.button %}
-      <a href="{{ BASE_PATH }}/{{ page.banner.button.path }}" class="da-link">{{ page.banner.button.title }}</a>
+      <h2>{{ page.slider.title || page.title }}</h2>
+      <p>{{ page.slider.text }}</p>
+      {% if page.slider.button %}
+      <a href="{{ BASE_PATH }}/{{ page.slider.button.path }}" class="da-link">{{ page.slider.button.title }}</a>
       {% endif %}
-      {% if page.banner.image %}
-      <div class="da-img"><img src="{{ page.banner.image }}" alt="" /></div>
+      {% if page.slider.image %}
+      <div class="da-img"><img src="{{ page.slider.image }}" alt="" /></div>
       {% endif %}
     </div>
   </div>

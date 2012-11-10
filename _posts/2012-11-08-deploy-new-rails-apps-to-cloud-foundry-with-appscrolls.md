@@ -8,7 +8,7 @@ icon: cloud
 author: "Dr Nic Williams"
 author_code: drnic
 category: snippets
-banner:
+slider:
   title: AppScrolls &amp; CloudFoundry
   text: AppScrolls can now create applications that are automatically deployed to any Cloud Foundry target.
   image: /assets/images/cloudfoundry-235w.png

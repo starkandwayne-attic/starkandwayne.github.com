@@ -1,0 +1,24 @@
+<!-- start: Slider -->
+<div class="slider-wrapper">
+
+  <div id="da-slider" class="da-slider da-slider-{{ page.slider.background }}">
+    <div class="da-slide">
+      <h2>{{ page.slider.title }}</h2>
+      <p>{{ page.slider.text }}</p>
+      {% if page.slider.button %}
+      <a href="{{ BASE_PATH }}/{{ page.slider.button.path }}" class="da-link">{{ page.slider.button.title }}</a>
+      {% endif %}
+      {% if page.slider.image %}
+      <div class="da-img"><img src="{{ page.slider.image }}" alt="" /></div>
+      {% endif %}
+    </div>
+  </div>
+  
+</div>
+<style type="text/css" media="screen">
+  /* only one panel for slider, so hide the navigation dot */
+  .da-dots { display: none; }
+</style>
+<!-- end: Slider -->
+
+{{ content }}

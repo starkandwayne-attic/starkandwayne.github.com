@@ -86,11 +86,11 @@ task :post do
     author: "#{author}"
     author_code: #{author_code}
     # main_picture: /assets/articles/images/car.jpg
-    banner:
+    slider:
       title: "#{banner_title}"
       text: PUT A COOL SUMMARY HERE
       image: /assets/images/cloudfoundry-235w.png
-      background: ny # or parchment,abyss from /assets/banners
+      background: ny # or parchment,abyss from /assets/sliders
     publish_date: "#{date.to_s}"
     category: "#{category}"
     tags: []
@@ -129,12 +129,12 @@ task :page do
   open(filename, 'w') do |post|
     post.puts <<-HTML.gsub(/^\s{4}/, '')
     ---
-    layout: banner-page
+    layout: slider-page
     title: #{title}
     description: ""
     theme:
       name: smart-business-template
-    banner:
+    slider:
       title: #{title}
       text: BANNER TEXT
       background: abyss
