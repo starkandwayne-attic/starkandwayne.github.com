@@ -127,11 +127,19 @@ task :page do
   open(filename, 'w') do |post|
     post.puts <<-HTML.gsub(/^\s{4}/, '')
     ---
-    layout: page
-    title: "#{title}"
+    layout: banner-page
+    title: #{title}
     description: ""
     theme:
       name: smart-business-template
+    banner:
+      title: #{title}
+      text: BANNER TEXT
+      background: abyss
+      image: /assets/images/cloudfoundry-235w.png
+      button:
+        title: Contact us &raquo;
+        path: contact-us.html
     ---
     {% include JB/setup %}
     
@@ -144,7 +152,7 @@ task :page do
         <hr>
         <div id="#{id}">
     
-          <div class="title"><h3>#{title}</h3></div>
+          <div class="title"><h3>{{ page.title }}</h3></div>
     
           <!-- start: Row -->
           <div class="row">
