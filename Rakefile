@@ -85,7 +85,7 @@ task :post do
     icon: cloud # see http://wbpreview.com/previews/WB07233L7/icons.html
     author: "#{author}"
     author_code: #{author_code}
-    main_picture: /assets/articles/images/car.jpg
+    # main_picture: /assets/articles/images/car.jpg
     banner:
       title: "#{banner_title}"
       text: PUT A COOL SUMMARY HERE
@@ -102,6 +102,8 @@ task :post do
     MARKDOWN CONTENT GOES HERE
     TEXT
   end
+  puts "Edit at:"
+  puts "#{ENV['JEKYLL_EDITOR'] || 'open'} #{filename}"
   puts "View at:"
   puts "open http://localhost:4000/#{post_path}"
   puts "Liquid extensions:"
