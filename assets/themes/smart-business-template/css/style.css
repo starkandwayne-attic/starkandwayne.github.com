@@ -724,6 +724,7 @@ html[xmlns] .slides {display: block;}
 
 .icons-box-vert p {
   float: left !important;
+  font-size: 15px;
 }
 
 .icons-box-vert i {
@@ -1562,7 +1563,7 @@ a.buy:hover {
 .post-content {margin: 22px 0 0 0px;}
 
 .post .post-description {
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .post .post-description ul {
