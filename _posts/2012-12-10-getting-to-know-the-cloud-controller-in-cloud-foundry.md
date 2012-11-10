@@ -7,13 +7,18 @@ description: |
 icon: cloud # see http://wbpreview.com/previews/WB07233L7/icons.html
 author: "Dr Nic Williams"
 author_code: drnic
-slider:
-  title: "Learn the Cloud Controller"
+sliders:
+- title: "Learn the Cloud Controller"
   text: |
     Users interact with Cloud Foundry via the Cloud Controller. This article
     gives an overview of how it works and how to configure it.
   image: /assets/images/cloudfoundry-235w.png
-  background: sky-horizon-mostly-sky
+- title: "Configure the Cloud Controller"
+  text: |
+    YAML and more YAML. Let's look at what makes up the configuration
+    of the Cloud Controll.er
+  image: /assets/images/cloudfoundry-235w.png
+slider_background: sky-horizon
 publish_date: "2012-12-10"
 category: "articles"
 tags: [cloudfoundry]

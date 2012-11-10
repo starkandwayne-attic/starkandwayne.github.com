@@ -5,8 +5,8 @@ description: All Cloud Foundry development on its CLI is on a new v2 gem. It's t
 icon: cloud # see http://wbpreview.com/previews/WB07233L7/icons.html
 author: "Dr Nic Williams"
 author_code: drnic
-slider:
-  title: "The secret v2 CLI"
+sliders:
+- title: "The secret v2 CLI"
   text: All Cloud Foundry development on its CLI is on a new v2 gem. It's time to play with it!
   image: /assets/images/cloudfoundry-235w.png
   background: ny # or parchment,abyss from /assets/sliders

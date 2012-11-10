@@ -23,10 +23,10 @@ The slider can now be used in posts and pages with a YAML header such as:
 ``` yaml
 ---
 layout: post
-slider:
-  background: NAME
-  title: "The slide title"
+sliders:
+- title: "The slide title"
   text: The slide text
+slider_background: NAME
 theme:
   name: smart-business-template
 ...

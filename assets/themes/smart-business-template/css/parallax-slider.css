@@ -38,8 +38,16 @@
 	background: transparent url(/assets/sliders/parchment.png) repeat 0% 0% !important;
 }
 
-.da-slider-sky-horizon-mostly-sky{
-	background: transparent url(/assets/sliders/sky-horizon-mostly-sky.png) repeat 0% 0% !important;
+.da-slider-sky-horizon{
+	background: transparent url(/assets/sliders/sky-horizon.png) repeat 0% 0% !important;
+}
+
+.da-slider-sky-horizon-and-grass{
+	background: transparent url(/assets/sliders/sky-horizon-and-grass.png) repeat 0% 0% !important;
+}
+
+.da-slider-sky-horizon-sky{
+	background: transparent url(/assets/sliders/sky-horizon-sky.png) repeat 0% 0% !important;
 }
 
 .da-slide{

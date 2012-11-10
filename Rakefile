@@ -86,8 +86,8 @@ task :post do
     author: "#{author}"
     author_code: #{author_code}
     # main_picture: /assets/articles/images/car.jpg
-    slider:
-      title: "#{banner_title}"
+    sliders:
+    - title: "#{banner_title}"
       text: PUT A COOL SUMMARY HERE
       image: /assets/images/cloudfoundry-235w.png
       background: ny # or parchment,abyss from /assets/sliders
@@ -134,14 +134,14 @@ task :page do
     description: ""
     theme:
       name: smart-business-template
-    slider:
-      title: #{title}
+    sliders:
+    - title: #{title}
       text: BANNER TEXT
-      background: abyss
       image: /assets/images/cloudfoundry-235w.png
       button:
         title: Contact us &raquo;
         path: contact-us.html
+    slider_background: abyss
     ---
     {% include JB/setup %}
     

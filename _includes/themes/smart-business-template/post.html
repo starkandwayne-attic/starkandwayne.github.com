@@ -1,25 +1,32 @@
-{% if page.slider %}
+{% if page.sliders %}
 <!-- start: Slider -->
 <div class="slider-wrapper">
-
-  <div id="da-slider" class="da-slider da-slider-{{ page.slider.background }}">
+  <div id="da-slider" class="da-slider da-slider-{{ page.slider_background }}">
+    {% for slider in page.sliders %}
     <div class="da-slide">
-      <h2>{{ page.slider.title || page.title }}</h2>
-      <p>{{ page.slider.text }}</p>
-      {% if page.slider.button %}
-      <a href="{{ BASE_PATH }}/{{ page.slider.button.path }}" class="da-link">{{ page.slider.button.title }}</a>
+      <h2>{{ slider.title || title }}</h2>
+      <p>{{ slider.text }}</p>
+      {% if slider.button %}
+      <a href="{{ BASE_PATH }}/{{ slider.button.path }}" class="da-link">{{ slider.button.title }}</a>
       {% endif %}
-      {% if page.slider.image %}
-      <div class="da-img"><img src="{{ page.slider.image }}" alt="" /></div>
+      {% if slider.image %}
+      <div class="da-img"><img src="{{ slider.image }}" alt="" /></div>
       {% endif %}
     </div>
+    {% endfor %}
+    {% if page.sliders.size == 1 %}
+    <style type="text/css" media="screen">
+      /* only one panel for slider, so hide the navigation dot */
+      .da-dots { display: none; }
+    </style>
+    {% else %}
+    <nav class="da-arrows">
+      <span class="da-arrows-prev"></span>
+      <span class="da-arrows-next"></span>
+    </nav>
+    {% endif %}
   </div>
-  
 </div>
-<style type="text/css" media="screen">
-  /* only one panel for slider, so hide the navigation dot */
-  .da-dots { display: none; }
-</style>
 <!-- end: Slider -->
 
 {% else %}
