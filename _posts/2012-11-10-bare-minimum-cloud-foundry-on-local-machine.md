@@ -117,3 +117,72 @@ Initial usage of droplet fs is: 0%
 File service started on port:
 {% endhighlight %}
 
+When a DEA is launched it automatically joins the Cloud Foundry environment that it belongs to. The way it identifies itself is via NATS. When any part of Cloud Foundry launches, including each DEA, it publishes a `vcap.component.announce` message.
+
+To see the NATS messages published by our DEA, add the following executable script at `bin/nats_all`
+
+{% highlight ruby %}
+#!/usr/bin/env ruby
+
+require "nats/client"
+
+NATS.start do
+  NATS.subscribe('>') { |msg, reply, sub| puts "Msg received on [#{sub}] : '#{msg}'" }
+end
+{% endhighlight %}
+
+In a new terminal, run this script. In another terminal, kill the DEA and restart it (Ctrl+C to kill it). The following output appears in the `nats_all` terminal.
+
+{% highlight bash %}
+$ ruby bin/nats_all
+Msg received on [vcap.component.announce] : 
+'{"type":"DEA","index":null,"uuid":"UUID","host":"192.168.1.70:62556",
+"credentials":["USERNAME","PASSWORD"],"start":"2012-11-10 23:16:11 -0800"}'
+Msg received on [dea.start] : 
+'{"id":"5c349cc7fe966c8da46e6c93637058d6","ip":"192.168.1.70","port":null,"version":0.99}'
+Msg received on [dea.advertise] : 
+'{"id":"5c349cc7fe966c8da46e6c93637058d6","available_memory":4096,"runtimes":["ruby19"],"prod":null}'
+Msg received on [dea.advertise] : 
+'{"id":"5c349cc7fe966c8da46e6c93637058d6","available_memory":4096,"runtimes":["ruby19"],"prod":null}'
+{% endhighlight %}
+
+On the first message, `vcap.component.announce`, the DEA published its host (`192.168.1.70:62556`) and username/password credentials.
+
+The last lines are the constant status announcement that the DEA publishes to inform Cloud Foundry that it is still available to deploy more applications; with 4G of RAM still available (the default amount).
+
+All Cloud Foundry components can be polled for their health `/healthz` and their configuration data `/varz`.
+
+{% highlight bash %}
+$ curl http://USERNAME:PASSWORD@192.168.1.70:62556/healthz
+ok
+
+$ curl http://USERNAME:PASSWORD@192.168.1.70:62556/varz
+{
+  "type": "DEA",
+  ...
+  "running_apps": [
+
+  ],
+  "frameworks": {
+
+  },
+  "runtimes": {
+
+  },
+  "uptime": "0d:0h:0m:0s",
+  "mem": 69056,
+  "cpu": 96.4
+}
+{% endhighlight %}
+
+Our DEA thinks it has no runtimes for running applications (such as Ruby or Java), and no frameworks (such as Ruby on Rails, Sinatra or Play). So we'll need to fix that before we can deploy an application.
+
+
+
+So how do we deploy an application into the DEA? Via NATS client calls.
+
+## Using NATS to deploy to a DEA
+
+{% highlight ruby %}
+
+{% endhighlight %}
