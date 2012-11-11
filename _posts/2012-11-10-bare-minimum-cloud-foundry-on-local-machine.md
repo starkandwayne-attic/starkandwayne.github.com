@@ -139,11 +139,11 @@ Msg received on [vcap.component.announce] :
 '{"type":"DEA","index":null,"uuid":"UUID","host":"192.168.1.70:62556",
 "credentials":["USERNAME","PASSWORD"],"start":"2012-11-10 23:16:11 -0800"}'
 Msg received on [dea.start] : 
-'{"id":"5c349cc7fe966c8da46e6c93637058d6","ip":"192.168.1.70","port":null,"version":0.99}'
+'{"id":"UUID","ip":"192.168.1.70","port":null,"version":0.99}'
 Msg received on [dea.advertise] : 
-'{"id":"5c349cc7fe966c8da46e6c93637058d6","available_memory":4096,"runtimes":["ruby19"],"prod":null}'
+'{"id":"UUID","available_memory":4096,"runtimes":["ruby19"],"prod":null}'
 Msg received on [dea.advertise] : 
-'{"id":"5c349cc7fe966c8da46e6c93637058d6","available_memory":4096,"runtimes":["ruby19"],"prod":null}'
+'{"id":"UUID","available_memory":4096,"runtimes":["ruby19"],"prod":null}'
 {% endhighlight %}
 
 On the first message, `vcap.component.announce`, the DEA published its host (`192.168.1.70:62556`) and username/password credentials.
@@ -177,12 +177,44 @@ $ curl http://USERNAME:PASSWORD@192.168.1.70:62556/varz
 
 Our DEA thinks it has no runtimes for running applications (such as Ruby or Java), and no frameworks (such as Ruby on Rails, Sinatra or Play). So we'll need to fix that before we can deploy an application.
 
-
-
-So how do we deploy an application into the DEA? Via NATS client calls.
+But first, how do we deploy an application into the DEA? Via NATS client calls.
 
 ## Using NATS to deploy to a DEA
 
+Each DEA listens for [various messages](https://github.com/cloudfoundry/dea/blob/master/lib/dea/agent.rb#L267-276) on NATS.
+
+To tell a DEA to deploy an application, you publish a NATS message that contains its UUID, `dea.UUID.start`. In a full Cloud Foundry, it is the Cloud Controller that publishes this message. The Cloud Controller is the public API for user requests - deploy new apps, update existing apps, and scaling existing apps.
+
+The bulk of the `dea.UUID.start` message is created in [AppManager#new_message](https://github.com/cloudfoundry/cloud_controller/blob/master/cloud_controller/app/models/app_manager.rb#L369-385).
+
+An example `dea.UUID.start` JSON message could be:
+
+{% highlight json %}
+{
+  droplet: 'APP_ID',
+  name: 'mylocalapp',
+  uris: '????',
+  running: 'ruby19',
+  running_info: { ???? },
+  framework: ????,
+  prod: false,
+  sha1: 'HASH',
+  executableFile: '???',
+  executableUri: "/staged_droplets/APP_ID/HASH",
+  version: '1-1',
+  services: [],
+  limits: { 'mem': 256 },
+  env: [],
+  users: ['drnicwilliams@gmail.com'],
+  cc_partition: 'default',
+  debug: ???,
+  console: ???,
+  index: 0
+}
+{% endhighlight %}
+
+
+https://github.com/cloudfoundry/cloud_controller/blob/master/cloud_controller/app/models/app_manager.rb#L369-385
 {% highlight ruby %}
 
 {% endhighlight %}
