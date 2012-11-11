@@ -36,6 +36,7 @@ NOTE, I am putting all folders within an initial self-contained folder so I can 
 $ cd /path/to/somewhere # self-contained
 $ mkdir config          # for all configuration files to come
 $ mkdir -p var/dea      # for staging & running apps
+$ mkdir -p var/log      # for logs
 $ mkdir -p var/run      # for pid files
 $ git clone git://github.com/cloudfoundry/dea.git
 $ cd dea
@@ -90,3 +91,29 @@ EXITING! NATS error: Could not connect to server on nats://localhost:4222
 {% endhighlight %}
 
 And we move on to the next piece of Cloud Foundry... NATS!
+
+## NATS
+
+NATS is a simple pub-sub messaging system used by Cloud Foundry for communication between services. For example the DEA wouldn't even start unless it could find NATS.
+
+By default, the DEA looks for a NATS server on http://localhost:4222. Coincidentally, when we run the nats-server (below) it starts up on port 4222.
+
+{% highlight bash %}
+$ git clone git://github.com/derekcollison/nats.git
+$ cd nats
+$ bundle
+$ cd ..
+$ ./nats/bin/nats-server -d
+["Starting nats-server version 0.4.28 on port 4222"]
+["Switching to daemon mode"]
+{% endhighlight %}
+
+Now when we re-run the DEA it runs successfully in the foreground, listening to NATS for instructions.
+
+{% highlight bash %}
+$ ./dea/bin/dea -c config/dea-laptop.yml
+...
+Initial usage of droplet fs is: 0%
+File service started on port:
+{% endhighlight %}
+
