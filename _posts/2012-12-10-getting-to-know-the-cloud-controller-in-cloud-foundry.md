@@ -187,9 +187,3 @@ If no configuration file is provided via `$CLOUD_CONTROLLER_CONFIG` the [configu
 :max_droplet_size: 536870912
 {% endhighlight %}
 
-
-## Pending
-
-This article is pending the following patches to Cloud Foundry repositories
-
-* [Bump em-hiredis/hiredis](http://reviews.cloudfoundry.org/11306 "Gerrit Code Review")
