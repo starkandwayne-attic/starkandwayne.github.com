@@ -122,8 +122,8 @@ If no configuration file is provided via `$CLOUD_CONTROLLER_CONFIG` the [configu
   :droplets: /var/vcap/shared/droplets
   :resources: /var/vcap/shared/resources
   :tmpdir: /var/vcap/data/cloud_controller/tmp
-  :staging_manifests: /Users/drnic/Projects/gems/cloudfoundry/cloud_controller/cloud_controller/spec/support/manifests
-:runtimes_file: /Users/drnic/Projects/gems/cloudfoundry/cloud_controller/cloud_controller/spec/support/runtimes.yml
+  :staging_manifests: .../cloud_controller/cloud_controller/spec/support/manifests
+:runtimes_file: .../cloud_controller/cloud_controller/spec/support/runtimes.yml
 :defaulted:
 - :external_uri
 - :description
