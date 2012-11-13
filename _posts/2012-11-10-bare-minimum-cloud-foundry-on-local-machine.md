@@ -59,17 +59,12 @@ pid: /path/to/somewhere/var/run/dea.pid
 runtimes:
   - ruby19
 
+max_memory: 1024
+
 # Optional as of http://reviews.cloudfoundry.org/11316
 logging:
   level: debug
 
-# Optional as of http://reviews.cloudfoundry.org/11315
-intervals:
-  heartbeat: 10
-  advertise: 5
-
-# Optional as of http://reviews.cloudfoundry.org/11317
-max_memory: 4096
 {% endhighlight %}
 
 Running `dea` again whilst using this configuration file is a lot more successful!
