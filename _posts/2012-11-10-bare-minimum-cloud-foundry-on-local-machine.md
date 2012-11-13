@@ -24,7 +24,7 @@ I thought this might be an interesting experiment in configuring Cloud Foundry s
 
 For this article I already have Ruby 1.9.3 & PostgreSQL 9.2 installed on my laptop and available in my `$PATH`.
 
-As I go along, I'll clone/submodule the repositories that I need and show the configuration files.
+As I go along, I'll clone/submodule the repositories that I need and show the configuration files. The final product is available in a [git repository](https://github.com/StarkAndWayne/cloudfoundry-laptop-edition) as a demonstration of the minimium parts of Cloud Foundry required to deploy an application.
 
 ## The DEA
 
@@ -72,7 +72,7 @@ intervals:
 max_memory: 4096
 {% endhighlight %}
 
-When we run our dea command again we specify this configuration file...
+Running `dea` again whilst using this configuration file is a lot more successful!
 
 {% highlight bash %}
 $ ./dea/bin/dea -c config/dea-laptop.yml                                  
@@ -284,6 +284,14 @@ More interesting is to put this together with a sequence of NATS requests to dis
 We first request `dea.discover` and when a DEA responds we the `dea.UUID.start` message which only that DEA subscribes. We watch for `router.register` messages to discover what `host:port` the application is running on.
 
 {% highlight ruby %}
+#!/usr/bin/env ruby
+
+require "nats/client"
+require "json"
+...
+# see bin/start_app for creating local tarball
+...
+
 NATS.start do
   NATS.subscribe('>') { |msg, reply, sub| puts "Msg received on [#{sub}] : '#{msg}'" }
 
@@ -313,7 +321,7 @@ end
 
 An example output of this script would be:
 
-{% highlight plain %}
+{% highlight bash %}
 $ ./bin/start_app sinatra
 ...
 New app registered at: http://192.168.1.70:54186
@@ -325,7 +333,7 @@ What isn't clear in the `bin/start_app` script is how the DEA knows how to run a
 
 The short answer is it doesn't. The DEA knows nothing about Ruby or Java or PHP.
 
-In another blog post we'll introduce the "staging" concept of Cloud Foundry, as implemented in [vcap-staging](https://github.com/cloudfoundry/vcap-staging). It is `vcap-staging` that knows how to launch a Ruby on Rails or Sinatra application on Ruby, not the DEA.
+I'll try to write up the "staging" concept of Cloud Foundry, as implemented in [vcap-staging](https://github.com/cloudfoundry/vcap-staging). It is `vcap-staging` that knows how to launch a Ruby on Rails or Sinatra application on Ruby, not the DEA.
 
 So when the DEA deploys an application, that application must be prepared in advance.
 
