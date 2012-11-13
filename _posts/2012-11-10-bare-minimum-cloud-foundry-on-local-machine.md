@@ -24,7 +24,7 @@ I thought this might be an interesting experiment in configuring Cloud Foundry s
 
 For this article I already have Ruby 1.9.3 & PostgreSQL 9.2 installed on my laptop and available in my `$PATH`.
 
-As I go along, I'll clone/submodule the repositories that I need and show the configuration files. The final product is available in a [git repository](https://github.com/StarkAndWayne/cloudfoundry-laptop-edition) as a demonstration of the minimium parts of Cloud Foundry required to deploy an application.
+As I go along, I'll clone/submodule the repositories that I need and show the configuration files. The final product is available in a [git repository](https://github.com/StarkAndWayne/deploying-to-a-cloudfoundry-dea) as a demonstration of the minimium parts of Cloud Foundry required to deploy an application.
 
 ## The DEA
 
@@ -183,7 +183,7 @@ But first, we need to discover a DEA to be able to talk to it; and second we nee
 
 Each DEA listens (subscribes) for [various messages](https://github.com/cloudfoundry/dea/blob/master/lib/dea/agent.rb#L267-276) on NATS.
 
-A useful little script to discover all the available DEAs (on a NATS server) is below. It is in the tutorial repository at [bin/dea_discover](https://github.com/StarkAndWayne/cloudfoundry-laptop-edition/blob/master/bin/dea_discover).
+A useful little script to discover all the available DEAs (on a NATS server) is below. It is in the tutorial repository at [bin/dea_discover](https://github.com/StarkAndWayne/deploying-to-a-cloudfoundry-dea/blob/master/bin/dea_discover).
 
 It broadcasts a NATS message `dea.discover` and waits for a reply.
 
@@ -212,7 +212,7 @@ NATS.start do
 end
 {% endhighlight %}
 
-Since NATS is independent of Ruby, you could also discover DEAs using the following Node.js script ([bin/discover_dea.js](https://github.com/StarkAndWayne/cloudfoundry-laptop-edition/blob/master/bin/dea_discover.js))
+Since NATS is independent of Ruby, you could also discover DEAs using the following Node.js script ([bin/discover_dea.js](https://github.com/StarkAndWayne/deploying-to-a-cloudfoundry-dea/blob/master/bin/dea_discover.js))
 
 {% highlight javascript %}
 var nats = require('nats').connect();
@@ -248,7 +248,7 @@ This `response` includes the UUID for each DEA in the `id` key. We now use this 
 
 ## Using NATS to deploy to a DEA
 
-An example script for deploying a local application is at [bin/start_app](https://github.com/StarkAndWayne/cloudfoundry-laptop-edition/blob/master/bin/start_app). This section introduces that script.
+An example script for deploying a local application is at [bin/start_app](https://github.com/StarkAndWayne/deploying-to-a-cloudfoundry-dea/blob/master/bin/start_app). This section introduces that script.
 
 To tell a DEA to deploy an application, you publish a NATS message that contains its UUID, `dea.UUID.start`. In a full Cloud Foundry, it is the Cloud Controller that publishes this message. The Cloud Controller is the public API for user requests - deploy new apps, update existing apps, and scaling existing apps. The bulk of the `dea.UUID.start` message is created in [AppManager#new_message](https://github.com/cloudfoundry/cloud_controller/blob/master/cloud_controller/app/models/app_manager.rb#L369-385).
 
@@ -327,7 +327,7 @@ $ ./bin/start_app sinatra
 New app registered at: http://192.168.1.70:54186
 {% endhighlight %}
 
-Now, the application that [bin/start_app](https://github.com/StarkAndWayne/cloudfoundry-laptop-edition/blob/master/bin/start_app) deploys is a Sinatra application. But its not _just_ a Sinatra application, it is a specially "staged" application that is ready for the DEA.
+Now, the application that [bin/start_app](https://github.com/StarkAndWayne/deploying-to-a-cloudfoundry-dea/blob/master/bin/start_app) deploys is a Sinatra application. But its not _just_ a Sinatra application, it is a specially "staged" application that is ready for the DEA.
 
 What isn't clear in the `bin/start_app` script is how the DEA knows how to run a Ruby/Sinatra application.
 
@@ -347,7 +347,7 @@ In Cloud Foundry, `vcap-staging` creates the executable `startup` script specifi
 
 In this tutorial, I have pre-staged the Sinatra application and the `start_app` script copies it from its location and runs `./startup`.
 
-The staged Sinatra application is at [apps/sinatra](https://github.com/StarkAndWayne/cloudfoundry-laptop-edition/tree/master/apps/sinatra) and includes the [startup script](https://github.com/StarkAndWayne/cloudfoundry-laptop-edition/blob/master/apps/sinatra/startup) that vcap-staging would have generated for a simple Sinatra application that doesn't use bundler.
+The staged Sinatra application is at [apps/sinatra](https://github.com/StarkAndWayne/deploying-to-a-cloudfoundry-dea/tree/master/apps/sinatra) and includes the [startup script](https://github.com/StarkAndWayne/deploying-to-a-cloudfoundry-dea/blob/master/apps/sinatra/startup) that vcap-staging would have generated for a simple Sinatra application that doesn't use bundler.
 
 ## Summary
 
