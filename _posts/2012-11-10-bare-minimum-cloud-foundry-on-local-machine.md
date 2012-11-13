@@ -75,7 +75,7 @@ max_memory: 4096
 Running `dea` again whilst using this configuration file is a lot more successful!
 
 {% highlight bash %}
-$ ./dea/bin/dea -c config/dea-laptop.yml                                  
+$ ./dea/bin/dea -c config/dea-laptop.yml
 Starting VCAP DEA (0.99)
 Pid file: /path/to/somewhere/var/run/dea.pid
 Using ruby @ /Users/drnic/.rvm/rubies/ruby-1.9.3-p286/bin/ruby
