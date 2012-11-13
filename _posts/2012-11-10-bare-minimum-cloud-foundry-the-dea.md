@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "Bare minimum Cloud Foundry on local machine"
-description: "Exploration of the bare minimum of Cloud Foundry required to run it on your laptop"
+title: "Bare minimum Cloud Foundry - the DEA & NATS"
+description: "Exploration of the bare minimum of Cloud Foundry, introducing the DEA and NATS"
 icon: cloud # see http://wbpreview.com/previews/WB07233L7/icons.html
 author: "Dr Nic Williams"
 author_code: drnic
 sliders:
-- title: "Cloud Foundry on laptop"
+- title: "Cloud Foundry"
   text: "Exploration of the bare minimum of Cloud Foundry required to run it on your laptop"
   image: /assets/images/cloudfoundry-235w.png
 slider_background: sky-horizon-sky
