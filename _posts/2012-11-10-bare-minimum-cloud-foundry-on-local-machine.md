@@ -177,44 +177,177 @@ $ curl http://USERNAME:PASSWORD@192.168.1.70:62556/varz
 
 Our DEA thinks it has no runtimes for running applications (such as Ruby or Java), and no frameworks (such as Ruby on Rails, Sinatra or Play). So we'll need to fix that before we can deploy an application.
 
-But first, how do we deploy an application into the DEA? Via NATS client calls.
+But first, we need to discover a DEA to be able to talk to it; and second we need to  deploy an application into the DEA. WE do both via NATS client calls.
+
+## Discovering a DEA
+
+Each DEA listens (subscribes) for [various messages](https://github.com/cloudfoundry/dea/blob/master/lib/dea/agent.rb#L267-276) on NATS.
+
+A useful little script to discover all the available DEAs (on a NATS server) is below. It is in the tutorial repository at [bin/dea_discover](https://github.com/StarkAndWayne/cloudfoundry-laptop-edition/blob/master/bin/dea_discover).
+
+It broadcasts a NATS message `dea.discover` and waits for a reply.
+
+{% highlight ruby %}
+#!/usr/bin/env ruby
+
+require "nats/client"
+require "json"
+
+NATS.start do
+  NATS.subscribe('>') { |msg, reply, sub| puts "Msg received on [#{sub}] : '#{msg}'" }
+  message = {
+    'runtime_info' => {
+      'name' => 'ruby19',
+      'executable' => 'ruby',
+      'version_output' => 'ruby 1.9.3p286'
+    },
+    'limits' => {
+      'mem' => 256
+    },
+    'droplet' => 'DROPLET_ID_1234'
+  }
+  NATS.request('dea.discover', message.to_json) do |response|
+    puts "Got dea.discover response: #{response}"
+  end
+end
+{% endhighlight %}
+
+Since NATS is independent of Ruby, you could also discover DEAs using the following Node.js script ([bin/discover_dea.js](https://github.com/StarkAndWayne/cloudfoundry-laptop-edition/blob/master/bin/dea_discover.js))
+
+{% highlight javascript %}
+var nats = require('nats').connect();
+
+// Simple Subscriber
+nats.subscribe('>', function(msg, reply, subject) {
+  console.log('Msg received on [' + subject + '] : ' + msg);
+});
+
+var message = {
+  'runtime_info': {
+    'name': 'ruby19',
+    'executable': 'ruby',
+    'version_output': 'ruby 1.9.3p286'
+  },
+  'limits': {
+    'mem': 256
+  },
+  'droplet': 'DROPLET_ID_1234'
+};
+nats.request('dea.discover', JSON.stringify(message), function(response) {
+  console.log("Got dea.discover response: " + response);
+});
+{% endhighlight %}
+
+The output from both includes the response from our one DEA.
+
+{% highlight plain %}
+Got dea.discover response: {"id":"56a44db58ce330df22426c01b3c66b6c","ip":"192.168.1.70","port":null,"version":0.99}
+{% endhighlight %}
+
+This `response` includes the UUID for each DEA in the `id` key. We now use this UUID to tell that DEA to run an application.
 
 ## Using NATS to deploy to a DEA
 
-Each DEA listens for [various messages](https://github.com/cloudfoundry/dea/blob/master/lib/dea/agent.rb#L267-276) on NATS.
+An example script for deploying a local application is at [bin/start_app](https://github.com/StarkAndWayne/cloudfoundry-laptop-edition/blob/master/bin/start_app). This section introduces that script.
 
-To tell a DEA to deploy an application, you publish a NATS message that contains its UUID, `dea.UUID.start`. In a full Cloud Foundry, it is the Cloud Controller that publishes this message. The Cloud Controller is the public API for user requests - deploy new apps, update existing apps, and scaling existing apps.
+To tell a DEA to deploy an application, you publish a NATS message that contains its UUID, `dea.UUID.start`. In a full Cloud Foundry, it is the Cloud Controller that publishes this message. The Cloud Controller is the public API for user requests - deploy new apps, update existing apps, and scaling existing apps. The bulk of the `dea.UUID.start` message is created in [AppManager#new_message](https://github.com/cloudfoundry/cloud_controller/blob/master/cloud_controller/app/models/app_manager.rb#L369-385).
 
-The bulk of the `dea.UUID.start` message is created in [AppManager#new_message](https://github.com/cloudfoundry/cloud_controller/blob/master/cloud_controller/app/models/app_manager.rb#L369-385).
+An example `dea.UUID.start` JSON/Ruby message for deploying a Ruby/Sinatra application could be:
 
-An example `dea.UUID.start` JSON message could be:
-
-{% highlight json %}
-{
-  droplet: 'APP_ID',
-  name: 'mylocalapp',
-  uris: '????',
-  running: 'ruby19',
-  running_info: { ???? },
-  framework: ????,
-  prod: false,
-  sha1: 'HASH',
-  executableFile: '???',
-  executableUri: "/staged_droplets/APP_ID/HASH",
-  version: '1-1',
+{% highlight ruby %}
+dea_app_start = {
+  droplet: droplet_id,
+  index: 0,
   services: [],
-  limits: { 'mem': 256 },
+  version: '1-1',
+  sha1: sha1,
+  executableFile: '???',
+  executableUri: "/staged_droplets/#{droplet_id}/#{sha1}",
+  name: app_name,
+  uris: ["#{app_name}.vcap.me"],
   env: [],
   users: ['drnicwilliams@gmail.com'],
-  cc_partition: 'default',
-  debug: ???,
-  console: ???,
-  index: 0
+  runtime_info: {
+    name: 'ruby19',
+    executable: 'ruby',
+    version_output: 'ruby 1.9.3p286'
+  },
+  framework: 'sinatra',
+  running: 'ruby19',
+  limits: { mem: 256 },
+  cc_partition: 'default'
 }
 {% endhighlight %}
 
+More interesting is to put this together with a sequence of NATS requests to discover a DEA, tell it to deploy an application, and watch for its internal `host:port` being announced.
 
-https://github.com/cloudfoundry/cloud_controller/blob/master/cloud_controller/app/models/app_manager.rb#L369-385
+We first request `dea.discover` and when a DEA responds we the `dea.UUID.start` message which only that DEA subscribes. We watch for `router.register` messages to discover what `host:port` the application is running on.
+
 {% highlight ruby %}
+NATS.start do
+  NATS.subscribe('>') { |msg, reply, sub| puts "Msg received on [#{sub}] : '#{msg}'" }
 
+  dea_discover = {
+    # from above
+  }
+  NATS.request('dea.discover', dea_discover.to_json) do |response|
+    dea_uuid = JSON.parse(response)['id']
+    
+    dea_app_start = {
+      # see example above
+    }
+
+    # after "dea.UUID.start" below, wait for host:port to be announced
+    NATS.subscribe("router.register") do |msg|
+      new_app = JSON.parse(msg)
+      host, port = new_app["host"], new_app["port"]
+      puts "New app registered at: http://#{host}:#{port}"
+      NATS.stop
+    end
+
+    # Request deployment
+    NATS.publish("dea.#{dea_uuid}.start", dea_app_start.to_json)
+  end
+end
 {% endhighlight %}
+
+An example output of this script would be:
+
+{% highlight plain %}
+$ ./bin/start_app sinatra
+...
+New app registered at: http://192.168.1.70:54186
+{% endhighlight %}
+
+Now, the application that [bin/start_app](https://github.com/StarkAndWayne/cloudfoundry-laptop-edition/blob/master/bin/start_app) deploys is a Sinatra application. But its not _just_ a Sinatra application, it is a specially "staged" application that is ready for the DEA.
+
+What isn't clear in the `bin/start_app` script is how the DEA knows how to run a Ruby/Sinatra application.
+
+The short answer is it doesn't. The DEA knows nothing about Ruby or Java or PHP.
+
+In another blog post we'll introduce the "staging" concept of Cloud Foundry, as implemented in [vcap-staging](https://github.com/cloudfoundry/vcap-staging). It is `vcap-staging` that knows how to launch a Ruby on Rails or Sinatra application on Ruby, not the DEA.
+
+So when the DEA deploys an application, that application must be prepared in advance.
+
+The DEA has three basic steps to deploy an application:
+
+* get a tarball (tgz) from a local cache, shared cache or via remote HTTP
+* unpack the tarball
+* run `./startup`
+
+In Cloud Foundry, `vcap-staging` creates the executable `startup` script specific to the type of application being deployed. That is, if you want to add a new programming language or a new framework, your first stop is `vcap-staging`.
+
+In this tutorial, I have pre-staged the Sinatra application and the `start_app` script copies it from its location and runs `./startup`.
+
+The staged Sinatra application is at [apps/sinatra](https://github.com/StarkAndWayne/cloudfoundry-laptop-edition/tree/master/apps/sinatra) and includes the [startup script](https://github.com/StarkAndWayne/cloudfoundry-laptop-edition/blob/master/apps/sinatra/startup) that vcap-staging would have generated for a simple Sinatra application that doesn't use bundler.
+
+## Summary
+
+Deploying an application to a DEA has a few simple requirements.
+
+* Run a NATS server
+* Run a DEA using a simple YAML configuration
+* Create a `startup` script and a copy of your application together in a folder
+* Publish NATS message `dea.DEA_UUID.start` to tell the application to deploy the application from its local cached/pre-staged version (or a remote tar)
+
+Its not as simple as perhaps it could be; but it is relatively understandable as to how the pieces fit together. You use NATS to find and communicate with a DEA. You tell it what tarball to use to unpack and run via a `startup` script. Pretty simple.
