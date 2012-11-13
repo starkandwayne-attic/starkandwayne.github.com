@@ -59,6 +59,8 @@ pid: /path/to/somewhere/var/run/dea.pid
 runtimes:
   - ruby19
 
+multi_tenant: true
+
 max_memory: 1024
 
 # Optional as of http://reviews.cloudfoundry.org/11316
