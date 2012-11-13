@@ -90,7 +90,7 @@ task :post do
     - title: "#{banner_title}"
       text: PUT A COOL SUMMARY HERE
       image: /assets/images/cloudfoundry-235w.png
-      background: ny # or parchment,abyss from /assets/sliders
+    slider_background: ny # or parchment,abyss,sky-horizon-sky from /assets/sliders
     publish_date: "#{date.to_s}"
     category: "#{category}"
     tags: []
