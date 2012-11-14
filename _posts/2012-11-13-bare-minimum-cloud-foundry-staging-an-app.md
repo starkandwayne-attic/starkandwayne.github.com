@@ -27,18 +27,19 @@ Each time you "add an instance" [(1)](#footer-add-instances) of a running applic
 
 The package that includes an executable `startup` script and the original application is known to the DEA as a "droplet". It is created during a staging step. It is the staging step that knows about Ruby and Java and PHP applications and how to run them. This article investigates how Cloud Foundry stages an application and creates the package for DEAs.
 
-As I go along, I'll clone/submodule the repositories that I need and show the configuration files. The final product is available in a [git repository](https://github.com/StarkAndWayne/staging-apps-in-cloudfoundry) as a demonstration of the minimium parts of Cloud Foundry required to deploy an application via staging.
+The stager is nicely isolated from the rest of Cloud Foundry. Its only external dependencies are:
+
+* NATS server
+* HTTP endpoint for getting a zipped version of the application
+* HTTP endpoint for posting the droplet package
+
+As I go along, I'll reference the projects/repositories that I need and show configuration files and helper scripts.
+
+The final product is available in a [git repository](https://github.com/StarkAndWayne/staging-apps-in-cloudfoundry) as a demonstration of the minimium parts of Cloud Foundry required to deploy an application via staging.
 
 ## Staging an application
 
 The staging code is in [vcap-staging](https://github.com/cloudfoundry/vcap-staging)
-
-```
-git clone git://github.com/cloudfoundry/vcap-staging.git
-cd vcap-staging
-bundle
-cd ..
-```
 
 The goal of `vcap-staging` is to create a new folder structure that contains:
 
