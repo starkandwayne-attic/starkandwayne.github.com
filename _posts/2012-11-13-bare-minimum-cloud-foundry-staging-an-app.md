@@ -23,9 +23,9 @@ theme:
 
 In the previous article in the "Bare Minimum Cloud Foundry" series, I introduced the truly barest minimum of Cloud Foundry to deploy applications - the Droplet Execution Agent (DEA) and the pub-sub message bus NATS.
 
-Each time you "add an instance" [(1)](#footer-add-instances) of a running application, the DEA takes a tarballed version of an application, unpacks it, and runs a single `startup` script. The DEA knows nothing about Ruby or Java or PHP; it only knows about the `startup` script within a tarball. How does the tarball get created?
+Each time you "add an instance" [(1)](#footer-add-instances) of a running application, the DEA takes a packaged version of an application, unpacks it, and runs a single `startup` script. The DEA knows nothing about Ruby or Java or PHP; it only knows about the `startup` script within the package. How does the package get created?
 
-The tarball, which includes an executable `startup` script, is created during a staging step. It is the staging step that knows about Ruby and Java and PHP applications and how to run them. This article investigates how Cloud Foundry stages an application and creates the tarball for DEAs.
+The package that includes an executable `startup` script and the original application is known to the DEA as a "droplet". It is created during a staging step. It is the staging step that knows about Ruby and Java and PHP applications and how to run them. This article investigates how Cloud Foundry stages an application and creates the package for DEAs.
 
 As I go along, I'll clone/submodule the repositories that I need and show the configuration files. The final product is available in a [git repository](https://github.com/StarkAndWayne/staging-apps-in-cloudfoundry) as a demonstration of the minimium parts of Cloud Foundry required to deploy an application via staging.
 
@@ -112,7 +112,7 @@ wait $STARTED
 
 What is `%VCAP_LOCAL_RUNTIME%`?
 
-This token is replaced by the DEA when it unpacks the staged tarball to use the runtime selected for the application. In this example, this might be the ruby executable for either the `ruby18` or `ruby19` runtimes.
+This token is replaced by the DEA when it unpacks the staged package to use the runtime selected for the application. In this example, this might be the ruby executable for either the `ruby18` or `ruby19` runtimes.
 
 ## Staging as a service
 
@@ -157,14 +157,14 @@ Above we are running one stager. You can run multiple stagers within Cloud Found
 
 That is, we can tell a stager to stage an application in preparation for deploying it to a DEA by publishing a message to NATS on a queue 'staging'.
 
-## Stager client library
+## Talking to the Stager service
 
-To submit a request to a stager:
+We use NATS to submit a request to a stager:
 
 {% highlight ruby %}
 request = {
-  "app_id"       => app.id,
-  "properties"   => app.staging_task_properties,
+  "app_id"       => app_id,
+  "properties"   => properties,
   "download_uri" => dl_uri,
   "upload_uri"   => ul_hdl.upload_uri,
 }
@@ -174,8 +174,140 @@ NATS.request('staging', request.to_json) do |result|
 end
 {% endhighlight %}
 
-There is also a Ruby/Event Machine/Fibers client library available for submitting requests to stagers called [stager-client](https://github.com/cloudfoundry/stager-client). It takes the same `request` Hash as above.
+The `properties` document is equivalent to the `cfg_filename` contents from the `vcap-staging` example above. 
+
+See below for a fleshed out example. But first we need to look at `download_uri` and `upload_uri`.
+
+What makes playing with the stager in isolation tricky is that you need to host the original source code via an HTTP URI (`download_uri` above). And even more tricky, you need to provide an HTTP endpoint for uploading the resulting staged package, (`upload_uri` above), which will then be used by DEAs.
+
+In Cloud Foundry, the download/upload endpoints are in the Cloud Controller.
+
+{% highlight ruby %}
+# routes.rb
+post   'staging/droplet/:id/:upload_id' => 'staging#upload_droplet', :as => :upload_droplet
+get    'staging/app/:id'                => 'staging#download_app',   :as => :download_unstaged_app
+{% endhighlight %}
+
+So, for our little isolation test of the stager we need a [simple HTTP server](https://github.com/StarkAndWayne/staging-apps-in-cloudfoundry/blob/master/apps/staging_client_service/app.rb).
+
+{% highlight ruby %}
+# apps/staging_client_service/app.rb
+require 'sinatra'
+
+get '/download_unstaged_app/:id' do
+  p params
+  unstaged_app_tgz = File.expand_path("../../sinatra-app.zip", __FILE__)
+  send_file(unstaged_app_tgz)
+end
+
+post '/upload_droplet/:id/:upload_id' do
+  p params
+  src_path = params[:upload][:droplet][:tempfile]
+  droplet = params[:upload][:droplet][:tempfile].read
+  puts "stager uploaded staged droplet #{src_path}"
+end
+{% endhighlight %}
+
+Run our staging client app (our fake Cloud Controller, so to speak), in addition to the NATS server and stager application that are already running:
+
+{% highlight bash %}
+ruby apps/staging_client_service/app.rb -p 9292
+{% endhighlight %}
+
+We now have the three running pieces of the stager demonstration:
+
+* nats-server
+* stager
+* fake stager client endpoints
+
+Finally, we need a [little script](https://github.com/StarkAndWayne/staging-apps-in-cloudfoundry/blob/master/bin/request_stager_to_stage_app) to request the stager downloads a zipped application, and upload the staged version of it (called a "droplet") to our fake stager client.
+
+{% highlight ruby %}
+#!/usr/bin/env ruby
+
+# USAGE: bin/request_stager_to_stage_app
+
+require "nats/client"
+require "json"
+
+QUEUE = 'staging' # as agreed in config/stager.yml
+
+app_id = "my-sinatra-app"
+stager_client = "http://localhost:9292"
+upload_id = "upload_id"
+
+NATS.start do
+  NATS.subscribe('>') { |msg, reply, sub| puts "Msg received on [#{sub}] : '#{msg}'" }
+
+  staging_request = {
+    app_id: app_id,
+    download_uri: "#{stager_client}/download_unstaged_app/#{app_id}",
+    upload_uri: "#{stager_client}/upload_droplet/#{app_id}/#{upload_id}",
+
+    # properties == 'environment' from config/stage-sinatra.yml
+    properties: { 
+      services: [],
+      framework_info: {
+        name: "sinatra",
+        ...
+      },
+      runtime_info: {
+        name: 'ruby19',
+        executable: 'ruby',
+        version: '1.9.3'
+      },
+      resources: {
+        memory: 256,
+        disk: 256,
+        fds: 1024
+      }
+    }
+  }
+
+  NATS.request(QUEUE, staging_request.to_json) do |result|
+    output = JSON.parse(result)
+    puts output["task_log"]
+    NATS.stop
+  end
+end
+{% endhighlight %}
+
+It is the `staging_request` that tells the stager:
+
+* where to download a zipfile containing the application to be staged (`download_uri`)
+* where to upload the staged application, called a droplet
+* application details, such as framework (rails, lift, etc)
+
+When we run our script it returns the task log from the stager, to tell us how the staging process went and to confirm that the droplet has been uploaded to where we told the stager to upload it.
+
+{% highlight bash %}
+$ ./bin/request_stager_to_stage_app
+...
+[2012-11-13 22:13:08] Setting up temporary directories
+[2012-11-13 22:13:08] Downloading application
+[2012-11-13 22:13:08] Unpacking application
+[2012-11-13 22:13:08] Staging application
+[2012-11-13 22:13:10] # Logfile created on 2012-11-13 22:13:10 -0800 by logger.rb/31641
+[2012-11-13 22:13:10] Auto-reconfiguration disabled because app does not use Bundler.
+[2012-11-13 22:13:10] Please provide a Gemfile.lock to use auto-reconfiguration.
+[2012-11-13 22:13:10] Creating droplet
+[2012-11-13 22:13:10] Uploading droplet
+[2012-11-13 22:13:12] Done!
+{% endhighlight %}
+
+## Summary
+
+Cloud Foundry has a standalone service, stager, that listens for requests on NATS to stage a zipped application into a droplet - a package that contains the original application together with `startup` and `stop` scripts.
+
+The only external dependencies are:
+
+* NATS server
+* HTTP endpoint for getting a zipped version of the application
+* HTTP endpoint for posting the droplet package
 
 ## Footnotes
 
-<p name="footer-add-instances">(1) I don't agree with this terminology in Cloud Foundry. When you add "instances" to a running application, you are actually adding running processes. If you've used Heroku, this is akin to adding dynos. To me, "instances" means virtual machines or servers. In Cloud Foundry, it means "processes of your app". In future Cloud Foundry, it will be a Linux container running an application process.</p>
+<p id="footer-add-instances">(1) I don't agree with this terminology in Cloud Foundry. When you add "instances" to a running application, you are actually adding running processes. If you've used Heroku, this is akin to adding dynos. To me, "instances" means virtual machines or servers. In Cloud Foundry, it means "processes of your app". In future Cloud Foundry, it will be a Linux container running an application process.</p>
+
+<p id="osx-support">(2) If you run the stager on OS/X then you'll need <a href="http://reviews.cloudfoundry.org/11414">this patch</a> to the stager source code. The patch stops using the -u flag on `env` command which isn't available on OS/X.</p>
+
