@@ -61,7 +61,7 @@ get '/staged_droplets/:id/:hash' do
 
 We can deploy the Sintra app at `apps/sinatra-app.zip` by running a script that combines the staging step and DEA deployment step together:
 
-```
+{% highlight bash %}
 $ ./bin/deploy_app
 [2012-11-14 10:14:24] Setting up temporary directories
 [2012-11-14 10:14:24] Downloading application
@@ -74,4 +74,4 @@ $ ./bin/deploy_app
 [2012-11-14 10:14:27] Uploading droplet
 [2012-11-14 10:14:29] Done!
 New app registered at: http://192.168.1.70:57421
-```
+{% endhighlight %}
