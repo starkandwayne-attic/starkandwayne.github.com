@@ -10,6 +10,7 @@ sliders:
   text: "Exploration of the bare minimum of Cloud Foundry required to run it on your laptop"
   image: /assets/images/cloudfoundry-235w.png
 slider_background: sky-horizon-sky
+published: false
 publish_date: "2012-11-10"
 category: "articles"
 tags: []

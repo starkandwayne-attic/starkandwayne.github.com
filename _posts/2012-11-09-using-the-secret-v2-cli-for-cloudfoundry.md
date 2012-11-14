@@ -9,8 +9,9 @@ sliders:
 - title: "The secret v2 CLI"
   text: All Cloud Foundry development on its CLI is on a new v2 gem. It's time to play with it!
   image: /assets/images/cloudfoundry-235w.png
-publish_date: "2012-11-09"
 slider_background: ny
+published: false
+publish_date: "2012-11-09"
 category: "articles"
 tags: [cloudfoundry]
 theme:

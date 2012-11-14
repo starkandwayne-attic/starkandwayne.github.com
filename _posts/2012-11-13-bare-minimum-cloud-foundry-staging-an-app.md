@@ -13,6 +13,7 @@ sliders:
   text: "Cloud Foundry takes your application and 'stages' it before distributing to DEAs for deployment. Let's look at what is going on."
   image: /assets/images/cloudfoundry-235w.png
 slider_background: sky-horizon
+published: false
 publish_date: "2012-11-13"
 category: "articles"
 tags: [cloudfoundry]
@@ -307,6 +308,12 @@ The only external dependencies are:
 * NATS server
 * HTTP endpoint for getting a zipped version of the application
 * HTTP endpoint for posting the droplet package
+
+The stager has two main code bases:
+
+* [stager](https://github.com/cloudfoundry/stager) - staging as a service, aka `vcap-stager` rubygem
+* [vcap-staging](https://github.com/cloudfoundry/vcap-staging) - framework plugins for how to stage an application
+
 
 ## Footnotes
 

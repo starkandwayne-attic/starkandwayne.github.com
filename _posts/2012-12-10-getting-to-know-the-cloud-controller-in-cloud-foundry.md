@@ -19,6 +19,7 @@ sliders:
     of the Cloud Controll.er
   image: /assets/images/cloudfoundry-235w.png
 slider_background: sky-horizon
+published: false
 publish_date: "2012-12-10"
 category: "articles"
 tags: [cloudfoundry]
