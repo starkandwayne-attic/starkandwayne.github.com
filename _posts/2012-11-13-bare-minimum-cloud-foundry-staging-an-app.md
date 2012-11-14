@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Bare minimum Cloud Foundry - Staging an app"
-description: "A detailed look at how applications deployed by a DEA are prepared/staged into a special format"
+description: "In this article I introduce the core piece of Cloud Foundry that knows the difference between a Ruby on Rails application and a Java Play application, and more importantly, how to prepare and run those applications. The Stager."
 icon: cloud # see http://wbpreview.com/previews/WB07233L7/icons.html
 author: "Dr Nic Williams"
 author_code: drnic
@@ -20,6 +20,8 @@ theme:
   name: smart-business-template
 ---
 {% include JB/setup %}
+
+In this article I introduce the core piece of Cloud Foundry that knows the difference between a Ruby on Rails application and a Java Play application, and more importantly, how to prepare and run those applications. The Stager.
 
 In the previous article in the "Bare Minimum Cloud Foundry" series, I introduced the truly barest minimum of Cloud Foundry to deploy applications - the Droplet Execution Agent (DEA) and the pub-sub message bus NATS.
 
