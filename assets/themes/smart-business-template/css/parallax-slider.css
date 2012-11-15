@@ -50,6 +50,10 @@
 	background: transparent url(/assets/sliders/sky-horizon-sky.png) repeat 0% 0% !important;
 }
 
+.da-slider-sheep{
+	background: transparent url(/assets/sliders/sheep.png) repeat 0% 0% !important;
+}
+
 .da-slide{
 	position: absolute;
 	width: 100%;

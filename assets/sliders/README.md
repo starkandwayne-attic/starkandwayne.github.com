@@ -5,6 +5,7 @@ Slider images run across the top of many pages of the site. They are 450px high 
 ## Credits for images
 
 * [sky-horizon](http://www.goodfon.com/wallpaper/59136.html) images
+* [sheep](http://blog.ecoagriculture.org/2012/05/04/es_cap/)
 
 ## To add sliders
 
