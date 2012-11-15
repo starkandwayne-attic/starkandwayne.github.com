@@ -45,7 +45,7 @@ git clone git://github.com/cloudfoundry/vcap-services.git
 git clone git://github.com/cloudfoundry/vcap-services-base.git
 {% endhighlight %}
 
-## Running a Service Node within Cloud Foundry
+## Running a Service Node
 
 In this tutorial we will play with an example service [echo](https://github.com/cloudfoundry/vcap-services/tree/master/echo) which has a node `bin/echo_node` and gateway `bin/echo_gateway`, but there is no actual service (redis, postgresql) underneath.
 
@@ -79,7 +79,7 @@ $ cd ../..
 $ ./vcap-services/echo/bin/echo_node -c config/echo_node.yml
 {% endhighlight %}
 
-## Provisioning services via Nodes
+## Provisioning Services via Service Nodes
 
 Nodes are the part of Cloud Foundry that represent the actual services being provided. They track how much of the service is available for provisioning and they allow requests for provisioning and unprovisioning.
 
@@ -145,7 +145,8 @@ end
 {% endhighlight %}
 
 
-## Gateway on HTTP
+## Running a Service Gateway
+
 
 Each Gateway runs an HTTP endpoint.
 
@@ -210,3 +211,8 @@ post "/service/internal/v1/migration/:node_id/:instance_id/:action" do
 get "/service/internal/v1/migration/:node_id/instances" do
 {% endhighlight %}
 
+## Adding a Service to Cloud Foundry
+
+There is [documentation](https://github.com/cloudfoundry/oss-docs/tree/master/vcap/adding_a_system_service) available for how to add a Service into your Cloud Foundry. It covers how to modify the legacy dev_setup chef cookbooks.
+
+I'd recommend that you be using the BOSH release [cf-release](https://github.com/cloudfoundry/cf-release) for managing your Cloud Foundry rather than chef cookbooks. There is an example repository showing how to add a service to your own cf-release repository.
