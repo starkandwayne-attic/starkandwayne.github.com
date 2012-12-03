@@ -12,6 +12,7 @@ sliders:
   image: /assets/images/cloudfoundry-235w.png
 slider_background: sky-horizon-and-grass # or parchment,abyss,sky-horizon-sky from /assets/sliders
 publish_date: "2012-11-14"
+published: false
 category: "articles"
 tags: [cloudfoundry]
 theme:
