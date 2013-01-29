@@ -82,3 +82,7 @@ We can't help everyone all at the same time, so please start thinking ahead for 
 
 Send me an email at [drnic@starkandwayne.com
 ](mailto:&#x64;&#x72;&#x6E;&#x69;&#x63;&#x40;&#x73;&#x74;&#x61;&#x72;&#x6B;&#x61;&#x6E;&#x64;&#x77;&#x61;&#x79;&#x6E;&#x65;&#x2E;&#x63;&#x6F;&#x6D;), tell me your interesting story and then let's have a chat on Skype. Let's upgrade everyone into superheroes!
+
+## Want to join Stark & Wayne?
+
+If you're already deep in the world of Cloud Foundry, Open Stack/AWS VPC/vSphere, and devops; or you're a web dev and would just love to work on projects within teams who are using these modern technologies, please also [send me an email](mailto:&#x64;&#x72;&#x6E;&#x69;&#x63;&#x40;&#x73;&#x74;&#x61;&#x72;&#x6B;&#x61;&#x6E;&#x64;&#x77;&#x61;&#x79;&#x6E;&#x65;&#x2E;&#x63;&#x6F;&#x6D;). 
