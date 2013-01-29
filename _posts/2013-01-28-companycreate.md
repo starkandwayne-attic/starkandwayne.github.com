@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Company.create"
-description: Welcome to this new company, Stark & Wayne, to help you with CloudFoundry and your internal DevOps
+description: Welcome to this new company, Stark & Wayne, to help you with Cloud Foundry and your internal DevOps
 icon: cloud # see http://wbpreview.com/previews/WB07233L7/icons.html
 author: "Dr Nic Williams"
 author_code: drnic
@@ -11,7 +11,7 @@ sliders:
   text: Welcome to Stark & Wayne
   image: /assets/images/starkandwayne-logo-300w.png
 - title: "Company.create"
-  text: Welcome to a new company to help you with CloudFoundry
+  text: Welcome to a new company to help you with Cloud Foundry
   image: /assets/images/cloudfoundry-235w.png
 slider_background: ny # or parchment,abyss,sky-horizon-sky from /assets/sliders
 publish_date: "2013-01-28"
@@ -22,19 +22,19 @@ theme:
 ---
 {% include JB/setup %}
 
-Welcome to [Stark & Wayne](http://starkandwayne.com), the new consultancy from [Dr Nic Williams](http://drniwilliams.com) for teams and companies using CloudFoundry to make their lives and their customers lives better. We work with teams and companies who want to become real-world superheroes.
+Welcome to [Stark & Wayne](http://starkandwayne.com), the new consultancy from [Dr Nic Williams](http://drniwilliams.com) for teams and companies using Cloud Foundry to make their lives and their customers lives better. We work with teams and companies who want to become real-world superheroes.
 
-If you've used Heroku for your pet projects, then we want to bring you CloudFoundry for your work projects. We also want to work with you on your projects. If you're workplace cares enough to use CloudFoundry instead of just an old fashioned internal IT organization then you qualify.
+If you've used Heroku for your pet projects, then we want to bring you Cloud Foundry for your work projects. We also want to work with you on your projects. If your workplace cares about continuously improving development and operations, then you qualify.
 
 If the world of corporate Platform-as-a-Service (PaaS), DevOps and agile development is exciting to you, then you are allowed to follow the [@StarkAndWayne](https://twitter.com/StarkAndWayne) twitter account. For free. I know, I know. I shouldn't. Hold me back.
 
-Developers need tools to get the job done - to iterate fast on a new idea or to maintain and evolve production systems. You do a great job and you're a super hero. I've loved making tools over the last decade and I've loved talking about tools at conferences. It is now extremely exciting to create a new company for the creation, promotion and support of tools and support systems specifically for developers.
+Developers need tools to get the job done - to iterate fast on a new idea or to maintain and evolve production systems. You do a great job and you're a super hero. I've loved making tools over the last decade ([rubigen](http://rubigen.rubyforge.org/), [appscrolls](http://appscrolls.org), [newgem](http://drnic.github.com/newgem/), [bosh-gen](https://github.com/drnic/bosh-gen), [bosh-solo](https://github.com/drnic/bosh-gen), [TextMate bundles](https://github.com/search?q=%40drnic+tmbundle), [choctop](http://drnic.github.com/choctop/), [install_theme](https://github.com/drnic/install_theme), [tabtab](https://github.com/drnic/tabtab), [ey migrate](https://github.com/engineyard/engineyard-migrate)) and I've loved talking about tools at conferences ([presentations](http://drnicwilliams.com/presentations/ "Dr Nic's Presentations")). It is now extremely exciting to create a new company for the creation, promotion and support of tools and support systems specifically for developers.
 
 This company is called Stark & Wayne; named after the two most famous fictional tool creators - Tony Stark and Bruce Wayne. Every developer can be a super hero. You just need the right tools. Batmobile optional.
 
 ## Who are the initial target customer and what will we do specifically?
 
-If your company is looking at running the open source CloudFoundry platform-as-a-service (PaaS), wants ongoing assistance running CloudFoundry and developers to work on your internal project teams, then you qualify as someone I'd love to work with. If you care enough about your team and your fellow developers to want to run an open source PaaS, then we will all get on famously.
+If your company is looking at running the open source Cloud Foundry platform-as-a-service (PaaS), wants ongoing assistance running Cloud Foundry and developers to work on your internal project teams, then you qualify as someone I'd love to work with. If you care enough about your team and your fellow developers to want to run an open source PaaS, then we will all get on famously.
 
 ## Initial customers
 
@@ -42,7 +42,7 @@ Stark & Wayne already has two wonderful customers to work with. Ironically, I on
 
 One customer is a 3000-person non-technology orientated company who has a very innovative engineering organization based out of New York. Scrum teams, daily deployments, continuous deployment via Jenkins. It's exciting stuff for a company who has no business being exciting in this area.
 
-The other is the newly created **Pivotal Initiative** - the new parent organization for CloudFoundry, taking over from VMWare at the end of 2012. In just one month some very exciting open source work has been completed. If you're on the CloudFoundry mailing lists you've seen a little bit of it. It's coming soon. CloudFoundry just got a lot simpler to get installed and running.
+The other is the newly created **Pivotal Initiative** - the new parent organization for Cloud Foundry, taking over from VMWare at the end of 2012. In just one month some very exciting open source work has been completed. If you're on the Cloud Foundry mailing lists you've seen a little bit of it. It's coming soon. Cloud Foundry just got a lot simpler to get installed and running.
 
 ## Initial employees
 
@@ -54,12 +54,12 @@ It's great to be back running a company and having people wanting to join for th
 
 When you can say "yes", or "oh god, I think so", then I'd love to chat with you and hear your story. Perhaps we can work together; or perhaps I can point you in the direction you need to go next. Email me at [drnic@starkandwayne.com](mailto:&#x64;&#x72;&#x6E;&#x69;&#x63;&#x40;&#x73;&#x74;&#x61;&#x72;&#x6B;&#x61;&#x6E;&#x64;&#x77;&#x61;&#x79;&#x6E;&#x65;&#x2E;&#x63;&#x6F;&#x6D;), tell me your interesting story and then let's have a chat on Skype.
 
-If you want a Heroku running inside your company then what you want is CloudFoundry. It's completely open source and can run inside your existing infrastructure and on your own Amazon AWS account.
+If you want a Heroku running inside your company then what you want is Cloud Foundry. It's completely open source and can run inside your existing infrastructure and on your own Amazon AWS account.
 
 It might be open source yet its possibly one of the more complex systems you'll run within your company; and will take your team some time to get familiar with its operations and how to customize and upgrade it comfortably.
 
-You can be a customer if you want CloudFoundry for your internal team and want ongoing support and assistance. Once you get a small CloudFoundry deployment running, you'll never stop growing, upgrading, and extending it.
+You can be a customer if you want Cloud Foundry for your internal team and want ongoing support and assistance. Once you get a small Cloud Foundry deployment running, you'll never stop growing, upgrading, and extending it.
 
-You can also be a customer if you run an ISP or hosting company and want to share CloudFoundry with your customers. You'll then be able to offer Heroku-esque experience for small apps and your dedicated VMs or machines when their applications grow up.
+You can also be a customer if you run an ISP or hosting company and want to share Cloud Foundry with your customers. You'll then be able to offer Heroku-esque experience for small apps and your dedicated VMs or machines when their applications grow up.
 
-You can also be a customer if you're already running CloudFoundry and want to bring in engineers, front-end developers, management, and more, then I'd love to find a way to help. We're very excited for you, your devs and your ops people!
+You can also be a customer if you're already running Cloud Foundry and want to bring in engineers, front-end developers, management, and more, then I'd love to find a way to help. We're very excited for you, your devs and your ops people!

@@ -9,7 +9,7 @@ author: "Dr Nic Williams"
 author_code: drnic
 category: snippets
 sliders:
-- title: AppScrolls &amp; CloudFoundry
+- title: AppScrolls &amp; Cloud Foundry
   text: AppScrolls can now create applications that are automatically deployed to any Cloud Foundry target.
   image: /assets/images/cloudfoundry-235w.png
 slider_background: parchment
@@ -36,7 +36,7 @@ After three years of using public PaaS - Engine Yard Cloud and Heroku - I'm now 
 The `cfoundry` scroll does the following:
 
 * packages/vendors all gems locally (necessary for older Cloud Foundry installations)
-* includes a production section to `database.yml` and an initializer (as per [CF blog post](http://blog.cloudfoundry.com/2012/04/19/deploying-jruby-on-rails-applications-on-cloud-foundry/ "Using JRuby for Rails Applications on Cloud Foundry | CloudFoundry.com Blog")) (necessary for JRuby where auto-discovery does not work)
+* includes a production section to `database.yml` and an initializer (as per [CF blog post](http://blog.cloudfoundry.com/2012/04/19/deploying-jruby-on-rails-applications-on-cloud-foundry/ "Using JRuby for Rails Applications on Cloud Foundry | cloudfoundry.com Blog")) (necessary for JRuby where auto-discovery does not work)
 * deploys the new application to your current target Cloud Foundry
 
 Cloud Foundry doesn't require Git like Heroku, nor require your source code be hosted somewhere like Engine Yard Cloud. So you will need to add the `github` scroll to go through the creation of a new GitHub repository.
