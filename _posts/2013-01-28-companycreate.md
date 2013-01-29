@@ -26,6 +26,8 @@ Welcome to Stark & Wayne, the new consultancy from [Dr Nic Williams](http://drni
 
 If you've used Heroku for your pet projects, then we want to bring you CloudFoundry for your work projects. We also want to work with you on your projects. If you're workplace cares enough to use CloudFoundry instead of just an old fashioned internal IT organization then you qualify.
 
+If the world of corporate Platform-as-a-Service (PaaS), DevOps and agile development is exciting to you, then you are allowed to follow the [@StarkAndWayne](https://twitter.com/StarkAndWayne) twitter account. For free. I know, I know. I shouldn't. Hold me back.
+
 Developers need tools to get the job done - to iterate fast on a new idea or to maintain and evolve production systems. You do a great job and you're a super hero. I've loved making tools over the last decade and I've loved talking about tools at conferences. It is now extremely exciting to create a new company for the creation, promotion and support of tools and support systems specifically for developers.
 
 This company is called Stark & Wayne; named after the two most famous fictional tool creators - Tony Stark and Bruce Wayne. Every developer can be a super hero. You just need the right tools. Batmobile optional.
