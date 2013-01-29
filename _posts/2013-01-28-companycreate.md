@@ -52,6 +52,8 @@ It's great to be back running a company and having people wanting to join for th
 
 ## Can you become a customer?
 
+When you can say "yes", or "oh god, I think so", then I'd love to chat with you and hear your story. Perhaps we can work together; or perhaps I can point you in the direction you need to go next. Email me at [drnic@starkandwayne.com](mailto:&#x64;&#x72;&#x6E;&#x69;&#x63;&#x40;&#x73;&#x74;&#x61;&#x72;&#x6B;&#x61;&#x6E;&#x64;&#x77;&#x61;&#x79;&#x6E;&#x65;&#x2E;&#x63;&#x6F;&#x6D;), tell me your interesting story and then let's have a chat on Skype.
+
 If you want a Heroku running inside your company then what you want is CloudFoundry. It's completely open source and can run inside your existing infrastructure and on your own Amazon AWS account.
 
 It might be open source yet its possibly one of the more complex systems you'll run within your company; and will take your team some time to get familiar with its operations and how to customize and upgrade it comfortably.
