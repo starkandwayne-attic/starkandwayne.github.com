@@ -22,7 +22,7 @@ theme:
 ---
 {% include JB/setup %}
 
-Welcome to Stark & Wayne, the new consultancy from [Dr Nic Williams](http://drniwilliams.com) for teams and companies using CloudFoundry to make their lives and their customers lives better. We work with teams and companies who want to become real-world superheroes.
+Welcome to [Stark & Wayne](http://starkandwayne.com), the new consultancy from [Dr Nic Williams](http://drniwilliams.com) for teams and companies using CloudFoundry to make their lives and their customers lives better. We work with teams and companies who want to become real-world superheroes.
 
 If you've used Heroku for your pet projects, then we want to bring you CloudFoundry for your work projects. We also want to work with you on your projects. If you're workplace cares enough to use CloudFoundry instead of just an old fashioned internal IT organization then you qualify.
 
