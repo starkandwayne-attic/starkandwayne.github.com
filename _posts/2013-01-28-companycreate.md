@@ -50,6 +50,16 @@ Today it is just Dr Nic, speaking here so eloquently in the 3rd person. Incredib
 
 It's great to be back running a company and having people wanting to join for the journey!
 
+## Initial thank you's
+
+I am very fortunate to have mate many people and learnt many things about the history, present and future of our profession. I want to thank and acknowledge the dozens of incredible people I worked with at Engine Yard over the last two years. Thanks also to the many, many people in the field of PaaS and devops who are either personal friends, are acquaintances over twitter or github, or I stalk them quietly on the internet when they're saying profound things and think no one in particular is listening.
+
+I also want to thank the many people I've met over the last year from the Cloud Foundry core team at the Pivotal Initiative (previously VMWare). There are an awful lot of incredibly talented people working on an open source PaaS that anyone can use for internal or commercial purposes.
+
+Thanks to all the people on the Cloud Foundry mailing lists ([vcap-dev](https://groups.google.com/a/cloudfoundry.org/forum/?fromgroups#!forum/vcap-dev) & [bosh-dev](https://groups.google.com/a/cloudfoundry.org/forum/?fromgroups#!forum/bosh-dev)) who answer my questions. Oooh, and also to the growing number of new people on the lists who now read my answers to their questions!
+
+And thanks to Rob Mee for giving me space at Pivotal Labs HQ in San Francisco, free lunches on Tuesdays, and a budget to add some extra magic and education around the edges of the incredible core of Cloud Foundry. He and his team will be wonderful stewards for the Cloud Foundry open source ecosystem.
+
 ## Can you become a customer?
 
 When you can say "yes", or "oh god, I think so", then I'd love to chat with you and hear your story. Perhaps we can work together; or perhaps I can point you in the direction you need to go next. Email me at [drnic@starkandwayne.com](mailto:&#x64;&#x72;&#x6E;&#x69;&#x63;&#x40;&#x73;&#x74;&#x61;&#x72;&#x6B;&#x61;&#x6E;&#x64;&#x77;&#x61;&#x79;&#x6E;&#x65;&#x2E;&#x63;&#x6F;&#x6D;), tell me your interesting story and then let's have a chat on Skype.
