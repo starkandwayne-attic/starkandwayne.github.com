@@ -40,7 +40,7 @@ If your company is looking at running the open source Cloud Foundry platform-as-
 
 Stark & Wayne already has two wonderful customers to work with. Ironically, I only wanted to share that Stark & Wayne existed when I knew it had an initial paying customer. But two is so much better!
 
-One customer is a 3000-person non-technology oriented company who has a very innovative engineering organization based out of New York. Scrum teams, daily deployments, continuous deployment via Jenkins. It's exciting stuff for a company who has no business being exciting in this area.
+One customer is a 3000-person non-technology oriented company who has a very innovative engineering organization based out of New York. Scrum teams, daily deployments, continuous deployment via Jenkins.
 
 The other is the newly created **Pivotal Initiative** - the new parent organization for Cloud Foundry, taking over from VMWare at the end of 2012. In just one month some very exciting open source work has been completed. If you're on the Cloud Foundry mailing lists you've seen a little bit of it. It's coming soon. Cloud Foundry just got a lot simpler to get installed and running.
 
@@ -62,7 +62,7 @@ And thanks to Rob Mee for giving me space at Pivotal Labs HQ in San Francisco, f
 
 ## Can you become a customer?
 
-When you can say "yes", or "oh god, I think so", then I'd love to chat with you and hear your story. Perhaps we can work together; or perhaps I can point you in the direction you need to go next. Email me at [drnic@starkandwayne.com](mailto:&#x64;&#x72;&#x6E;&#x69;&#x63;&#x40;&#x73;&#x74;&#x61;&#x72;&#x6B;&#x61;&#x6E;&#x64;&#x77;&#x61;&#x79;&#x6E;&#x65;&#x2E;&#x63;&#x6F;&#x6D;), tell me your interesting story and then let's have a chat on Skype.
+I'd love to chat with you and hear your story. Perhaps we can work together; or perhaps I can point you in the direction you need to go next. Email me at [drnic@starkandwayne.com](mailto:&#x64;&#x72;&#x6E;&#x69;&#x63;&#x40;&#x73;&#x74;&#x61;&#x72;&#x6B;&#x61;&#x6E;&#x64;&#x77;&#x61;&#x79;&#x6E;&#x65;&#x2E;&#x63;&#x6F;&#x6D;), tell me your interesting story and then let's have a chat on Skype.
 
 If you want a Heroku running inside your company then what you want is Cloud Foundry. It's completely open source and can run inside your existing infrastructure and on your own Amazon AWS account.
 
