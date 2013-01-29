@@ -9,7 +9,7 @@ author_code: drnic
 sliders:
 - title: "Hello World"
   text: Welcome to Stark & Wayne
-  image: /assets/images/starkandwayne.png
+  image: /assets/images/starkandwayne-logo-300w.png
 - title: "Company.create"
   text: Welcome to a new company to help you with CloudFoundry
   image: /assets/images/cloudfoundry-235w.png
