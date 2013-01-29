@@ -40,7 +40,7 @@ If your company is looking at running the open source Cloud Foundry platform-as-
 
 Stark & Wayne already has two wonderful customers to work with. Ironically, I only wanted to share that Stark & Wayne existed when I knew it had an initial paying customer. But two is so much better!
 
-One customer is a 3000-person non-technology orientated company who has a very innovative engineering organization based out of New York. Scrum teams, daily deployments, continuous deployment via Jenkins. It's exciting stuff for a company who has no business being exciting in this area.
+One customer is a 3000-person non-technology oriented company who has a very innovative engineering organization based out of New York. Scrum teams, daily deployments, continuous deployment via Jenkins. It's exciting stuff for a company who has no business being exciting in this area.
 
 The other is the newly created **Pivotal Initiative** - the new parent organization for Cloud Foundry, taking over from VMWare at the end of 2012. In just one month some very exciting open source work has been completed. If you're on the Cloud Foundry mailing lists you've seen a little bit of it. It's coming soon. Cloud Foundry just got a lot simpler to get installed and running.
 
@@ -56,10 +56,19 @@ When you can say "yes", or "oh god, I think so", then I'd love to chat with you 
 
 If you want a Heroku running inside your company then what you want is Cloud Foundry. It's completely open source and can run inside your existing infrastructure and on your own Amazon AWS account.
 
-It might be open source yet its possibly one of the more complex systems you'll run within your company; and will take your team some time to get familiar with its operations and how to customize and upgrade it comfortably.
+It might be incredibly easy for all developers to use and they'll be very happy that you're running Cloud Foundry; yet its possibly one of the more complex systems you'll run within your company; and will take your team some time to get familiar with its operations and how to customize and upgrade it comfortably.
 
 You can be a customer if you want Cloud Foundry for your internal team and want ongoing support and assistance. Once you get a small Cloud Foundry deployment running, you'll never stop growing, upgrading, and extending it.
 
 You can also be a customer if you run an ISP or hosting company and want to share Cloud Foundry with your customers. You'll then be able to offer Heroku-esque experience for small apps and your dedicated VMs or machines when their applications grow up.
 
 You can also be a customer if you're already running Cloud Foundry and want to bring in engineers, front-end developers, management, and more, then I'd love to find a way to help. We're very excited for you, your devs and your ops people!
+
+## How to get started with Cloud Foundry and with Stark & Wayne?
+
+For your team and company, we're all just at the start of something special and empowering. The first wave of Platform-as-a-Service, such as Heroku and Engine Yard, has revolutionized the productivity of development teams and it has enabled many modern software practices such as Agile and Scrum. The combination has worked wonders for small startups with nothing to lose; and both the Cloud Foundry technology and the Agile and Scrum practices are maturing for teams and companies of all sizes and motivations.
+
+We can't help everyone all at the same time, so please start thinking ahead for 2013 and when you'll want Cloud Foundry running in production; then we all need to map backwards and get a plan into place: trial it, get one of your small top teams using it, go through some upgrade cycles, go through some scale up cycles, and then feel strong about running your production applications upon it. This will take time within your team and organization, so let's have a chat and map out your trial & adoption plan.
+
+Send me an email at [drnic@starkandwayne.com
+](mailto:&#x64;&#x72;&#x6E;&#x69;&#x63;&#x40;&#x73;&#x74;&#x61;&#x72;&#x6B;&#x61;&#x6E;&#x64;&#x77;&#x61;&#x79;&#x6E;&#x65;&#x2E;&#x63;&#x6F;&#x6D;), tell me your interesting story and then let's have a chat on Skype. Let's upgrade everyone into superheroes!
