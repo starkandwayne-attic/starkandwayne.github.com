@@ -52,7 +52,7 @@ It's great to be back running a company and having people wanting to join for th
 
 ## Initial thank you's
 
-I am very fortunate to have mate many people and learnt many things about the history, present and future of our profession. I want to thank and acknowledge the dozens of incredible people I worked with at Engine Yard over the last two years. Thanks also to the many, many people in the field of PaaS and devops who are either personal friends, are acquaintances over twitter or github, or I stalk them quietly on the internet when they're saying profound things and think no one in particular is listening.
+I am very fortunate to have met many people and learnt many things about the history, present and future of our profession. I want to thank and acknowledge the dozens of incredible people I worked with at Engine Yard over the last two years. Thanks also to the many, many people in the field of PaaS and devops who are either personal friends, are acquaintances over twitter or github, or I stalk them quietly on the internet when they're saying profound things and think no one in particular is listening.
 
 I also want to thank the many people I've met over the last year from the Cloud Foundry core team at the Pivotal Initiative (previously VMWare). There are an awful lot of incredibly talented people working on an open source PaaS that anyone can use for internal or commercial purposes.
 
