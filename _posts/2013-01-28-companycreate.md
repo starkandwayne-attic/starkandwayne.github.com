@@ -22,19 +22,19 @@ theme:
 ---
 {% include JB/setup %}
 
-Welcome to [Stark & Wayne](http://starkandwayne.com), the new consultancy from [Dr Nic Williams](http://drniwilliams.com) for teams and companies using CloudFoundry to make their lives and their customers lives better. We work with teams and companies who want to become real-world superheroes.
+Welcome to [Stark & Wayne](http://starkandwayne.com), the new consultancy from [Dr Nic Williams](http://drniwilliams.com) for teams and companies using CloudFoundry to make their lives and their customers' lives better. We work with teams and companies who want to become real-world super heroes.
 
-If you've used Heroku for your pet projects, then we want to bring you CloudFoundry for your work projects. We also want to work with you on your projects. If you're workplace cares enough to use CloudFoundry instead of just an old fashioned internal IT organization then you qualify.
+If you've used Heroku for your pet projects, then we want to bring you CloudFoundry for your work projects. We also want to work with you on your projects. If your workplace cares enough to use CloudFoundry instead of just an old fashioned internal IT organization, then you qualify.
 
-If the world of corporate Platform-as-a-Service (PaaS), DevOps and agile development is exciting to you, then you are allowed to follow the [@StarkAndWayne](https://twitter.com/StarkAndWayne) twitter account. For free. I know, I know. I shouldn't. Hold me back.
+If the world of corporate Platform-as-a-Service (PaaS), DevOps and agile development is exciting to you, then you are allowed to follow the [@StarkAndWayne](https://twitter.com/StarkAndWayne) Twitter account -- for free! I know, I know... I shouldn't. Hold me back.
 
-Developers need tools to get the job done - to iterate fast on a new idea or to maintain and evolve production systems. You do a great job and you're a super hero. I've loved making tools over the last decade and I've loved talking about tools at conferences. It is now extremely exciting to create a new company for the creation, promotion and support of tools and support systems specifically for developers.
+Developers need tools to get the job done -- to iterate fast on a new idea or to maintain and evolve production systems. You do a great job and you're a super hero. I've loved making tools over the last decade and I've loved talking about tools at conferences. It is now extremely exciting to create a new company for the creation, promotion and support of tools and support systems specifically for developers.
 
-This company is called Stark & Wayne; named after the two most famous fictional tool creators - Tony Stark and Bruce Wayne. Every developer can be a super hero. You just need the right tools. Batmobile optional.
+This company is called Stark & Wayne, named after the two most famous fictional tool creators: Tony Stark and Bruce Wayne. Every developer can be a super hero. You just need the right tools. Batmobile optional.
 
 ## Who are the initial target customer and what will we do specifically?
 
-If your company is looking at running the open source CloudFoundry platform-as-a-service (PaaS), wants ongoing assistance running CloudFoundry and developers to work on your internal project teams, then you qualify as someone I'd love to work with. If you care enough about your team and your fellow developers to want to run an open source PaaS, then we will all get on famously.
+If your company is or is thinking about running the open source CloudFoundry platform-as-a-service (PaaS), wants ongoing assistance running CloudFoundry and developers to work on your internal project teams, then you qualify as someone I'd love to work with. If you care enough about your team and your fellow developers to want to run an open source PaaS, then we will all get on famously.
 
 ## Initial customers
 
@@ -46,7 +46,7 @@ The other is the newly created **Pivotal Initiative** - the new parent organizat
 
 ## Initial employees
 
-Today it is just Dr Nic, speaking here so eloquently in the 3rd person. Incredibly, already several people have already expressed delight in joining S&W. That made me very happy.
+Today it is just Dr Nic, speaking here so eloquently in the 3rd person. Incredibly, several people have already expressed delight in joining S&W. That made me very happy.
 
 It's great to be back running a company and having people wanting to join for the journey!
 
@@ -54,12 +54,12 @@ It's great to be back running a company and having people wanting to join for th
 
 When you can say "yes", or "oh god, I think so", then I'd love to chat with you and hear your story. Perhaps we can work together; or perhaps I can point you in the direction you need to go next. Email me at [drnic@starkandwayne.com](mailto:&#x64;&#x72;&#x6E;&#x69;&#x63;&#x40;&#x73;&#x74;&#x61;&#x72;&#x6B;&#x61;&#x6E;&#x64;&#x77;&#x61;&#x79;&#x6E;&#x65;&#x2E;&#x63;&#x6F;&#x6D;), tell me your interesting story and then let's have a chat on Skype.
 
-If you want a Heroku running inside your company then what you want is CloudFoundry. It's completely open source and can run inside your existing infrastructure and on your own Amazon AWS account.
+If you want a Heroku running inside your company ,then what you want is CloudFoundry. It's completely open source and can run inside your existing infrastructure and/or on your own Amazon AWS account.
 
-It might be open source yet its possibly one of the more complex systems you'll run within your company; and will take your team some time to get familiar with its operations and how to customize and upgrade it comfortably.
+It might be open source but it's possibly one of the more complex systems you'll run within your company, and will take your team some time to get familiar with its operations and how to customize and upgrade it comfortably. Don't worry -- we'll be there to help.
 
-You can be a customer if you want CloudFoundry for your internal team and want ongoing support and assistance. Once you get a small CloudFoundry deployment running, you'll never stop growing, upgrading, and extending it.
+You can be a customer if you want CloudFoundry for your internal team and want ongoing support and assistance. Once you get a small CloudFoundry deployment running, you'll never have to stop growing, upgrading, and extending it.
 
 You can also be a customer if you run an ISP or hosting company and want to share CloudFoundry with your customers. You'll then be able to offer Heroku-esque experience for small apps and your dedicated VMs or machines when their applications grow up.
 
-You can also be a customer if you're already running CloudFoundry and want to bring in engineers, front-end developers, management, and more, then I'd love to find a way to help. We're very excited for you, your devs and your ops people!
+You can also be a customer if you're already running CloudFoundry and want to bring in engineers, front-end developers, management, and more. I'd love to find a way to help. We're very excited for you, your devs and your ops people!
