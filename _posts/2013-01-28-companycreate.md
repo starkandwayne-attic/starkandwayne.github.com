@@ -40,19 +40,21 @@ If your company is looking at running the open source CloudFoundry platform-as-a
 
 Stark & Wayne already has two wonderful customers to work with. Ironically, I only wanted to share that Stark & Wayne existed when I knew it had an initial paying customer. But two is so much better!
 
-One customer is a 3000-person non-technology orientated company who has a very innovative engineering organization based out of New York.
+One customer is a 3000-person non-technology orientated company who has a very innovative engineering organization based out of New York. Scrum teams, daily deployments, continuous deployment via Jenkins. It's exciting stuff for a company who has no business being exciting in this area.
 
-The other is the newly created Pivotal Initiative - the new parent organization for CloudFoundry, taking over from VMWare at the end of 2012. In just one month some very exciting open source work has been completed. If you're on the CloudFoundry mailing lists you've seen a little bit of it. It's coming soon. CloudFoundry just got a lot simpler to get installed and running.
+The other is the newly created **Pivotal Initiative** - the new parent organization for CloudFoundry, taking over from VMWare at the end of 2012. In just one month some very exciting open source work has been completed. If you're on the CloudFoundry mailing lists you've seen a little bit of it. It's coming soon. CloudFoundry just got a lot simpler to get installed and running.
 
 ## Initial employees
 
-Today it is just Dr Nic, speaking here so eloquently in the 3rd person. Already before releasing this post I have two awesome people who've expressed delight in joining S&W. That made me very happy. It's great to be back running a company and having people wanting to join for the journey!
+Today it is just Dr Nic, speaking here so eloquently in the 3rd person. Incredibly, already several people have already expressed delight in joining S&W. That made me very happy.
+
+It's great to be back running a company and having people wanting to join for the journey!
 
 ## Can you become a customer?
 
-If you want a Heroku running inside your company, then you want CloudFoundry. It's also completely open source.
+If you want a Heroku running inside your company then what you want is CloudFoundry. It's completely open source and can run inside your existing infrastructure and on your own Amazon AWS account.
 
-Though its possibly one of the more complex systems you'll run within your company; and will take your team some time to get familiar with its operations and how to customize and upgrade it comfortably.
+It might be open source yet its possibly one of the more complex systems you'll run within your company; and will take your team some time to get familiar with its operations and how to customize and upgrade it comfortably.
 
 You can be a customer if you want CloudFoundry for your internal team and want ongoing support and assistance. Once you get a small CloudFoundry deployment running, you'll never stop growing, upgrading, and extending it.
 
