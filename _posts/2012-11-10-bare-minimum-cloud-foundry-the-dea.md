@@ -27,7 +27,23 @@ At the core of Cloud Foundry, or your own DIY PaaS, is a way to run arbitrary ap
 
 It's an agent that executes droplets. The Droplet Execution Agent. You're feeling educated already.
 
-If you skip to the bottom, there is a 2 minute tutorial where you get to run `foreman start` and skip all this reading.
+## Skip the tutorial, just run something quickly for me!
+
+You're busy. You want to see something shiny. Here, run this and you'll see the DEA running, and being told to run a Ruby/Sinatra application via a message bus:
+
+{% highlight bash %}
+cd /tmp
+git clone git://github.com/StarkAndWayne/deploying-to-a-cloudfoundry-dea.git
+cd deploying-to-a-cloudfoundry-dea
+rake bundle_install
+foreman start
+...
+22:58:31 deploy.1 | New app registered at: http://192.168.1.70:58607
+{% endhighlight %}
+
+You can now open that URL, such as `http://192.168.1.70:58607`, in your browser and see your running application.
+
+Now, if you'd like to learn more about what just happened, then let's get started!
 
 ## Preparation
 
@@ -81,7 +97,7 @@ logging:
 
 Running `dea` again whilst using this configuration file is a lot more successful!
 
-{% highlight %}
+{% highlight bash %}
 $ ./dea/bin/dea -c config/dea-laptop.yml
 Starting VCAP DEA (0.99)
 Pid file: /tmp/deploying-to-a-cloudfoundry-dea/var/run/dea.pid
@@ -398,20 +414,6 @@ Deploying an application to a DEA has a few simple requirements.
 * Publish NATS message `dea.DEA_UUID.start` to tell the application to deploy the application from its local cached/pre-staged version (or a remote tar)
 
 Its not as simple as perhaps it could be; but it is relatively understandable as to how the pieces fit together. You use NATS to find and communicate with a DEA. You tell it what tarball to use to unpack and run via a `startup` script. Pretty simple.
-
-## Skip the tutorial, just run something quickly for me!
-
-{% highlight bash %}
-cd /tmp
-git clone git://github.com/StarkAndWayne/deploying-to-a-cloudfoundry-dea.git
-cd deploying-to-a-cloudfoundry-dea
-rake bundle_install
-foreman start
-...
-22:58:31 deploy.1 | New app registered at: http://192.168.1.70:58607
-{% endhighlight %}
-
-You can now open that URL, such as `http://192.168.1.70:58607`, in your browser and see your running application.
 
 ## Next, staging any application for the DEA
 
