@@ -265,7 +265,7 @@ nats.request('dea.discover', JSON.stringify(message), function(response) {
 
 The output from both includes the response from our one DEA.
 
-{% highlight plain %}
+{% highlight text %}
 Got dea.discover response: {"id":"56a44db58ce330df22426c01b3c66b6c","ip":"192.168.1.70","port":null,"version":0.99}
 {% endhighlight %}
 
