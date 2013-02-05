@@ -11,7 +11,7 @@ sliders:
   image: /assets/images/cloudfoundry-235w.png
 slider_background: sky-horizon-sky
 published: true
-publish_date: "2013-02-04"
+publish_date: "2013-02-05"
 category: "articles"
 tags: [diy-paas, cloudfoundry]
 theme:
