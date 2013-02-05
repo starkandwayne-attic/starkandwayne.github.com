@@ -1,61 +1,64 @@
 ---
 layout: post
-title: "Bare minimum Cloud Foundry - the DEA & NATS"
-description: "Exploration of the bare minimum of Cloud Foundry, introducing the DEA and NATS"
+title: "DIY PaaS - running apps with a DEA"
+description: "Learn to create own PaaS by exploring the bare minimum of Cloud Foundry - introducing the DEA and NATS"
 icon: cloud # see http://wbpreview.com/previews/WB07233L7/icons.html
 author: "Dr Nic Williams"
 author_code: drnic
 sliders:
-- title: "Cloud Foundry"
+- title: "The DEA"
   text: "Exploration of the bare minimum of Cloud Foundry required to run it on your laptop"
   image: /assets/images/cloudfoundry-235w.png
 slider_background: sky-horizon-sky
-published: false
-publish_date: "2012-11-10"
+published: true
+publish_date: "2013-02-04"
 category: "articles"
-tags: []
+tags: [diy-paas, cloudfoundry]
 theme:
   name: smart-business-template
 ---
 {% include JB/setup %}
 
-There are many parts to Cloud Foundry when its running in production. But doesn't it just run apps? If I can run those apps on my laptop already, then how much work is it to run Cloud Foundry on my laptop and deploy apps to it, that run on my laptop. I mean, how hard could it be?
+Perhaps the best way to feel confident using Cloud Foundry is to know how it works. And perhaps the best way to learn how it works is to rebuilt it from the ground up. In the [DIY PaaS](/tags.html#diy-paas-ref) articles, we will re-build Cloud Foundry from the ground up piece-by-piece. This is article number 1!
 
-I thought this might be an interesting experiment in configuring Cloud Foundry so I could understand it better.
+Everything in this tutorial can be done on your local computer. The wonders of cloud computing are for another day. I already have Ruby 1.9.3 installed on my laptop and available in my `$PATH`.
 
-For this article I already have Ruby 1.9.3 & PostgreSQL 9.2 installed on my laptop and available in my `$PATH`.
-
-As I go along, I'll clone/submodule the repositories that I need and show the configuration files. The final product is available in a [git repository](https://github.com/StarkAndWayne/deploying-to-a-cloudfoundry-dea) as a demonstration of the minimium parts of Cloud Foundry required to deploy an application.
+As I go along, I'll clone/submodule the Cloud Foundry repositories that I need and show the bare minimum configuration files. The final product is available in a [git repository](https://github.com/StarkAndWayne/deploying-to-a-cloudfoundry-dea) as a demonstration of the minimum parts of Cloud Foundry required to run an application.
 
 ## The DEA
 
-If I know anything about Cloud Foundry its that applications are run via a DEA.
+If you should know anything about Cloud Foundry its that applications are run via a Droplet Execution Agent (DEA). This is a small process that runs on any server or hardware where you want to deploy applications.
+
+A DEA is like a next-generation process manager. You tell a DEA which application to run, it then fetches that application
+
+This tutorial is about configuring a DEA and telling it to run an application. If you can imagine the bigger picture
 
 NOTE, I am putting all folders within an initial self-contained folder so I can delete everything easily.
 
 {% highlight bash %}
-$ cd /path/to/somewhere # self-contained
-$ mkdir config          # for all configuration files to come
-$ mkdir -p var/dea      # for staging & running apps
-$ mkdir -p var/log      # for logs
-$ mkdir -p var/run      # for pid files
+$ mkdir -p /tmp/deploying-to-a-cloudfoundry-dea
+$ cd /tmp/deploying-to-a-cloudfoundry-dea
+$ mkdir config             # for all configuration files to come
+$ mkdir -p var/dea         # for staging & running apps
+$ mkdir -p var/log         # for logs
+$ mkdir -p var/run         # for pid files
 $ git clone git://github.com/cloudfoundry/dea.git
 $ cd dea
 $ bundle
-$ cd ..
+$ cd /tmp/deploying-to-a-cloudfoundry-dea
 $ ./dea/bin/dea
 Config file location not specified. Please run with --config argument or set CLOUD_FOUNDRY_CONFIG_PATH
 {% endhighlight %}
 
 Ahh, introduction to running Cloud Foundry lesson 1 - YAML configuration files. Lots of YAML configuration files.
 
-Ignore the out-of-date [example dea config file](https://github.com/cloudfoundry/dea/blob/master/config/example.yml), and look at the [dea.yml.erb](https://github.com/cloudfoundry/cf-release/blob/master/jobs/dea/templates/dea.yml.erb) from Cloud Foundry's own cf-release BOSH release. I used `config/dea-laptop.yaml` as below.
+Ignore the out-of-date [example dea config file](https://github.com/cloudfoundry/dea/blob/master/config/example.yml), and look at the [dea.yml.erb](https://github.com/cloudfoundry/cf-release/blob/master/jobs/dea/templates/dea.yml.erb) from Cloud Foundry's own cf-release BOSH release. I created [config/dea-laptop.yml](https://github.com/StarkAndWayne/deploying-to-a-cloudfoundry-dea/blob/master/config/dea-laptop.yml) as below.
 
 {% highlight yaml %}
 ---
 # Base directory where all applications are staged and hosted
-base_dir: /path/to/somewhere/var/dea
-pid: /path/to/somewhere/var/run/dea.pid
+base_dir: /tmp/deploying-to-a-cloudfoundry-dea/var/dea
+pid: /tmp/deploying-to-a-cloudfoundry-dea/var/run/dea.pid
 
 runtimes:
   - ruby19
@@ -72,29 +75,29 @@ logging:
 
 Running `dea` again whilst using this configuration file is a lot more successful!
 
-{% highlight bash %}
+{% highlight %}
 $ ./dea/bin/dea -c config/dea-laptop.yml
 Starting VCAP DEA (0.99)
-Pid file: /path/to/somewhere/var/run/dea.pid
+Pid file: /tmp/deploying-to-a-cloudfoundry-dea/var/run/dea.pid
 Using ruby @ /Users/drnic/.rvm/rubies/ruby-1.9.3-p286/bin/ruby
 Using network: 192.168.1.70
 Socket Limit:256
 Max Memory set to 4.0G
 Utilizing 1 cpu cores
 Restricting to single tenant
-Using directory: /path/to/somewhere/var/dea/
+Using directory: /tmp/deploying-to-a-cloudfoundry-dea/var/dea/
 Initial usage of droplet fs is: 0%
 File service started on port: 
 EXITING! NATS error: Could not connect to server on nats://localhost:4222
 {% endhighlight %}
 
-And we move on to the next piece of Cloud Foundry... NATS!
+And we move on to the next piece of Cloud Foundry, the messaging bus called NATS!
 
 ## NATS
 
-NATS is a simple pub-sub messaging system used by Cloud Foundry for communication between services. For example the DEA wouldn't even start unless it could find NATS.
+[NATS](https://github.com/derekcollison/nats) is a simple pub-sub messaging system used by Cloud Foundry for communication between services.
 
-By default, the DEA looks for a NATS server on http://localhost:4222. Coincidentally, when we run the nats-server (below) it starts up on port 4222.
+By default, the DEA looks for a NATS server on http://localhost:4222. Port 4222 is coincidently the default port that `nats-server` (see below) binds too. NATS is currently a rubygems, but let's fetch its source code via git into our project folder:
 
 {% highlight bash %}
 $ git clone git://github.com/derekcollison/nats.git
@@ -129,7 +132,7 @@ NATS.start do
 end
 {% endhighlight %}
 
-In a new terminal, run this script. In another terminal, kill the DEA and restart it (Ctrl+C to kill it). The following output appears in the `nats_all` terminal.
+In a new terminal, run this script. In the original terminal, kill the DEA and restart it (Ctrl+C to kill it). The following output appears in the `nats_all` terminal.
 
 {% highlight bash %}
 $ ruby bin/nats_all
@@ -158,18 +161,20 @@ $ curl http://USERNAME:PASSWORD@192.168.1.70:62556/varz
 {
   "type": "DEA",
   ...
+  "host": "192.168.1.77:51619",
+  "credentials": [
+    "a6d616c5403ee99a08ef2c38553bcaeb",
+    "4e32849cecb5c38f54e7e5e74d0ff5a7"
+  ],
+  "mem": 42744,
+  "cpu": 0.0,
+  "apps_max_memory": 1024,
+  "apps_reserved_memory": 0,
+  "apps_used_memory": 0,
+  "num_apps": 0,
   "running_apps": [
 
-  ],
-  "frameworks": {
-
-  },
-  "runtimes": {
-
-  },
-  "uptime": "0d:0h:0m:0s",
-  "mem": 69056,
-  "cpu": 96.4
+  ]
 }
 {% endhighlight %}
 
@@ -347,6 +352,36 @@ In this tutorial, I have pre-staged the Sinatra application and the `start_app` 
 
 The staged Sinatra application is at [apps/sinatra](https://github.com/StarkAndWayne/deploying-to-a-cloudfoundry-dea/tree/master/apps/sinatra) and includes the [startup script](https://github.com/StarkAndWayne/deploying-to-a-cloudfoundry-dea/blob/master/apps/sinatra/startup) that vcap-staging would have generated for a simple Sinatra application that doesn't use bundler.
 
+## DEA knows about its running an application
+
+If you now ask the DEA for its `varz` status again, it will tell you about the application that it is running, and the runtimes and frameworks that it is feeling confident about:
+
+{% highlight bash %}
+$ curl http://USERNAME:PASSWORD@192.168.1.70:62556/varz
+{
+  ...
+  "running_apps": [
+    {
+      "state": "RUNNING",
+      "runtime": "ruby19",
+      "framework": "sinatra",
+    }
+  ],
+  "frameworks": {
+    "sinatra": {
+      ...
+    }
+  },
+  "runtimes": {
+    "ruby19": {
+      ...
+    }
+  },
+  ...
+}
+{% endhighlight %}
+
+
 ## Summary
 
 Deploying an application to a DEA has a few simple requirements.
@@ -357,3 +392,11 @@ Deploying an application to a DEA has a few simple requirements.
 * Publish NATS message `dea.DEA_UUID.start` to tell the application to deploy the application from its local cached/pre-staged version (or a remote tar)
 
 Its not as simple as perhaps it could be; but it is relatively understandable as to how the pieces fit together. You use NATS to find and communicate with a DEA. You tell it what tarball to use to unpack and run via a `startup` script. Pretty simple.
+
+## Next, staging any application for the DEA
+
+In the next [DIY PaaS](/tags.html#diy-paas-ref) article, we will take the next logical step: what is a droplet and how did it get created?
+
+If you want to skip ahead, look in the [Cloud Foundry github account](https://github.com/cloudfoundry/) for the repositories related to the term "staging" or "stager".
+
+Follow [@starkandwayne](https://twitter.com/starkandwayne) for the release of the next article and other blog posts from the wonderful world Cloud Foundry.
