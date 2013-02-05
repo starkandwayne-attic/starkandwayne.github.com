@@ -27,6 +27,8 @@ At the core of Cloud Foundry, or your own DIY PaaS, is a way to run arbitrary ap
 
 It's an agent that executes droplets. The Droplet Execution Agent. You're feeling educated already.
 
+If you skip to the bottom, there is a 2 minute tutorial where you get to run `foreman start` and skip all this reading.
+
 ## Preparation
 
 Everything in this tutorial can be done on your local computer. The wonders of cloud computing are for another day. I already have Ruby 1.9.3 installed on my laptop and available in my `$PATH`.
@@ -400,6 +402,20 @@ Deploying an application to a DEA has a few simple requirements.
 * Publish NATS message `dea.DEA_UUID.start` to tell the application to deploy the application from its local cached/pre-staged version (or a remote tar)
 
 Its not as simple as perhaps it could be; but it is relatively understandable as to how the pieces fit together. You use NATS to find and communicate with a DEA. You tell it what tarball to use to unpack and run via a `startup` script. Pretty simple.
+
+## Skip the tutorial, just run something quickly for me!
+
+{% highlight bash %}
+cd /tmp
+git clone git://github.com/StarkAndWayne/deploying-to-a-cloudfoundry-dea.git
+cd deploying-to-a-cloudfoundry-dea
+rake bundle_install
+foreman start
+...
+22:58:31 deploy.1 | New app registered at: http://192.168.1.70:58607
+{% endhighlight %}
+
+You can now open that URL, such as `http://192.168.1.70:58607`, in your browser and see your running application.
 
 ## Next, staging any application for the DEA
 
