@@ -19,7 +19,15 @@ theme:
 ---
 {% include JB/setup %}
 
-Perhaps the best way to feel confident using Cloud Foundry is to know how it works. And perhaps the best way to learn how it works is to rebuilt it from the ground up. In the [DIY PaaS](/tags.html#diy-paas-ref) articles, we will re-build Cloud Foundry from the ground up piece-by-piece. This is article number 1!
+Perhaps the best way to feel confident using Cloud Foundry is to know how it works. And perhaps the best way to learn how it works is to rebuilt it from the ground up. In the [DIY PaaS](/tags.html#diy-paas-ref) articles, we will re-build Cloud Foundry from the ground up piece-by-piece. This is article number 1, and we're going to start with the good bit: running applications.
+
+## TL;DR
+
+At the core of Cloud Foundry, or your own DIY PaaS, is a way to run arbitrary applications - Ruby, Java, PHP. A great pattern is to run an agent process on every server being allocated to running these applications. In Cloud Foundry this agent is called the Droplet Execution Agent. More commonly known as the DEA.
+
+It's an agent that executes droplets. The Droplet Execution Agent. You're feeling educated already.
+
+## Preparation
 
 Everything in this tutorial can be done on your local computer. The wonders of cloud computing are for another day. I already have Ruby 1.9.3 installed on my laptop and available in my `$PATH`.
 
