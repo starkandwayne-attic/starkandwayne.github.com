@@ -39,11 +39,7 @@ As I go along, I'll clone/submodule the Cloud Foundry repositories that I need a
 
 If you should know anything about Cloud Foundry its that applications are run via a Droplet Execution Agent (DEA). This is a small process that runs on any server or hardware where you want to deploy applications.
 
-A DEA is like a next-generation process manager. You tell a DEA which application to run, it then fetches that application
-
-This tutorial is about configuring a DEA and telling it to run an application. If you can imagine the bigger picture
-
-NOTE, I am putting all folders within an initial self-contained folder so I can delete everything easily.
+A DEA is like a process manager with an API. You tell a DEA which application to run, it validates that its server is capable of running the application, it fetches that application, and it starts the application.
 
 {% highlight bash %}
 $ mkdir -p /tmp/deploying-to-a-cloudfoundry-dea
