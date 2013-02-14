@@ -35,6 +35,7 @@ You're busy. You want to see something shiny. Here, run this and you'll see the 
 cd /tmp
 git clone git://github.com/StarkAndWayne/deploying-to-a-cloudfoundry-dea.git
 cd deploying-to-a-cloudfoundry-dea
+git submodule update --init
 rake bundle_install
 foreman start
 ...
