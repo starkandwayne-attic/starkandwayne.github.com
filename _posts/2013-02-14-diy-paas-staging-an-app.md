@@ -36,7 +36,7 @@ You're busy. You want to see something shiny. Here, run this and you'll see a St
 
 {% highlight bash %}
 cd /tmp
-git clone https://github.com/StarkAndWayne/deploying-thru-cloudfoundry-stager-dea
+git clone https://github.com/StarkAndWayne/deploying-thru-cloudfoundry-stager-dea.git
 cd deploying-to-a-cloudfoundry-dea
 git submodule update --init
 rake bundle_install
@@ -49,12 +49,15 @@ You can now open that URL, such as `http://192.168.1.70:58607`, in your browser 
 
 Now, if you'd like to learn more about what just happened, then let's get started!
 
+## Preparation
 
-In this article I introduce the core piece of Cloud Foundry that knows the difference between a Ruby on Rails application and a Java Play application, and more importantly, how to prepare and run those applications. The Stager.
+Everything in this tutorial can be done on your local computer. The wonders of cloud computing are for another day. I already have Ruby 1.9.3 installed on my laptop and available in my `$PATH`.
 
-In the previous article in the "Bare Minimum Cloud Foundry" series, I introduced the truly barest minimum of Cloud Foundry to deploy applications - the Droplet Execution Agent (DEA) and the pub-sub message bus NATS.
+As I go along, I'll clone/submodule the Cloud Foundry repositories that I need and show the bare minimum configuration files. The final product is available in a [git repository](https://github.com/StarkAndWayne/deploying-to-a-cloudfoundry-dea) as a demonstration of the minimum parts of Cloud Foundry required to run an application.
 
-Each time you "add an instance" [(1)](#footer-add-instances) of a running application, the DEA takes a packaged version of an application, unpacks it, and runs a single `startup` script. The DEA knows nothing about Ruby or Java or PHP; it only knows about the `startup` script within the package. How does the package get created?
+## Feeding the DEA
+
+Each time you "add an instance" [(1)](#footer-add-instances) of a running application, the DEA takes a packaged version of an application (a droplet), unpacks it, and runs a single `startup` script. The DEA knows nothing about Ruby or Java or PHP; it only knows about the `startup` script within the package. How does the package get created?
 
 The package that includes an executable `startup` script and the original application is known to the DEA as a "droplet". It is created during a staging step. It is the staging step that knows about Ruby and Java and PHP applications and how to run them. This article investigates how Cloud Foundry stages an application and creates the package for DEAs.
 
