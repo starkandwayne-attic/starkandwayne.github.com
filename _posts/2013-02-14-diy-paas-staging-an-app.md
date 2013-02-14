@@ -13,7 +13,7 @@ sliders:
   text: "Cloud Foundry takes your application and 'stages' it before distributing to DEAs for deployment. Let's look at what is going on."
   image: /assets/images/cloudfoundry-235w.png
 slider_background: sky-horizon
-published: false
+published: true
 publish_date: "2013-02-14"
 category: "articles"
 tags: [diy-paas, cloudfoundry]
