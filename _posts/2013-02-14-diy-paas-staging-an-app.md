@@ -1,26 +1,54 @@
 ---
 layout: post
-title: "Bare minimum Cloud Foundry - Staging an app"
-description: "In this article I introduce the core piece of Cloud Foundry that knows the difference between a Ruby on Rails application and a Java Play application, and more importantly, how to prepare and run those applications. The Stager."
+title: "DIY PaaS - staging an app"
+description: "In this article I introduce the core piece of Cloud Foundry that knows the difference between a Ruby on Rails application and a Java Play application, and more importantly, how to prepare and run those applications: The Stager."
 icon: cloud # see http://wbpreview.com/previews/WB07233L7/icons.html
 author: "Dr Nic Williams"
 author_code: drnic
 sliders:
-- title: "How app staging works"
-  text: "Cloud Foundry takes your application and 'stages' it before distributing to DEAs for deployment. Let's look at what is going on."
+- title: "The Stager"
+  text: "Exploration of the bare minimum of Cloud Foundry required to run it on your laptop"
   image: /assets/images/cloudfoundry-235w.png
-- title: "Inside look at staging"
+- title: "Staging apps"
   text: "Cloud Foundry takes your application and 'stages' it before distributing to DEAs for deployment. Let's look at what is going on."
   image: /assets/images/cloudfoundry-235w.png
 slider_background: sky-horizon
 published: false
-publish_date: "2012-11-13"
+publish_date: "2013-02-14"
 category: "articles"
-tags: [cloudfoundry]
+tags: [diy-paas, cloudfoundry]
 theme:
   name: smart-business-template
 ---
 {% include JB/setup %}
+
+Perhaps the best way to feel confident using Cloud Foundry is to know how it works. And perhaps the best way to learn how it works is to rebuilt it from the ground up. In the [DIY PaaS](/tags.html#diy-paas-ref) articles, we will re-build Cloud Foundry from the ground up piece-by-piece. This is article number 2, and we're going to take a specific application, stage it into a generic droplet, and run it.
+
+## TL;DR
+
+At the core of Cloud Foundry, or your own DIY PaaS, is a way to run arbitrary applications - Ruby, Java, PHP. The DEA, which actually runs applications, doesn't know anything about types of applications. Something else needs to create the droplets for the DEAs which know about Ruby language and about Ruby on Rails framework, for example.
+
+It's a stager that creates droplets.
+
+## Skip the tutorial, just run something quickly for me!
+
+You're busy. You want to see something shiny. Here, run this and you'll see a Stager and a DEA running, and being told to stage and then run a Ruby/Sinatra application via a message bus:
+
+{% highlight bash %}
+cd /tmp
+git clone https://github.com/StarkAndWayne/deploying-thru-cloudfoundry-stager-dea
+cd deploying-to-a-cloudfoundry-dea
+git submodule update --init
+rake bundle_install
+foreman start
+...
+22:58:31 deploy.1 | New app registered at: http://192.168.1.70:58607
+{% endhighlight %}
+
+You can now open that URL, such as `http://192.168.1.70:58607`, in your browser and see your running application.
+
+Now, if you'd like to learn more about what just happened, then let's get started!
+
 
 In this article I introduce the core piece of Cloud Foundry that knows the difference between a Ruby on Rails application and a Java Play application, and more importantly, how to prepare and run those applications. The Stager.
 
