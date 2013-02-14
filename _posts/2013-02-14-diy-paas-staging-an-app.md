@@ -36,8 +36,8 @@ You're busy. You want to see something shiny. Here, run this and you'll see a St
 
 {% highlight bash %}
 cd /tmp
-git clone https://github.com/StarkAndWayne/deploying-thru-cloudfoundry-stager-dea.git
-cd deploying-to-a-cloudfoundry-dea
+git clone https://github.com/StarkAndWayne/staging-apps-in-cloudfoundry.git
+cd staging-apps-in-cloudfoundry
 git submodule update --init
 rake bundle_install
 foreman start
@@ -55,7 +55,7 @@ Everything in this tutorial can be done on your local computer. The wonders of c
 
 As I go along, I'll clone/submodule the Cloud Foundry repositories that I need and show the bare minimum configuration files. The final product is available in a [git repository](https://github.com/StarkAndWayne/deploying-to-a-cloudfoundry-dea) as a demonstration of the minimum parts of Cloud Foundry required to run an application.
 
-## Feeding the DEA
+## Feeding the DEA with droplets
 
 Each time you "add an instance" [(1)](#footer-add-instances) of a running application, the DEA takes a packaged version of an application (a droplet), unpacks it, and runs a single `startup` script. The DEA knows nothing about Ruby or Java or PHP; it only knows about the `startup` script within the package. How does the package get created?
 
@@ -69,11 +69,9 @@ The stager is nicely isolated from the rest of Cloud Foundry. Its only external 
 
 As I go along, I'll reference the projects/repositories that I need and show configuration files and helper scripts.
 
-The final product is available in a [git repository](https://github.com/StarkAndWayne/staging-apps-in-cloudfoundry) as a demonstration of the minimium parts of Cloud Foundry required to deploy an application via staging.
+## Creating a droplet
 
-## Staging an application
-
-The staging code is in [vcap-staging](https://github.com/cloudfoundry/vcap-staging)
+The heart of the staging code is in [vcap-staging](https://github.com/cloudfoundry/vcap-staging)
 
 The goal of `vcap-staging` is to create a new folder structure that contains:
 
@@ -345,10 +343,13 @@ The stager has two main code bases:
 * [stager](https://github.com/cloudfoundry/stager) - staging as a service, aka `vcap-stager` rubygem
 * [vcap-staging](https://github.com/cloudfoundry/vcap-staging) - framework plugins for how to stage an application
 
+## Next, combining the stager and the DEA
+
+In the next [DIY PaaS](/tags.html#diy-paas-ref) article, we will take the next logical step: create a droplet and make a DEA download it and run it
+
+Follow [@starkandwayne](https://twitter.com/starkandwayne) for the release of the next article and other blog posts from the wonderful world Cloud Foundry.
 
 ## Footnotes
 
 <p id="footer-add-instances">(1) I don't agree with this terminology in Cloud Foundry. When you add "instances" to a running application, you are actually adding running processes. If you've used Heroku, this is akin to adding dynos. To me, "instances" means virtual machines or servers. In Cloud Foundry, it means "processes of your app". In future Cloud Foundry, it will be a Linux container running an application process.</p>
-
-<p id="osx-support">(2) If you run the stager on OS/X then you'll need <a href="http://reviews.cloudfoundry.org/11414">this patch</a> to the stager source code. The patch stops using the -u flag on `env` command which isn't available on OS/X.</p>
 
