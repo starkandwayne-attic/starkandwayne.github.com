@@ -39,13 +39,23 @@ cd /tmp
 git clone https://github.com/StarkAndWayne/staging-apps-in-cloudfoundry.git
 cd staging-apps-in-cloudfoundry
 git submodule update --init
-rake bundle_install
+./bin/bundle
 foreman start
-...
-22:58:31 deploy.1 | New app registered at: http://192.168.1.70:58607
-{% endhighlight %}
 
-You can now open that URL, such as `http://192.168.1.70:58607`, in your browser and see your running application.
+# in another terminal
+bin/request_stager_to_stage_app
+...
+[2013-02-14 11:25:28] Setting up temporary directories
+[2013-02-14 11:25:28] Downloading application
+[2013-02-14 11:25:28] Unpacking application
+[2013-02-14 11:25:28] Staging application
+[2013-02-14 11:25:29] # Logfile created on 2013-02-14 11:25:29 -0800 by logger.rb/31641
+[2013-02-14 11:25:29] Auto-reconfiguration disabled because app does not use Bundler.
+[2013-02-14 11:25:29] Please provide a Gemfile.lock to use auto-reconfiguration.
+[2013-02-14 11:25:29] Creating droplet
+[2013-02-14 11:25:29] Uploading droplet
+[2013-02-14 11:25:31] Done!
+{% endhighlight %}
 
 Now, if you'd like to learn more about what just happened, then let's get started!
 
@@ -82,7 +92,7 @@ The goal of `vcap-staging` is to create a new folder structure that contains:
 
 To stage a specific application framework you choose a `StagingPlugin` subclass, initialize it and invoke `#stage_application`.
 
-For example, I can stage an example sinatra application (in [apps/sinatra](https://github.com/StarkAndWayne/deploying-to-a-cloudfoundry-dea/tree/master/apps/sinatra))
+For example, I can stage an example sinatra application (in [apps/sinatra](https://github.com/StarkAndWayne/staging-apps-in-cloudfoundry/tree/master/apps/sinatra))
 
 {% highlight ruby %}
 staging_plugin_class = StagingPlugin.load_plugin_for("sinatra")
@@ -221,23 +231,25 @@ post   'staging/droplet/:id/:upload_id' => 'staging#upload_droplet', :as => :upl
 get    'staging/app/:id'                => 'staging#download_app',   :as => :download_unstaged_app
 {% endhighlight %}
 
-So, for our little isolation test of the stager we need a [simple HTTP server](https://github.com/StarkAndWayne/staging-apps-in-cloudfoundry/blob/master/apps/staging_client_service/app.rb).
+So, for our little isolation test of the stager we need a [simple HTTP server](https://github.com/StarkAndWayne/staging-apps-in-cloudfoundry/blob/master/apps/staging_client_service/app.rb) to pretend to be the Cloud Controller.
 
 {% highlight ruby %}
 # apps/staging_client_service/app.rb
 require 'sinatra'
 
 get '/download_unstaged_app/:id' do
+  puts "UNSTAGED APP BEING REQUESTED"
   p params
   unstaged_app_tgz = File.expand_path("../../sinatra-app.zip", __FILE__)
   send_file(unstaged_app_tgz)
 end
 
 post '/upload_droplet/:id/:upload_id' do
+  puts "RECEIVING DROPLET"
   p params
   src_path = params[:upload][:droplet][:tempfile]
   droplet = params[:upload][:droplet][:tempfile].read
-  puts "stager uploaded staged droplet #{src_path}"
+  puts "RECEIVED DROPLET: stager uploaded staged droplet #{src_path}"
 end
 {% endhighlight %}
 
