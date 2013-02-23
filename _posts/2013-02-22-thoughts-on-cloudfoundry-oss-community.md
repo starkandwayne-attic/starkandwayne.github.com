@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Thoughts on Cloud Foundry's OSS Community"
-description: "Interesting changes in Cloud Foundry mailing list activity in 2013" # Used in /articles.html listing
+description: "Interesting changes in Cloud Foundry mailing list activity in January 2013 and what's behind them" # Used in /articles.html listing
 icon: group # see http://wbpreview.com/previews/WB07233L7/icons.html
 author: "Dr Nic Williams"
 author_code: drnic
