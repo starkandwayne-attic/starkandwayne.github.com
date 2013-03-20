@@ -49,6 +49,8 @@ Thank you very much to everyone who has been using and helping fix and extending
 
 Thank you also to the Pivotal Initiative who has funded this work for the last 3+ months! Very wonderful new stewards of all things Cloud Foundry indeed!
 
+Thank you to LinkedIn for hosting the meetup and for recording and post-producing a great video.
+
 But now, please enjoy the 1h talk (which actually took 1h 40mins) presented at LinkedIn for the Silicon Valley Ruby Club. We all had a great time and it was great to share it publicly for the first time!
 
 <iframe width="560" height="315" src="http://www.youtube.com/embed/e0EprkBamvQ" frameborder="0" allowfullscreen="1"></iframe>
