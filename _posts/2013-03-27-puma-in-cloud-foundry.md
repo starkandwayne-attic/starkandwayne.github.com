@@ -26,7 +26,7 @@ Summary of steps:
 * turn on threadsafe mode
 * add puma gem to Gemfile & install gems
 * update script/rails to change default to Puma
-* push to Cloud Fooundry
+* push to Cloud Foundry
 * check logs to confirm that it is using Puma!
 
 ## Preparation
