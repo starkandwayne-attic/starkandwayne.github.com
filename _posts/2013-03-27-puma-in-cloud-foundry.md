@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Puma in Cloud Foundry"
+title: "Did you know you can use Puma in Cloud Foundry?"
 description: "Puma is a great web server for Ruby/Rails applications and you can use it with Cloud Foundry today" # Used in /articles.html listing
 icon: signal # see http://wbpreview.com/previews/WB07233L7/icons.html
 author: "Dr Nic Williams"
