@@ -34,7 +34,7 @@ Run the following and you'll have a new Rails app running on Cloud Foundry with 
 
 {% highlight bash %}
 $ gem install appscrolls
-$ appscrolls new mysidekiqapp -s puma cf postgresql rails_basics redis sidekiq git
+$ appscrolls new myapp -s puma cf postgresql rails_basics redis sidekiq git
 {% endhighlight %}
 
 The only prerequisites:
@@ -47,15 +47,15 @@ At the end, you'll see two new applications/processes running on your Cloud Foun
 
 {% highlight bash %}
 $ vmc apps
-+---------------------+----+---------+------------------------+---------------------------------------------+
-| Application         | #  | Health  | URLS                   | Services                                    |
-+---------------------+----+---------+------------------------+---------------------------------------------+
-| mysidekiqapp        | 1  | RUNNING | mysidekiqapp.drnic.dev | mysidekiqapp-postgresql, mysidekiqapp-redis |
-| mysidekiqapp-worker | 1  | RUNNING |                        | mysidekiqapp-postgresql, mysidekiqapp-redis |
-+---------------------+----+---------+------------------------+---------------------------------------------+
++--------------+----+---------+-----------------+-------------------------------+
+| Application  |    | Health  | URLS            | Services                      |
++---------------------+----+---------+------------------------+-----------------+
+| myapp        | 1  | RUNNING | myapp.drnic.dev | myapp-postgresql, myapp-redis |
+| myapp-worker | 1  | RUNNING |                 | myapp-postgresql, myapp-redis |
++--------------+----+---------+-----------------+-------------------------------+
 {% endhighlight %}
 
-The application is now running at http://mysidekiqapp.drnic.dev and the Sidekiq dashboard is running at http://mysidekiqapp.drnic.dev/sidekiq/SECRET (for whatever you entered for the secret).
+The application is now running at http://myapp.drnic.dev and the Sidekiq dashboard is running at http://myapp.drnic.dev/sidekiq/SECRET (for whatever you entered for the secret).
 
 Want to learn more about what just happened? Read onwards!
 
