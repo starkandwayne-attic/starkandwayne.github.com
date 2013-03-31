@@ -13,7 +13,7 @@ sliders:
 slider_background: parchment
 publish_date: "2013-03-27"
 category: "articles"
-tags: [cloudfoundry, puma]
+tags: [cloudfoundry, puma, rails]
 theme:
   name: smart-business-template
 ---

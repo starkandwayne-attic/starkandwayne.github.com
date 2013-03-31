@@ -18,7 +18,7 @@ sliders:
 slider_background: parchment
 published: false
 publish_date: 2013-04-02
-tags: [cloudfoundry, appscrolls, puma]
+tags: [cloudfoundry, appscrolls, puma, rails]
 theme:
   name: smart-business-template
 ---
