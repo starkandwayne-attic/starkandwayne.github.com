@@ -121,9 +121,9 @@ Finally, to configure Sidekiq I add the following `config/initializers/sidekiq.r
 
 {% highlight ruby %}
 if $redis_config[:password]
-  redis_url = "redis://:#{$redis_config[:password]}@#{$redis_config[:host]}:#{$redis_config[:port]}/sidekiq"
+  redis_url = "redis://:#{$redis_config[:password]}@#{$redis_config[:host]}:#{$redis_config[:port]}/0"
 else
-  redis_url = "redis://#{$redis_config[:host]}:#{$redis_config[:port]}/sidekiq"
+  redis_url = "redis://#{$redis_config[:host]}:#{$redis_config[:port]}/0"
 end
 Sidekiq.redis = { url: redis_url, namespace: 'sidekiq' }
 {% endhighlight %}
