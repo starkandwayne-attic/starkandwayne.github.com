@@ -34,28 +34,28 @@ Run the following and you'll have a new Rails app running on Cloud Foundry with 
 
 {% highlight bash %}
 $ gem install appscrolls
-$ appscrolls new myapp -s puma cf postgresql rails_basics redis sidekiq git
+$ appscrolls new skiq -s puma cf postgresql rails_basics redis sidekiq git
 {% endhighlight %}
 
 The only prerequisites:
 
 * you have postgresql and redis running locally
-* you have a Cloud Foundry account somewhere
+* you have a Cloud Foundry account somewhere, for example http://cloudfoundry.com
 * your `vmc` app is already logged in to that Cloud Foundry account
 
 At the end, you'll see two new applications/processes running on your Cloud Foundry:
 
 {% highlight bash %}
 $ vmc apps
-+--------------+----+---------+-----------------+-------------------------------+
-| Application  |    | Health  | URLS            | Services                      |
-+---------------------+----+---------+------------------------+-----------------+
-| myapp        | 1  | RUNNING | myapp.drnic.dev | myapp-postgresql, myapp-redis |
-| myapp-worker | 1  | RUNNING |                 | myapp-postgresql, myapp-redis |
-+--------------+----+---------+-----------------+-------------------------------+
++-------------+----+---------+-----------------------+-----------------------------+
+| Application |    | Health  | URLS                  | Services                    |
++-------------+----+---------+-----------------------+-----------------------------+
+| skiq        | 1  | RUNNING | skiq.cloudfoundry.com | skiq-redis, skiq-postgresql |
+| skiq-worker | 1  | RUNNING |                       | skiq-redis, skiq-postgresql |
++-------------+----+---------+-----------------------+-----------------------------+
 {% endhighlight %}
 
-The application is now running at http://myapp.drnic.dev and the Sidekiq dashboard is running at http://myapp.drnic.dev/sidekiq/SECRET (for whatever you entered for the secret).
+The application is now running at [http://skiq.cloudfoundry.com](http://skiq.cloudfoundry.com) and the Sidekiq dashboard is running at [http://skiq.cloudfoundry.com/sidekiq/SECRET](http://skiq.cloudfoundry.com/sidekiq/) (for whatever you entered for the secret).
 
 Want to learn more about what just happened? Read onwards!
 
