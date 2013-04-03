@@ -12,9 +12,6 @@ sliders:
 - title: AppScrolls &amp; Cloud Foundry
   text: AppScrolls can now create applications that are automatically deployed to any Cloud Foundry target.
   image: /assets/images/cloudfoundry-235w.png
-- title: AppScrolls &amp; Puma
-  text: Choose the great Puma server from day 1 with AppScrolls
-  image: /assets/images/puma-235w.png
 slider_background: parchment
 publish_date: 2013-04-03
 tags: [cloudfoundry, appscrolls, puma, rails]
