@@ -16,8 +16,7 @@ sliders:
   text: Choose the great Puma server from day 1 with AppScrolls
   image: /assets/images/puma-235w.png
 slider_background: parchment
-published: false
-publish_date: 2013-04-02
+publish_date: 2013-04-03
 tags: [cloudfoundry, appscrolls, puma, rails]
 theme:
   name: smart-business-template
