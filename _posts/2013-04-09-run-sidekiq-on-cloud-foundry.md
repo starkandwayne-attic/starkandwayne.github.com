@@ -14,8 +14,8 @@ sliders:
   text: Use AppScrolls to include Sidekiq on your next Rails app
   image: /assets/images/sidekiq-235w.png
 slider_background: parchment
-published: false
-publish_date: "2013-04-05"
+published: true
+publish_date: "2013-04-09"
 category: "articles"
 tags: [cloudfoundry, appscrolls, sidekiq, rails]
 theme:
