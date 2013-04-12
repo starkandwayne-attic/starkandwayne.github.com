@@ -91,7 +91,7 @@ Job parameters are a very handy concept. Perhaps you've only ever used Jenkins o
 
 For example, we have a job named similar to "Deploy XYZ App". It has the git repo hardcoded in the job like a normal build, but when you press "Build", it shows a list of options: string fields, drop-down lists, etc.
 
-When the job runs, you can uses these values anywhere within your job's configuration. Its very cool.
+When the job runs, you can use these values anywhere within your job's configuration. Its very cool.
 
 But how to pass those same parameters via the CLI? You use the `-p key=value` flag for each parameter you want to pass.
 
