@@ -57,7 +57,7 @@ $ java -jar jenkins-cli.jar -s http://myjenkins help --username me --password my
 $ java -jar jenkins-cli.jar -s http://myjenkins help -i ~/.ssh/id_rsa
 {% endhighlight %}
 
-Sadly, the Jenkins CLI doesn't remember these flags and you have to pass them ever single time.
+Sadly, the Jenkins CLI doesn't remember these flags and you have to pass them every single time.
 
 I'm not a security expert, but the former option is the weaker security option. The `mypassword` value will be stored in your shell history and possibly also exposed over network traffic (since the example `http://myjenkins` uses the non-encrypted http protocol).
 
