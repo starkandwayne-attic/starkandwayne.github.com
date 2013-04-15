@@ -10,10 +10,10 @@ sliders:
 - title: "Testing Jenkins jobs"
   text: Is it possible to use Jenkins to actually test other Jenkins jobs?
   image: /assets/images/jenkins-256w.png
-slider_background: ny # or parchment,abyss,sky-horizon-sky from /assets/sliders
+slider_background: sky-horizon-sky # or parchment,abyss,sky-horizon-sky from /assets/sliders
 publish_date: "2013-04-12"
 category: "articles"
-published: false
+published: true
 tags: [jenkins]
 theme:
   name: smart-business-template
