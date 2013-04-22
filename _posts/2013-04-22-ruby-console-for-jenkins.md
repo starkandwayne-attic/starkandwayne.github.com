@@ -59,4 +59,6 @@ To see how many items (Projects, etc) you have, you can invoke the `getItems` me
 
 `Java.hudson.model.FreeStyleProject` maps to the [hudson.model.FreeStyleProject](https://github.com/jenkinsci/jenkins/blob/master/core/src/main/java/hudson/model/FreeStyleProject.java) class.
 
+The parameterized `Hudson#getItems(javaClass)` actually maps to the [Jenkins class's method](https://github.com/jenkinsci/jenkins/blob/master/core/src/main/java/jenkins/model/Jenkins.java#L1374-L1383).
+
 There is a lot more to discover but at least you now know how to get into a running Jenkins server and explore the object model!
