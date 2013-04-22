@@ -62,3 +62,9 @@ To see how many items (Projects, etc) you have, you can invoke the `getItems` me
 The parameterized `Hudson#getItems(javaClass)` actually maps to the [Jenkins class's method](https://github.com/jenkinsci/jenkins/blob/master/core/src/main/java/jenkins/model/Jenkins.java#L1374-L1383).
 
 There is a lot more to discover but at least you now know how to get into a running Jenkins server and explore the object model!
+
+## Full Pry console
+
+The local Ruby console is a fully-enabled [Pry console](http://pryrepl.org/ "Pry - an IRB alternative and runtime developer console").
+
+Please checkout the Pry website for how you can use and extend Pry!
