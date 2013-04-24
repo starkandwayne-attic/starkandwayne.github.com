@@ -10,7 +10,7 @@ sliders:
 - title: "Welcome and thanks Pivotal"
   text: Stark & Wayne is very excited for the announcement today of Pivotal, the steward of Cloud Foundry
   image: /assets/images/cloudfoundry-235w.png
-slider_background: ny # or parchment,abyss,sky-horizon-sky from /assets/sliders
+slider_background: sky-horizon-sky # or parchment,abyss,sky-horizon-sky from /assets/sliders
 publish_date: "2013-04-24"
 category: "articles"
 tags: [cloudfoundry]
