@@ -24,7 +24,7 @@ How huge? I jammed as much as I know into a 20 minute TDD demo to create a chef 
 
 Watch the video and please let me know in the comments if you'll be switching to test-kitchen?
 
-
+<object width="560" height="315"><param name="movie" value="http://www.youtube.com/v/0sPuAb6nB2o?hl=en_US&amp;version=3"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><param name="hd" value="1"></param><embed src="http://www.youtube.com/v/0sPuAb6nB2o?hl=en_US&amp;version=3" type="application/x-shockwave-flash" width="560" height="315" allowscriptaccess="always" allowfullscreen="true" hd="1"></embed></object>
 
 The power of DevOps is bringing developers, agile processes, TDD and continuous delivery all the way down the stack. A devops developer needs to confidently write tests against their ops automation, to iterate on it, and to feel confident that when all the tests pass that the code can ship off to production.
 
