@@ -8,7 +8,7 @@ author_code: drnic
 sliders:
 - title: "test-kitchen 1.0"
   text: Screencast showing the powerful rapid devops toolchain using test-kitchen 1.0, berkshelf and vagrant
-  image: /assets/images/cloudfoundry-235w.png
+  image: /assets/images/doritos_3rd_degree_burn-235w.png
 slider_background: parchment # or parchment,abyss,sky-horizon-sky from /assets/sliders
 publish_date: "2013-05-07"
 category: "articles"
@@ -32,5 +32,6 @@ When it comes to testing code that modifies production systems you really want t
 
 And as developers, we want the ability to run these integration tests to fit into our existing workflow. That means it must all work locally from the terminal and work fast. We want to run the tests over and over. Slow tests are tests that developers won't run.
 
+Test-kitchen 1.0 & Vagrant are a great start to 2013 for rapid devops.
 
-* [^agnostic]: I haven't seen that feature in action yet
+[^agnostic]: I haven't seen that feature in action yet
