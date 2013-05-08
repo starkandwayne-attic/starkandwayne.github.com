@@ -53,6 +53,7 @@ cd hub
 knife cookbook site share hub Utilities -o ..
 {% endhighlight %}
 
-That probably needs to go in a rake task `rake release`. Might go do that now.
+That probably needs to go in a rake task `rake share`. Might go do that now[^rakeshare].
 
 [^agnostic]: I haven't seen that feature in action yet
+[^rakeshare]: Here is [rake share](https://github.com/drnic/chef-hub/blob/master/Rakefile#L13-L29)
