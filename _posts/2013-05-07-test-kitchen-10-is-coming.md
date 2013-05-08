@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "test-kitchen 1.0"
+title: "test-kitchen 1.0 is coming"
 description: "Screencast showing the powerful rapid devops toolchain using test-kitchen 1.0, berkshelf and vagrant" # Used in /articles.html listing
 icon: cutlery # see http://wbpreview.com/previews/WB07233L7/icons.html
 author: "Dr Nic Williams"
@@ -18,7 +18,7 @@ theme:
 ---
 {% include JB/setup %}
 
-There is something wonderful coming to devops-land called test-kitchen [1.0](https://github.com/opscode/test-kitchen/tree/1.0#test-kitchen). Its a complete rewrite of old test-kitchen by Fletcher Nichol. Its supposedly agnostic to chef [1]; yet for chef cookbook development it is going to be huge when you combine it with berkshelf (bundler for cookbooks) and vagrant (friendly local VMs for developers).
+There is something wonderful coming to devops-land called test-kitchen [1.0](https://github.com/opscode/test-kitchen/tree/1.0#test-kitchen). Its a complete rewrite of old test-kitchen by Fletcher Nichol. Its supposedly agnostic to chef[^agnostic]; yet for chef cookbook development it is going to be huge when you combine it with berkshelf (bundler for cookbooks) and vagrant (friendly local VMs for developers).
 
 How huge? I jammed as much as I know into a 20 minute TDD demo to create a chef cookbook for the [hub](https://github.com/defunkt/hub) project. The resulting repo was called [chef-hub](https://github.com/drnic/chef-hub).
 
@@ -33,4 +33,4 @@ When it comes to testing code that modifies production systems you really want t
 And as developers, we want the ability to run these integration tests to fit into our existing workflow. That means it must all work locally from the terminal and work fast. We want to run the tests over and over. Slow tests are tests that developers won't run.
 
 
-* [1] I haven't seen that feature in action yet
+* [^agnostic]: I haven't seen that feature in action yet
