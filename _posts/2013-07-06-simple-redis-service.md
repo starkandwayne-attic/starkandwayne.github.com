@@ -79,3 +79,7 @@ In future, the list of instance sizes and what they map to in your infrastructur
 * there is no `cf update-service` yet, although you can modify the generated deployment file and run `bosh deploy`
 * it only includes aws & openstack - to add support for vsphere please add templates into redis-boshrelease first
 * no way yet to customize the list of available instance sizes
+
+## Credits
+
+The idea of using ERb templates to generate the large bosh deployment files, and the idea of managing the experience from the `cf` command line come from the [bootstrap-cf-plugin](https://github.com/cloudfoundry/bootstrap-cf-plugin).
