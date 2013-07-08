@@ -32,7 +32,7 @@ $ gem install bosh_cli_plugin_redis
 $ bosh prepare redis
 $ bosh create redis
 $ bosh show redis uri
-redis://:c1da049a75b3@0.redis.default.demoredis.microbosh:6379/0
+redis://:c1da049a75b3@0.redis.default.redis-123.microbosh:6379/0
 $ cf set-env myapp REDIS_URI redis://:c1da049a75b3@0.redis.default.redis-123.microbosh:6379/0
 
 $ cf unset-env myapp REDIS_URI
