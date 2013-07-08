@@ -13,7 +13,7 @@ sliders:
   text: Easy to bind redis service to your Cloud Foundry apps
   image: /assets/images/cloudfoundry-235w.png
 slider_background: ny # or parchment,abyss,sky-horizon-sky from /assets/sliders
-publish_date: "2013-07-06"
+publish_date: "2013-07-08"
 category: "articles"
 tags: [cloudfoundry, redis, bosh]
 theme:
