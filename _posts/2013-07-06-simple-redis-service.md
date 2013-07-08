@@ -14,7 +14,6 @@ sliders:
   image: /assets/images/cloudfoundry-235w.png
 slider_background: ny # or parchment,abyss,sky-horizon-sky from /assets/sliders
 publish_date: "2013-07-06"
-published: false
 category: "articles"
 tags: [cloudfoundry, redis, bosh]
 theme:
