@@ -21,11 +21,7 @@ theme:
 ---
 {% include JB/setup %}
 
-Let's keep Cloud Foundry services simple. If you want a service then you let's get it by running in a dedicate server/instance. Use small virtual machines for small requirements and big virtual machines with big network IOPS for large requirements.
-
-This is clean to implement. It is simple to administrate. It makes it easy to upgrade each service independently of all the others.
-
-The initial implementation is for Redis. A simple plugin to the Cloud Foundry CLI `cf` that talks to bosh to create and delete servers that are running redis.
+I need a simple way to create and delete (and ultimate upgrade) dedicate services - redis, postgresql, etc. In this post I introduce a simple CLI for creating a Redis server, getting the URI for the service, binding it to your Cloud Foundry app, and later deleting it.
 
 Here is an example scenario for installing the plugin, login to bosh (ask your sysadmin for credentials), uploading the redis release to bosh, and then creating and deleting as many redis servers as you and your team need.
 
