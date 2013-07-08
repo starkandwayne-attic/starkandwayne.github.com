@@ -1,16 +1,16 @@
 ---
 layout: post
-title: "Simple redis service for Cloud Foundry built on bosh"
-description: "Cloud Foundry CLI plugin for creating & binding Redis to your apps using bosh" # Used in /articles.html listing
+title: "Simple redis service built on bosh"
+description: "Create & delete Redis services using bosh" # Used in /articles.html listing
 icon: cloud # see http://wbpreview.com/previews/WB07233L7/icons.html
 author: "Dr Nic Williams"
 author_code: drnic
 sliders:
 - title: "Simple redis service"
-  text: Cloud Foundry CLI plugin for creating & binding Redis to your apps using bosh
+  text: Create & delete Redis services using bosh
   image: /assets/images/cloudfoundry-235w.png
-- title: "using bosh to power services"
-  text: Uses bosh to provision dedicated Redis servers as needed
+- title: "Bind dedicate redis to CF"
+  text: Easy to bind redis service to your Cloud Foundry apps
   image: /assets/images/cloudfoundry-235w.png
 slider_background: ny # or parchment,abyss,sky-horizon-sky from /assets/sliders
 publish_date: "2013-07-06"
@@ -32,24 +32,27 @@ Here is an example scenario for installing the plugin, login to bosh (ask your s
 
 {% highlight bash %}
 $ gem install bosh_cli "~> 1.5.0.pre" --source https://s3.amazonaws.com/bosh-jenkins-gems/ 
-$ gem install redis-cf-plugin
-$ bosh target 1.2.3.4
-$ bosh login
-$ cf prepare-redis
-$ cf create-redis --size medium --security-group redis-service
-$ cf bind-redis-env-var myapp --env-var REDISTOGO
-$ cf delete-redis
+$ gem install bosh_cli_plugin_redis
+
+$ bosh prepare redis
+$ bosh create redis
+$ bosh show redis uri
+redis://:c1da049a75b3@0.redis.default.demoredis.microbosh:6379/0
+$ cf set-env myapp REDIS_URI redis://:c1da049a75b3@0.redis.default.redis-123.microbosh:6379/0
+
+$ cf unset-env myapp REDIS_URI
+$ bosh delete redis
 {% endhighlight %}
 
-The source for the CLI plugin is at [https://github.com/drnic/redis-cf-plugin](https://github.com/drnic/redis-cf-plugin).
+The source for the CLI plugin is at [https://github.com/drnic/bosh_cli_plugin_redis](https://github.com/drnic/bosh_cli_plugin_redis).
 
 The source for running redis upon bosh is [https://github.com/cloudfoundry-community/redis-boshrelease](https://github.com/cloudfoundry-community/redis-boshrelease).
 
 ## Where is redis server described?
 
-When you run `cf prepare-redis` above, the bosh release that describes redis is uploaded to your bosh. There is no cloning git repositories or creating bosh releases. It quickly pulls down a bosh package and a bosh job that describe running redis and upload them to your bosh.
+When you run `bosh prepare redis` above, the bosh release that describes redis is uploaded to your bosh. There is no cloning git repositories or creating bosh releases. It quickly pulls down a bosh package and a bosh job that describe running redis and upload them to your bosh.
 
-In future, each new plugin version may include new improvements to the bosh release. You run `cf prepare-redis` each time you install a new plugin gem.
+In future, each new plugin version may include new improvements to the bosh release. You run `bosh prepare redis` each time you install a new plugin gem.
 
 Of note are three files in the bosh release:
 
@@ -59,7 +62,7 @@ Of note are three files in the bosh release:
 
 ## How is redis server and properties described?
 
-Put simply, the plugin is automating the creation of a bosh deployment file (and deploying/deleting it). So anything you can do with bosh you can do with do here. `cf create-redis` creates a `deployments/redis/redis-123456.yml` deployment file in the local folder (say an application folder).
+Put simply, the plugin is automating the creation of a bosh deployment file (and deploying/deleting it). So anything you can do with bosh you can do with do here. `bosh create redis` creates a `deployments/redis/redis-123456.yml` deployment file in the local folder (say an application folder).
 
 So you can edit it and run `bosh deploy` to make any fancy changes. Also, future versions of the plugin will provide ways to update or scale any given redis service to make that simpler.
 
@@ -69,18 +72,23 @@ The plugin uses the current `bosh deployment` to determine which redis deploymen
 
 You'll note in the example above that `--size medium` is used to describe the size of the server to run redis. In AWS there is no `medium` instance flavor; nor might your OpenStack have a instance flavor `medium`.
 
-Initially there are four instance sizes supported - `small`, `medium`, `large` and `xlarge` - and these map to different things on different infrastructures. By default, in AWS and OpenStack, they map to instance flavors `m1.small`, `m1.medium`, `m1.large` and `m1.xlarge` respectively.
+You might ask "how do I specify an m1.medium on AWS?" or "how do I use the instances sizes my OpenStack administrator has given me?"
 
-In future, the list of instance sizes and what they map to in your infrastructure (AWS, OpenStack, vSphere) it will be configurable.
+In the initial release of the plugin there are four instance sizes supported - `small`, `medium`, `large` and `xlarge` - and these map to different things on different infrastructures. By default, in AWS and OpenStack, they map to instance flavors `m1.small`, `m1.medium`, `m1.large` and `m1.xlarge` respectively.
 
-## Limitations of initial v0.1.0 release
+Soon it will be entirely configurable what instance sizes are available and how they map to instance flavors on your infrastructure.
 
-* only supports binding via an environment variable (`$REDIS_URI` by default); waiting on Service Connector APIs & client libraries to come along before integration via `$VCAP_SERVICES`
-* must use same bosh used to deploy Cloud Foundry because its initially only supporting bosh DNS to describe the redis server host
-* there is no `cf update-service` yet, although you can modify the generated deployment file and run `bosh deploy`
-* it only includes aws & openstack - to add support for vsphere please add templates into redis-boshrelease first
+## Known limitations of current v0.2 release
+
+* there is no `bosh update redis` yet, although you can modify the generated deployment file and run `bosh deploy`
+* it only includes default aws & openstack templates - to add support for vsphere please add templates into redis-boshrelease first
 * no way yet to customize the list of available instance sizes
 
 ## Credits
 
 The idea of using ERb templates to generate the large bosh deployment files, and the idea of managing the experience from the `cf` command line come from the [bootstrap-cf-plugin](https://github.com/cloudfoundry/bootstrap-cf-plugin).
+
+I prefer this tool as a `bosh` CLI plugin than a `cf` CLI plugin. Its performing tasks upon bosh. In future I would like a service available to `cf` users which adheres to cf user roles and organizations/spaces and provisions/destroys services such as redis via bosh.
+
+I don't like that this plugin, nor bootstrap-cf-plugin, nor bosh-cloudfoundry must exist. Ultimately I want any bosh release to be very easy to use without an additional CLI plugin.
+
