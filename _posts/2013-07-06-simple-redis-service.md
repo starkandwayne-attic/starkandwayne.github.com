@@ -80,9 +80,12 @@ Soon it will be entirely configurable what instance sizes are available and how 
 
 ## Known limitations of current v0.2 release
 
+* no public IP support - so can only access the redis server from other bosh deployments (such as Cloud Foundry) from the same bosh (via its internal DNS)
 * there is no `bosh update redis` yet, although you can modify the generated deployment file and run `bosh deploy`
 * it only includes default aws & openstack templates - to add support for vsphere please add templates into redis-boshrelease first
 * no way yet to customize the list of available instance sizes
+
+These are all fixable limitations. I'm sorry if you're adversely affected by them today.
 
 ## Credits
 
