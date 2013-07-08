@@ -1,13 +1,13 @@
 ---
 layout: post
 title: "Simple redis service built on bosh"
-description: "Create & delete Redis services using bosh" # Used in /articles.html listing
+description: "Simple CLI to create & delete Redis services using bosh" # Used in /articles.html listing
 icon: cloud # see http://wbpreview.com/previews/WB07233L7/icons.html
 author: "Dr Nic Williams"
 author_code: drnic
 sliders:
 - title: "Simple redis service"
-  text: Create & delete Redis services using bosh
+  text: Simple CLI to create & delete Redis services using bosh
   image: /assets/images/cloudfoundry-235w.png
 - title: "Bind dedicate redis to CF"
   text: Easy to bind redis service to your Cloud Foundry apps
