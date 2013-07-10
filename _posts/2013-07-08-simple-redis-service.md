@@ -26,7 +26,7 @@ I need a simple way to create and delete (and ultimate upgrade) dedicate service
 Here is an example scenario for installing the plugin, login to bosh (ask your sysadmin for credentials), uploading the redis release to bosh, and then creating and deleting as many redis servers as you and your team need.
 
 {% highlight bash %}
-$ gem install bosh_cli "~> 1.5.0.pre" --source https://s3.amazonaws.com/bosh-jenkins-gems/ 
+$ gem install bosh_cli -v "~> 1.5.0.pre" --source https://s3.amazonaws.com/bosh-jenkins-gems/ 
 $ gem install bosh_cli_plugin_redis
 
 $ bosh prepare redis
