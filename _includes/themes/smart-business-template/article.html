@@ -44,7 +44,6 @@
 {% endif %}
 
 
-      
 <!--start: Wrapper-->
 <div id="wrapper">
       
@@ -71,59 +70,15 @@
             <div class="post-description">
               {{ content }}
             </div>
-            <div class="post-meta">
-              <span><i class="mini-ico-calendar"></i>{{ page.publish_date }}</span> 
-              <span><i class="mini-ico-user"></i>By {{ page.author }}</span> 
-            </div>
           </div>
         </div>
         <!-- end: Post -->
 
         <hr>
-        <div class="pagination">
-          <ul>
-          {% if page.previous %}
-            <li class="prev"><a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&larr; Previous</a></li>
-          {% else %}
-            <li class="prev disabled"><a>&larr; Previous</a></li>
-          {% endif %}
-            <li><a href="{{ BASE_PATH }}{{ site.JB.archive_path }}">All Articles</a></li>
-          {% if page.next %}
-            <li class="next"><a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">Next &rarr;</a></li>
-          {% else %}
-            <li class="next disabled"><a>Next &rarr;</a>
-          {% endif %}
-          </ul>
-        </div>
         <hr>
-        {% include JB/comments %}
       </div>
     
       <div class="span3 hidden-phone">
-
-        <!-- start: Author -->
-        <div class="widget">
-          <div class="title"><h3>{{ page.author }}</h3></div>
-          <div class="da-img">
-            <img src="{{ BASE_PATH }}/assets/people/{{ page.author_code }}-alpha-300w.png" 
-              alt="{{ page.author_code }}" />
-          </div>
-          <div class="clear"></div>
-        </div>
-        <!-- end: Popular Photos -->
-
-        {% unless page.tags == empty %}
-        <!-- start: Tags -->
-        <div class="widget">
-          <div class="title"><h3>Tags</h3></div>
-          <div class="tags">
-            <!-- <a href="#">Tag1</a> -->
-            {% assign tags_list = page.tags %}
-            {% include JB/tags_list_just_link %}
-          </div>
-        </div>
-        <!-- end: Tags -->
-        {% endunless %}
       </div>
     </div>
     <!--end: Row-->
