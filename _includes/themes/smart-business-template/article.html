@@ -1,0 +1,134 @@
+{% if page.sliders %}
+<!-- start: Slider -->
+<div class="slider-wrapper">
+  <div id="da-slider" class="da-slider da-slider-{{ page.slider_background }}">
+    {% for slider in page.sliders %}
+    <div class="da-slide">
+      <h2>{{ slider.title || title }}</h2>
+      <p>{{ slider.text }}</p>
+      {% if slider.button %}
+      <a href="{{ BASE_PATH }}/{{ slider.button.path }}" class="da-link">{{ slider.button.title }}</a>
+      {% endif %}
+      {% if slider.image %}
+      <div class="da-img"><img src="{{ slider.image }}" alt="" /></div>
+      {% endif %}
+    </div>
+    {% endfor %}
+    {% if page.sliders.size == 1 %}
+    <style type="text/css" media="screen">
+      /* only one panel for slider, so hide the navigation dot */
+      .da-dots { display: none; }
+    </style>
+    {% else %}
+    <nav class="da-arrows">
+      <span class="da-arrows-prev"></span>
+      <span class="da-arrows-next"></span>
+    </nav>
+    {% endif %}
+  </div>
+</div>
+<!-- end: Slider -->
+
+{% else %}
+<!-- start: Page Title -->
+<div id="page-title">
+  <div id="page-title-inner">
+    <!-- start: Container -->
+    <div class="container">
+      <h2><i class="ico-pencil ico-white"></i>{{ page.title }}</h2>
+    </div>
+    <!-- end: Container  -->
+  </div>  
+</div>
+<!-- end: Page Title -->
+{% endif %}
+
+
+      
+<!--start: Wrapper-->
+<div id="wrapper">
+      
+  <!--start: Container -->
+  <div class="container">
+    <!--start: Row -->
+    <div class="row">
+      <div class="span1 hidden-phone">
+      </div>
+      <div class="span1 hidden-tablet hidden-phone">
+      </div>
+      <div class="span7">
+        
+        <!-- start: Post -->
+        <div class="post">
+          {% if page.main_picture %}
+          <div class="post-img picture">
+            <img src="{{ page.main_picture }}" alt="" />
+          </div>
+          {% endif %}
+          <span class="post-icon standard"><i class="ico-pen circle"></i></span>
+          <div class="post-content">
+            <div class="post-title"><h2><a href="{{ page.url }}">{{ page.title }}</a></h2></div>
+            <div class="post-description">
+              {{ content }}
+            </div>
+            <div class="post-meta">
+              <span><i class="mini-ico-calendar"></i>{{ page.publish_date }}</span> 
+              <span><i class="mini-ico-user"></i>By {{ page.author }}</span> 
+            </div>
+          </div>
+        </div>
+        <!-- end: Post -->
+
+        <hr>
+        <div class="pagination">
+          <ul>
+          {% if page.previous %}
+            <li class="prev"><a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&larr; Previous</a></li>
+          {% else %}
+            <li class="prev disabled"><a>&larr; Previous</a></li>
+          {% endif %}
+            <li><a href="{{ BASE_PATH }}{{ site.JB.archive_path }}">All Articles</a></li>
+          {% if page.next %}
+            <li class="next"><a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">Next &rarr;</a></li>
+          {% else %}
+            <li class="next disabled"><a>Next &rarr;</a>
+          {% endif %}
+          </ul>
+        </div>
+        <hr>
+        {% include JB/comments %}
+      </div>
+    
+      <div class="span3 hidden-phone">
+
+        <!-- start: Author -->
+        <div class="widget">
+          <div class="title"><h3>{{ page.author }}</h3></div>
+          <div class="da-img">
+            <img src="{{ BASE_PATH }}/assets/people/{{ page.author_code }}-alpha-300w.png" 
+              alt="{{ page.author_code }}" />
+          </div>
+          <div class="clear"></div>
+        </div>
+        <!-- end: Popular Photos -->
+
+        {% unless page.tags == empty %}
+        <!-- start: Tags -->
+        <div class="widget">
+          <div class="title"><h3>Tags</h3></div>
+          <div class="tags">
+            <!-- <a href="#">Tag1</a> -->
+            {% assign tags_list = page.tags %}
+            {% include JB/tags_list_just_link %}
+          </div>
+        </div>
+        <!-- end: Tags -->
+        {% endunless %}
+      </div>
+    </div>
+    <!--end: Row-->
+  </div>
+  <!--end: Container-->
+
+</div>
+<!-- end: Wrapper  -->      
