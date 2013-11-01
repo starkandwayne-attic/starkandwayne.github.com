@@ -16,7 +16,7 @@ module Jekyll
   # </blockquote>
   #
   class Blockquote < Liquid::Block
-    Syntax = /([\w\s]+)/
+    Syntax = /([\w\s,]+)/
 
     def initialize(tag_name, markup, tokens)
       @by = nil
