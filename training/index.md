@@ -23,10 +23,11 @@ slider_background: sky-horizon-sky
 
 We offer comprehensive training classes by Stark & Wayne agents who have years of experience working in systems administration and integration.
 
-{% blockquote Sam Cooper, Blue Box Group %}
+<blockquote>
 We brought Dr. Nic in for a 3 day crash course in Cloud Foundry setup and operations and it was a really great experience.  His expertise and personality made for some very informative and enjoyable sessions.  He is dedicated to getting Cloud Foundry working for you, and will go the extra mile to make sure it does.
-{% endblockquote %}
-
+<br/>
+Sam Cooper, Blue Box Group
+</blockquote>
 
 We are offering the following workshop:
 
