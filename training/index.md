@@ -11,11 +11,24 @@ sliders:
   button:
     title: Contact us &raquo;
     path: contact-us.html
+- title: Testimonial
+  text: "&quot;I must admit to being a lot more excited about CF and Bosh than I was before&quot;"
+  image: /assets/images/cloudfoundry-235w.png
+  button:
+    title: Contact us &raquo;
+    path: contact-us.html
 slider_background: sky-horizon-sky
 ---
 {% include JB/setup %}
 
-We offer comprehensive training classes by Stark & Wayne agents who have years of experience working in systems administration and integration. We are offering the following workshop:
+We offer comprehensive training classes by Stark & Wayne agents who have years of experience working in systems administration and integration.
+
+{% blockquote Sam Cooper, Blue Box Group %}
+We brought Dr. Nic in for a 3 day crash course in Cloud Foundry setup and operations and it was a really great experience.  His expertise and personality made for some very informative and enjoyable sessions.  He is dedicated to getting Cloud Foundry working for you, and will go the extra mile to make sure it does.
+{% endblockquote %}
+
+
+We are offering the following workshop:
 
 ## Private Training
 
