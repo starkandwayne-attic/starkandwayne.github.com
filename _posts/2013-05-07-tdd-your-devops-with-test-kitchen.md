@@ -29,7 +29,7 @@ How huge? I jammed as much as I know into a 20 minute TDD demo to create a chef 
 
 Watch the video and please let me know in the comments if you'll be switching to test-kitchen?
 
-<object width="560" height="315"><param name="movie" value="http://www.youtube.com/v/0sPuAb6nB2o?hl=en_US&amp;version=3"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><param name="hd" value="1"></param><embed src="http://www.youtube.com/v/0sPuAb6nB2o?hl=en_US&amp;version=3" type="application/x-shockwave-flash" width="560" height="315" allowscriptaccess="always" allowfullscreen="true" hd="1"></embed></object>
+<object width="560" height="315"><param name="movie" value="http://www.youtube.com/v/0sPuAb6nB2o?hl=en_US&amp;version=3&amp;color=white&amp;theme=light"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><param name="hd" value="1"></param><embed src="http://www.youtube.com/v/0sPuAb6nB2o?hl=en_US&amp;version=3" type="application/x-shockwave-flash" width="560" height="315" allowscriptaccess="always" allowfullscreen="true" hd="1"></embed></object>
 
 ## TDD and DevOps
 

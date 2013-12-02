@@ -53,7 +53,7 @@ Thank you to LinkedIn for hosting the meetup and for recording and post-producin
 
 But now, please enjoy the 1h talk (which actually took 1h 40mins) presented at LinkedIn for the Silicon Valley Ruby Club. We all had a great time and it was great to share it publicly for the first time!
 
-<iframe width="560" height="315" src="http://www.youtube.com/embed/e0EprkBamvQ" frameborder="0" allowfullscreen="1"></iframe>
+<object width="560" height="315"><param name="movie" value="http://www.youtube.com/v/e0EprkBamvQ?hl=en_US&amp;version=3&amp;color=white&amp;theme=light"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><param name="hd" value="1"></param><embed src="http://www.youtube.com/v/e0EprkBamvQ?hl=en_US&amp;version=3&amp;color=white&amp;theme=light" type="application/x-shockwave-flash" width="560" height="315" allowscriptaccess="always" allowfullscreen="true" hd="1"></embed></object>
 
 
 

@@ -30,6 +30,10 @@ This efficiency is thanks to two tools:
 
 Even if you're not looking to use BOSH for your production systems, the bosh-lite/bosh-gen combination is a great way to experiment with single node and clustered node versions of your systems or some new services you've discovered.
 
+## The video
+
+<object width="560" height="315"><param name="movie" value="http://www.youtube.com/v/q6NUKzTqaTI?hl=en_US&amp;version=3&amp;color=white&amp;theme=light"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><param name="hd" value="1"></param><embed src="http://www.youtube.com/v/q6NUKzTqaTI?hl=en_US&amp;version=3&amp;color=white&amp;theme=light" type="application/x-shockwave-flash" width="560" height="315" allowscriptaccess="always" allowfullscreen="true" hd="1"></embed></object>
+
 ## Errata
 
 The tutorial can be followed along with generous use of the pause button and some errata below.
@@ -45,9 +49,4 @@ properties:
 As you develop your own releases you should update the generated examples files so that your README "just works" for other people.
 
 Also, remember to create the S3 bucket for your project. If you ran `bosh-gen new myproject` then you need to create an S3 bucket called `myproject-boshrelease`.
-
-## The video
-
-<iframe width="540" height="380" src="//www.youtube.com/embed/q6NUKzTqaTI" frameborder="0" allowfullscreen="1"></iframe>
-
 
