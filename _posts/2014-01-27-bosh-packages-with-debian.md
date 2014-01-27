@@ -1,19 +1,19 @@
 ---
 layout: post
 title: "BOSH packages with Debian"
-description: "TWO. SENTENCES." # Used in /articles.html listing
+description: "If you're in a hurry you can now create BOSH packages using existing Debian packages"
 icon: cloud # see http://wbpreview.com/previews/WB07233L7/icons.html
 author: "Dr Nic Williams"
 author_code: drnic
 # main_picture: /assets/articles/images/car.jpg
 sliders:
 - title: "BOSH packages with Debian"
-  text: PUT A COOL SUMMARY HERE
+  text: "If you're in a hurry you can now create BOSH packages using existing Debian packages"
   image: /assets/images/cloudfoundry-235w.png
-slider_background: ny # or parchment,abyss,sky-horizon-sky from /assets/sliders
+slider_background: abyss # or parchment,abyss,sky-horizon-sky from /assets/sliders
 publish_date: "2014-01-27"
 category: "articles"
-tags: []
+tags: [bosh]
 theme:
   name: smart-business-template
 ---
@@ -71,6 +71,25 @@ blobs
 **I'm on a Mac, how do I get the .deb files?** Vagrant. Even if you were on an Ubuntu distro when creating your BOSH release, it is important that we download the .debs from the same universe that is compatible with the bosh stemcell being used. Currently the ubuntu bosh-stemcell is 10.04 LTS. Yep, that's (20)10.
 
 When you run "bosh-gen package NAME --apt", a Vagrantfile is created that references the `lucid64` Vagrant box. When you run the `vagrant up` command, this box will be downloaded if you don't have it already. Or if you deleted it years ago.
+
+**How do I access the installed Debian packages from my jobs?** Instead of installing the packages into the root file system, as it would be impossible to then package and re-install the BOSH package when it is needed, the installed files are in the BOSH package folder. This is the same solution that David Dollar used for his Heroku buildpack.
+
+You can see an example of the installed folder structure of the `apache2` BOSH package that is using the `apache2` Debian packages above:
+
+{% highlight text %}
+$ tree /var/vcap/packages/apache2/apt | head -n 10
+/var/vcap/packages/apache2/apt
+├── etc
+│   ├── apache2
+│   │   ├── apache2.conf
+│   │   ├── conf.d
+│   │   │   ├── charset
+│   │   │   ├── localized-error-pages
+│   │   │   └── security
+│   │   ├── envvars
+│   │   ├── magic
+...
+{% endhighlight %}
 
 ## Tips
 
