@@ -19,7 +19,7 @@ theme:
 ---
 {% include JB/setup %}
 
-We've recently become interested in the future of Docker. Why? not so much for its Linux container (LXC) technology or its nifty social integration (docker push & pull), but for its approach to packaging. Each docker repository contains a base Linux distro, all the dependencies pre-installed, and the target project(s) installed.
+We've recently become interested in the future of Docker. Why? In part for its Linux container technology (similar to Warden in Cloud Foundry), and in part for its nifty social integration (docker push & pull). But the big winner for us is its solution to packaging. Each docker repository contains a base Linux distro, all the dependencies pre-installed, and the target project(s) installed.
 
 This is exciting for several reasons. One is that you build Docker repositories (by hand if you really want) once, and reuse that artifact again and again. The other is that your system no longer has any remote dependencies. Never again will your CI build fail because RubyGems or GitHub is down.
 
