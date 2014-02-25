@@ -53,19 +53,19 @@ I've started a list of questions you should answer before you begin a Bosh relea
 ##Packaging
 
 ##What packages are required?
-*Is there a usuable binary available?
-*Where is the source code located?
-*What are the compilation requirements on target platform?
+ * Is there a usuable binary available?
+ * Where is the source code located?
+ * What are the compilation requirements on target platform?
 
 ##Job Creation
-*How to run process? eg. start, stop, restart.Control Script? Helpful wrapper script? ({name}_ctl)
-*How to daemonize?
-*How to configure pidfile? (/var/vcap/sys/run/{name})
-*How to set logs dir? (/var/vcap/sys/log/{name})
-*How to storage (db) dir? (/var/vcap/store/{name})
-*What do config files look like?
-*What is parameterizable? (jobs/{name}/spec -> properties: …)
-*How to cluster? Leader (Master) vs Followers (Slaves)
+ * How to run process? eg. start, stop, restart.Control Script? Helpful wrapper script? ({name}_ctl)
+ * How to daemonize?
+ * How to configure pidfile? (/var/vcap/sys/run/{name})
+ * How to set logs dir? (/var/vcap/sys/log/{name})
+ * How to storage (db) dir? (/var/vcap/store/{name})
+ * What do config files look like?
+ * What is parameterizable? (jobs/{name}/spec -> properties: …)
+ * How to cluster? Leader (Master) vs Followers (Slaves) 
 
 
 #### Generators
