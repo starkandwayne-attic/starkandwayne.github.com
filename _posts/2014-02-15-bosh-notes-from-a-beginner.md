@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "BOSH: Notes from a beginner"
+title: "BOSH: Notes from learning BOSH"
 description: "Notes for starting your first bosh release."
 icon: cloud # see http://wbpreview.com/previews/WB07233L7/icons.html
 author: "Bill Chapman"
@@ -24,7 +24,7 @@ theme:
   * Start [Here](http://starkandwayne.com/articles/2013/12/02/rapid-dev-with-bosh-lite/) S&W Talk on Bosh Lite
   * Then go [Here](https://github.com/cloudfoundry/bosh-lite) Bosh Lite Github
 
-  Getting set up on Mac OS with those two resources above was very quick. There is a lot of set up and tear down so you'll want a good rebuild script to stand up your bosh-lite environment.
+  Getting set up on Mac OS with those two resources above was very quick. There is a lot of set up and tear down so you'll want a good rebuild script to stand up your bosh-lite environment. This is mine and I run it from the bosh-lite project directory.
 
 ```bash
 vagrant destroy -f
@@ -38,7 +38,7 @@ bosh upload stemcell latest-bosh-stemcell-warden.tgz
 ./scripts/add-route
 ```
 
- You'll probably also want to create alias for the release build workflow.
+ You'll probably also want to create an alias for the release build workflow that will be done in your individual release directory. I found myself typing these commands a lot and aliased them as bcdr
 
  ```bash
   bosh create release --force && bosh upload release && bosh -n deploy
@@ -50,28 +50,51 @@ bosh upload stemcell latest-bosh-stemcell-warden.tgz
 
 I've started a list of questions you should answer before you begin a Bosh release. If you can't answer these questions, you can't finish the release.
 
-https://gist.github.com/byllc/8870959
+##Packaging
+
+##What packages are required?
+*Is there a usuable binary available?
+*Where is the source code located?
+*What are the compilation requirements on target platform?
+
+##Job Creation
+*How to run process? eg. start, stop, restart.Control Script? Helpful wrapper script? ({name}_ctl)
+*How to daemonize?
+*How to configure pidfile? (/var/vcap/sys/run/{name})
+*How to set logs dir? (/var/vcap/sys/log/{name})
+*How to storage (db) dir? (/var/vcap/store/{name})
+*What do config files look like?
+*What is parameterizable? (jobs/{name}/spec -> properties: …)
+*How to cluster? Leader (Master) vs Followers (Slaves)
 
 
 #### Generators
-USE bosh-gen and templates/make_manifest.  You should not create manifest or package/job skeletons by hand. You will miss stuff. If the generator differs from an example you've found online, the generator is probably a newer example and you probably want to follow it's example.
+USE bosh-gen and templates/make_manifest.  You should not create manifest or package/job skeletons by hand. You will forget stuff. If the generator differs from an example you've found online, the generator is probably a newer example and you probably want to follow it.
+
+```bash
+gem install bosh-gen
+```
 
 #### Packaging
-
+```bash
+bosh-gen package <package-name>
+```
 The packaging aspect is not unlike creating a package for apt, yum, or homebrew. When troubleshooting it helped quite a bit to pore over configuration options looking for anything that specified directory paths and make sure you provide them with updated /var/vcap.. paths. Often these paths are set to defaults and will not show up in a config file. If you are having problems with permissions on files or processes accesing files or directories that do not exist look for compile, runtime, or configuration options that specify directories for your service/process.
 
 Be aware what you should and should not run in packaging scripts. The packaging scripts are going to run on a compile node and you won't have access to persistent data there. For example,  the initialization scripts for mysql,mariadb, or postgresql cannot be run at compile time. Be aware which of your scripts are going to run where, packaging will happen on compile nodes and jobs will run on the bosh vm.
 
 Remember that making changes to a packaging script will force a recompile even if the change is trivial. For packages with a long compile time you want to avoid making lots of trivial changes or formatting adjustments while you are in development. You'll spend a lot of time waiting for compilation to finish. On the other hand if you focus on getting your packaging scripts right first your compiled package will be cached and further bosh deployments will be quick.
 
-If you need a package to be available in /var/vcap/packages, ensure you have added it as a job dependency. It will not get copied over otherwise.
+If you need a package to be available in /var/vcap/packages, ensure you have added it as a job dependency in jobs/spec(packages:). It will not get copied over otherwise.
 
 #### Jobs
+```bash
+bosh-gen job <job-name>
+```
 
-Bosh-gen will create a monit file and a package_name_ctl file. You should probably leave the monit file alone and focus on the ctl script.
+Bosh-gen will create a monit file and a package_name_ctl file. You should probably leave the monit file alone and focus on the ctl script in jobs/<job-name>/templates/bin/<job-name>_ctl
 
 There isn't yet a built in way to handle 'run once' requirements. For example a database initialization script that needs populate your persistence store. If you need to keep track of run once requirements remember that your service vm's are mostly transient and any persistent information will need to be in /var/vcap/store or in another persistent service.
-
 
 #### Errors and troublshooting
 
@@ -84,12 +107,12 @@ Once you get through the compile process if the jobs are not starting you'll nee
   tail -f /var/vcap/sys/logs/**/*
 ```
 
-If in doubt start over. I noticed that while I was poking around on the running bosh vms I would change things for testing purposes or to figure out how to get the services running cleanly. If you've been poking around and things aren't working, remember that the BOSH VM's are supposed to be transient. Tearing them down and starting over is a great test of the clean bootstrap behaviour of your release and it may just get rid of an odd issue or two.
-
+If in doubt start over. I noticed that while I was poking around on the running bosh vms I would change things for testing purposes or to figure out how to get the services running cleanly. If you've been poking around and things aren't working, remember that the BOSH service VM's are supposed to be transient. Tearing them down and starting over is a great test of the clean bootstrap behaviour of your release and it may just get rid of an odd issue or two that you've inadvertently caused.
 
 ```bash
   bosh delete deployment <deployment-name> --force
 ```
+
 
 
 
