@@ -50,14 +50,12 @@ bosh upload stemcell latest-bosh-stemcell-warden.tgz
 
 I've started a list of questions you should answer before you begin a Bosh release. If you can't answer these questions, you can't finish the release.
 
-##Packaging
-
-##What packages are required?
+###What packages are required?
  * Is there a usuable binary available?
  * Where is the source code located?
  * What are the compilation requirements on target platform?
 
-##Job Creation
+###Job Creation
  * How to run process? eg. start, stop, restart.Control Script? Helpful wrapper script? ({name}_ctl)
  * How to daemonize?
  * How to configure pidfile? (/var/vcap/sys/run/{name})
