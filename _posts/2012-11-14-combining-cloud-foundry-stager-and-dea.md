@@ -20,6 +20,10 @@ theme:
 ---
 {% include JB/setup %}
 
+{% highlight text %}
+Note: This article discusses DEA v1, which has been superceded by DEA v2.
+{% endhighlight %}
+
 We are going to run the small set of services and a script that composes them together.
 
 ## Quick demo
