@@ -75,7 +75,7 @@ Config file location not specified. Please run with --config argument or set CLO
 
 Ahh, introduction to running Cloud Foundry lesson 1 - YAML configuration files. Lots of YAML configuration files.
 
-Ignore the out-of-date [example dea config file](https://github.com/cloudfoundry/dea/blob/master/config/example.yml), and look at the [dea.yml.erb](https://github.com/cloudfoundry/cf-release/blob/master/jobs/dea/templates/dea.yml.erb) from Cloud Foundry's own cf-release BOSH release. I created [config/dea-laptop.yml](https://github.com/StarkAndWayne/deploying-to-a-cloudfoundry-dea/blob/master/config/dea-laptop.yml) as below.
+Ignore the out-of-date [example dea config file](https://github.com/cloudfoundry/dea/blob/master/config/example.yml), and look at the [dea.yml.erb](https://github.com/cloudfoundry/cf-release/blob/master/jobs/dea_next/templates/dea.yml.erb) from Cloud Foundry's own cf-release BOSH release. I created [config/dea-laptop.yml](https://github.com/StarkAndWayne/deploying-to-a-cloudfoundry-dea/blob/master/config/dea-laptop.yml) as below.
 
 {% highlight yaml %}
 ---
