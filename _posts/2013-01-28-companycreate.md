@@ -22,7 +22,7 @@ theme:
 ---
 {% include JB/setup %}
 
-Welcome to [Stark & Wayne](http://starkandwayne.com), the new consultancy from [Dr Nic Williams](http://drnicwilliams.com) for teams and companies using Cloud Foundry to make their lives and their customers lives better. We work with teams and companies who want to become real-world superheroes.
+Welcome to [Stark & Wayne](https://starkandwayne.com), the new consultancy from [Dr Nic Williams](http://drnicwilliams.com) for teams and companies using Cloud Foundry to make their lives and their customers lives better. We work with teams and companies who want to become real-world superheroes.
 
 If you've used Heroku for your pet projects, then we want to bring you Cloud Foundry for your work projects. We also want to work with you on your projects. If your workplace cares about continuously improving development and operations, then you qualify.
 

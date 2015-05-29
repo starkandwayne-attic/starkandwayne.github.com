@@ -29,6 +29,6 @@ appscrolls new mynewapp -s cf puma postgresql rails_basics
 
 In less than a minute, your application will be up and running on your target Cloud Foundry (a public or private one).
 
-If you're a fan of AppScrolls, you'll notice that I've also added a Puma scroll based on the discovery of [how to make Puma the default server for a Rails app](http://starkandwayne.com/articles/2013/03/27/puma-in-cloud-foundry/ "Stark & Wayne's Did you know you can use Puma in Cloud Foundry?").
+If you're a fan of AppScrolls, you'll notice that I've also added a Puma scroll based on the discovery of [how to make Puma the default server for a Rails app](https://starkandwayne.com/articles/2013/03/27/puma-in-cloud-foundry/ "Stark & Wayne's Did you know you can use Puma in Cloud Foundry?").
 
 So in one fell swoop you can create a new Rails app, use Puma and have it running on your public/private Cloud Foundry!

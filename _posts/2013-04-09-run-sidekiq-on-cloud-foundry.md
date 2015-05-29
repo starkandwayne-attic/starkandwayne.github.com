@@ -23,7 +23,7 @@ theme:
 ---
 {% include JB/setup %}
 
-For the same reason I like [Puma](http://starkandwayne.com/articles/2013/03/27/puma-in-cloud-foundry/ "Stark & Wayne's Did you know you can use Puma in Cloud Foundry?") as my Rails web server, I like using Sidekiq for my background jobs. The reason? They use threads. Puma can handle multiple web requests simultaneously and Sidekiq can handle multiple background jobs simultaneously.
+For the same reason I like [Puma](https://starkandwayne.com/articles/2013/03/27/puma-in-cloud-foundry/ "Stark & Wayne's Did you know you can use Puma in Cloud Foundry?") as my Rails web server, I like using Sidekiq for my background jobs. The reason? They use threads. Puma can handle multiple web requests simultaneously and Sidekiq can handle multiple background jobs simultaneously.
 
 This article shows how I add Sidekiq to my Rails app and run its background worker process(es) on Cloud Foundry. It even includes the brilliant Sidekiq dashboard.
 
