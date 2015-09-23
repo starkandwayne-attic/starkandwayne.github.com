@@ -17,6 +17,10 @@ $ rake page name="newpage"
 $ rake page name="section/new-page"
 ```
 
+### Deploy to Cloud Foundry
+```
+$ rake deploy
+```
 ## Theme
 
 * [social icons](http://wbpreview.com/previews/WB07233L7/social-icons.html)
