@@ -2310,6 +2310,14 @@ form#newsletter input[type=submit] {
 ====================================================================== */
 @media only screen and (min-width: 768px) and (max-width: 959px) {
 
+  .nav-collapse{
+    position: absolute;
+    z-index: 100000;
+    top: 100px;
+    left: 600px;
+    width: 100%;
+    border: 1px solid:
+  }
 
   ol li ol.childlist .comment-des {
     width:86%;
@@ -2325,18 +2333,14 @@ form#newsletter input[type=submit] {
     height: 70px;
   }
 
-  .btn-navbar{
-    z-index: 10001;
+  .nav-collapse{
+    position: absolute;
+    z-index: 100000;
+    top: 50px;
+    left: 300px;
+    width: 100%;
+    border: 1px solid:
   }
-
-  .navbar-inner {
-    padding-top: 15px;
-    margin-top: -50px;
-    margin-right: 100px;
-    z-index: 10000;
-    background-color: #ffffff;
-  }
-
 
   .logo  {
     position: relative;
