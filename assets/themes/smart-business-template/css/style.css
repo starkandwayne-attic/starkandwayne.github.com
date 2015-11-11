@@ -107,8 +107,9 @@ hr {
 =================================================================== */
 
 header {
-  background-color: #d4d5d5;
+  background-color: #ffffff;
   border-bottom: 5px solid #aaaaaa;
+  min-width: 640px !important;
 }
 
 .logo  {
@@ -208,13 +209,6 @@ header {
 .navbar .nav .active a:hover > .caret {
   border-top-color: #fff !important;
   border-bottom-color: #fff !important;
-}
-
-
-.navbar{
-  margin-top: 0px;
-  border: 1px solid #aaaaaa !important;
-  border-top: 0px !important;
 }
 
 .dropdown-menu li > a:hover,
