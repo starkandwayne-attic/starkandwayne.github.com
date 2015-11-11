@@ -2321,6 +2321,44 @@ form#newsletter input[type=submit] {
 ====================================================================== */
 @media only screen and (max-width: 767px) {
 
+  header{
+    height: 70px;
+  }
+
+  .btn-navbar{
+    z-index: 10001;
+  }
+
+  .navbar-inner {
+    padding-top: 15px;
+    margin-top: -50px;
+    margin-right: 100px;
+    z-index: 10000;
+    background-color: #ffffff;
+  }
+
+
+  .logo  {
+    position: relative;
+    height: 94px;
+    top: 0px;
+  }
+
+
+  .logo a{
+  }
+
+  .logo .logo-image{
+    height: 80px;
+    width: 100px;
+  }
+
+  .logo .logo-words{
+    top: 55px !important;
+    left: 110px !important;
+    width: 130px !important;
+    height: 9px !important;
+  }
 
   #contact-details {
     text-align: center;
