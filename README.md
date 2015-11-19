@@ -18,6 +18,13 @@ $ rake page name="section/new-page"
 ```
 
 ### Deploy to Cloud Foundry
+Target Cloud Foundry
+```
+cf api api.run.pivotal.io
+cf login     # <===When prompted add creds you used at https://console.run.pivotal.io
+```
+
+Now deploy to CF
 ```
 $ rake deploy
 ```
