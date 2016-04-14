@@ -19,6 +19,10 @@ theme:
 ---
 {% include JB/setup %}
 
+{% highlight text %}
+Note: This article discusses DEA v1, which has been superceded by DEA v2.
+{% endhighlight %}
+
 Perhaps the best way to feel confident using Cloud Foundry is to know how it works. And perhaps the best way to learn how it works is to rebuilt it from the ground up. In the [DIY PaaS](/tags.html#diy-paas-ref) articles, we will re-build Cloud Foundry from the ground up piece-by-piece. This is article number 1, and we're going to start with the good bit: running applications.
 
 ## TL;DR
